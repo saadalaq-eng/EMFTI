@@ -1,4 +1,4 @@
-import { Calendar, BookOpen, User } from 'lucide-react'
+import { Calendar, BookOpen, User, Paperclip } from 'lucide-react'
 import { format, isPast, isToday, parseISO } from 'date-fns'
 import TaskTypeBadge from './TaskTypeBadge'
 
@@ -68,6 +68,19 @@ export default function TaskCard({ task, onEdit, onDelete, isAdmin }) {
             >
               {task.description}
             </p>
+          )}
+
+          {/* Attachment */}
+          {task.attachmentUrl && (
+            <a
+              href={task.attachmentUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 inline-flex items-center gap-1.5 text-xs text-indigo-500 hover:text-indigo-700 font-medium transition-colors"
+            >
+              <Paperclip size={12} />
+              <span className="truncate max-w-[180px]">{task.attachmentName ?? 'Attachment'}</span>
+            </a>
           )}
         </div>
 

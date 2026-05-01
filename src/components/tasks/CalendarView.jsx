@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Paperclip } from 'lucide-react'
 import {
   startOfMonth, endOfMonth, startOfWeek, endOfWeek,
   eachDayOfInterval, format, isSameMonth, isToday,
@@ -185,6 +186,17 @@ export default function CalendarView({ tasks }) {
                       <p className="text-xs text-gray-400 mt-1 leading-relaxed" dir="auto">
                         {task.description}
                       </p>
+                    )}
+                    {task.attachmentUrl && (
+                      <a
+                        href={task.attachmentUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-1 inline-flex items-center gap-1 text-xs text-indigo-500 hover:text-indigo-700 font-medium"
+                      >
+                        <Paperclip size={11} />
+                        {task.attachmentName ?? 'Attachment'}
+                      </a>
                     )}
                   </div>
                 </div>
