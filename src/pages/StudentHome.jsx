@@ -3,6 +3,7 @@ import { List, CalendarDays } from 'lucide-react'
 import Header from '../components/layout/Header'
 import TaskList from '../components/tasks/TaskList'
 import CalendarView from '../components/tasks/CalendarView'
+import TaskDetailModal from '../components/tasks/TaskDetailModal'
 import { useTasks } from '../hooks/useTasks'
 import { useCourses } from '../hooks/useCourses'
 import { TASK_TYPES } from '../utils/taskTypes'
@@ -13,6 +14,7 @@ export default function StudentHome() {
   const [view, setView] = useState('list')
   const [filterType, setFilterType] = useState('all')
   const [filterCourse, setFilterCourse] = useState('all')
+  const [selectedTask, setSelectedTask] = useState(null)
 
   const filtered = useMemo(() => {
     return tasks.filter((t) => {
@@ -116,7 +118,6 @@ export default function StudentHome() {
 
       {/* Main content */}
       <main className="flex-1 max-w-2xl mx-auto w-full px-4 py-5">
-        {/* Task count */}
         <p className="text-xs text-gray-400 font-medium mb-4">
           {loading ? 'Loading...' : `${filtered.length} task${filtered.length !== 1 ? 's' : ''}`}
         </p>
@@ -126,9 +127,16 @@ export default function StudentHome() {
             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-600" />
           </div>
         ) : view === 'list' ? (
-          <TaskList tasks={filtered} isAdmin={false} />
+          <TaskList
+            tasks={filtered}
+            isAdmin={false}
+            onSelect={setSelectedTask}
+          />
         ) : (
-          <CalendarView tasks={filtered} />
+          <CalendarView
+            tasks={filtered}
+            onSelectTask={setSelectedTask}
+          />
         )}
       </main>
 
@@ -141,6 +149,14 @@ export default function StudentHome() {
           Admin
         </a>
       </div>
+
+      {/* Task detail modal */}
+      {selectedTask && (
+        <TaskDetailModal
+          task={selectedTask}
+          onClose={() => setSelectedTask(null)}
+        />
+      )}
     </div>
   )
 }

@@ -34,7 +34,7 @@ function DateLabel({ dateStr }) {
   )
 }
 
-export default function TaskList({ tasks, onEdit, onDelete, isAdmin }) {
+export default function TaskList({ tasks, onSelect, onEdit, onDelete, isAdmin }) {
   if (tasks.length === 0) {
     return (
       <EmptyState
@@ -57,6 +57,7 @@ export default function TaskList({ tasks, onEdit, onDelete, isAdmin }) {
               <TaskCard
                 key={task.id}
                 task={task}
+                onSelect={onSelect}
                 onEdit={onEdit}
                 onDelete={onDelete}
                 isAdmin={isAdmin}

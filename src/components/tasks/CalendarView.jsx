@@ -10,7 +10,7 @@ import { TASK_TYPES } from '../../utils/taskTypes'
 
 const DAY_NAMES = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
-export default function CalendarView({ tasks }) {
+export default function CalendarView({ tasks, onSelectTask }) {
   const [currentMonth, setCurrentMonth] = useState(new Date())
   const [selectedDate, setSelectedDate] = useState(null)
 
@@ -165,7 +165,11 @@ export default function CalendarView({ tasks }) {
           ) : (
             <div className="divide-y divide-gray-50">
               {selectedTasks.map((task) => (
-                <div key={task.id} className="flex items-start gap-3 px-4 py-3">
+                <button
+                  key={task.id}
+                  onClick={() => onSelectTask?.(task)}
+                  className="w-full flex items-start gap-3 px-4 py-3 hover:bg-gray-50 active:bg-gray-100 transition-colors text-left"
+                >
                   <span
                     className={`w-2 h-2 rounded-full mt-1.5 shrink-0 ${TASK_TYPES[task.type]?.dot ?? 'bg-gray-400'}`}
                   />
@@ -199,7 +203,7 @@ export default function CalendarView({ tasks }) {
                       </a>
                     )}
                   </div>
-                </div>
+                </button>
               ))}
             </div>
           )}
