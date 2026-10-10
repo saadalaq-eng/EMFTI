@@ -4,6 +4,7 @@ import Header from '../components/layout/Header'
 import TaskList from '../components/tasks/TaskList'
 import CalendarView from '../components/tasks/CalendarView'
 import TaskDetailModal from '../components/tasks/TaskDetailModal'
+import CalendarSubscribe from '../components/tasks/CalendarSubscribe'
 import { useTasks } from '../hooks/useTasks'
 import { useCourses } from '../hooks/useCourses'
 import { TASK_TYPES } from '../utils/taskTypes'
@@ -118,6 +119,8 @@ export default function StudentHome() {
 
       {/* Main content */}
       <main className="flex-1 max-w-2xl mx-auto w-full px-4 py-5">
+        <CalendarSubscribe />
+
         <p className="text-xs text-gray-400 font-medium mb-4">
           {loading ? 'Loading...' : `${filtered.length} task${filtered.length !== 1 ? 's' : ''}`}
         </p>
