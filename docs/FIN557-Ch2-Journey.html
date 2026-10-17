@@ -1,0 +1,1546 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content"><meta name="theme-color" content="#F4F6FC"><meta name="color-scheme" content="light"></head><body>
+<title>خريطة رحلة الفصل الثاني</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Noto+Kufi+Arabic:wght@600;800&display=swap">
+<style>
+/* Layout: luminous "cinema" — opening title sequence, letterboxed chapter cards between stations, a pastel route map with a traveller,
+   and a stage (sheet) whose body changes with the mode. Deliberately light-only. Bilingual: dir flips with the language. */
+:root{
+  color-scheme:light;
+  --bg:#F4F6FC;
+  --paper:#FFFFFF;
+  --ink:#18203F;
+  --ink-2:#5A6488;
+  --line:#DCE2EF;
+  --accent:#4C6FFF;
+  --accent-2:#9B7BFF;
+  --gold:#F5B94A;
+  --accent-soft:#E9EDFF;
+  --sky:#E1F0FF;
+  --lilac:#EEE9FF;
+  --peach:#FFEADB;
+  --butter:#FFF5CB;
+  --rose:#FFE5EA;
+  --aqua:#DCF3F7;
+  --warn:#C2410C;
+  --ok:#3B5BDB;
+  --display:"Fraunces","Noto Kufi Arabic",Georgia,serif;
+  --body:"IBM Plex Sans","IBM Plex Sans Arabic",Tahoma,"Segoe UI",sans-serif;
+  --ease:cubic-bezier(.2,.8,.2,1);
+  --s:1;
+}
+[dir="ltr"]{--s:-1}
+*{box-sizing:border-box}
+html,body{background:var(--bg)}
+body{color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;margin:0;overflow-x:hidden}
+[dir="ltr"] body{line-height:1.6}
+
+/* Ambient light */
+.amb{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.amb i{position:absolute;border-radius:50%;filter:blur(60px);opacity:.55;animation:drift 22s ease-in-out infinite alternate}
+.amb i:nth-child(1){width:420px;height:420px;background:#C9D6FF;top:-120px;inset-inline-start:-80px}
+.amb i:nth-child(2){width:360px;height:360px;background:#E6D9FF;top:30%;inset-inline-end:-120px;animation-duration:26s}
+.amb i:nth-child(3){width:300px;height:300px;background:#FFE3C9;bottom:-80px;inset-inline-start:30%;animation-duration:30s}
+.amb i:nth-child(4){width:200px;height:200px;background:#CDEFF6;top:55%;inset-inline-start:8%;animation-duration:18s}
+@keyframes drift{to{transform:translate(60px,40px) scale(1.15)}}
+.grain{position:fixed;inset:0;z-index:40;pointer-events:none;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+.wrap{position:relative;z-index:1;max-width:1140px;margin:0 auto;padding-inline:20px;padding-block:24px 64px;display:grid;gap:18px}
+.wrap:fullscreen{background:var(--bg);overflow:auto;max-width:none;padding-inline:max(20px,6vw)}
+header{display:grid;gap:6px}
+.eyebrow{font-size:13px;letter-spacing:.06em;color:var(--ink-2);font-weight:600}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(26px,4vw,42px);line-height:1.3;margin:0;text-wrap:balance}
+h1 em{font-style:normal;background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lede{margin:0;color:var(--ink-2);max-width:72ch}
+.ico{width:1.1em;height:1.1em;vertical-align:-.18em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* Bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:6;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(10px);padding-block:10px}
+.modes{display:flex;gap:4px;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:4px;position:relative;flex-wrap:wrap;box-shadow:0 8px 24px -18px #4C6FFF}
+.modes button{font:inherit;font-weight:700;font-size:14px;border:0;background:transparent;color:var(--ink-2);padding:8px 14px;border-radius:10px;cursor:pointer;position:relative;z-index:1;transition:color .3s;display:inline-flex;gap:8px;align-items:center}
+.modes button[aria-pressed="true"]{color:#fff}
+.modes .pill{position:absolute;z-index:0;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));box-shadow:0 8px 20px -8px var(--accent);transition:all .5s var(--ease)}
+.tools{display:flex;gap:6px;flex-wrap:wrap}
+.tools button{font:inherit;font-size:13px;font-weight:600;border:1px solid var(--line);background:var(--paper);color:var(--ink);padding:7px 12px;border-radius:10px;cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.tools button:hover{border-color:var(--accent);color:var(--accent)}
+.tools button[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+.tools .film{background:linear-gradient(135deg,#1F2A5A,#4C6FFF);color:#fff;border:0}
+.tools .film:hover{color:#fff;filter:brightness(1.1)}
+.modes button:focus-visible,.tools button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.modehint{font-size:13.5px;color:var(--ink-2);margin:0;min-height:1.6em}
+
+/* Map */
+.map{background:linear-gradient(180deg,#FFFFFFEE,#FFFFFFCC);border:1px solid var(--line);border-radius:20px;padding:8px 8px 2px;overflow:hidden;box-shadow:0 20px 50px -34px #4C6FFF}
+.map>svg{display:block;width:100%;height:auto}
+.st{cursor:pointer;outline:none}
+.st .halo{fill:url(#halo);opacity:0;transition:opacity .4s}
+.st.on .halo{opacity:1}
+.st .ring{fill:none;stroke:var(--accent);stroke-width:2.5;opacity:0;transform-box:fill-box;transform-origin:center}
+.st.on .ring{opacity:1;animation:ringPulse 2s var(--ease) infinite}
+.st .dot{fill:var(--paper);stroke:#B3BCDA;stroke-width:2.5;transition:fill .35s,stroke .35s}
+.st.done .dot{fill:var(--accent-soft);stroke:var(--accent)}
+.st.on .dot{fill:url(#gradPin);stroke:none}
+.st .pic{color:var(--ink-2);transition:color .35s}
+.st.done .pic{color:var(--accent)}
+.st.on .pic{color:#fff}
+.st .badge{fill:var(--gold);stroke:#fff;stroke-width:2}
+.st .bnum{font-family:var(--body);font-weight:800;font-size:11px;fill:#5A3A00;pointer-events:none}
+.st .lbl{font-family:var(--body);font-weight:700;font-size:16px;fill:var(--ink)}
+.st .tag{font-family:var(--body);font-size:12.5px;fill:var(--ink-2)}
+.st .prog{fill:none;stroke:var(--accent-2);stroke-width:4;stroke-linecap:round;opacity:0;transition:stroke-dashoffset .6s var(--ease),opacity .3s}
+.work .st .prog{opacity:1}
+.st:hover .dot{stroke:var(--accent)}
+.st:focus-visible .ring{opacity:1;stroke-dasharray:4 4}
+.road{fill:none;stroke:#E4E9F5;stroke-width:16;stroke-linecap:round}
+.road-mid{fill:none;stroke:#fff;stroke-width:2;stroke-dasharray:10 10;stroke-linecap:round}
+.road-done{fill:none;stroke:url(#gradDone);stroke-width:6;stroke-linecap:round}
+.band-t{font-family:var(--display);font-weight:600;font-size:13px;fill:var(--ink-2)}
+#traveller{pointer-events:none}
+.map.pre .road,.map.pre .road-mid{stroke-dasharray:1;stroke-dashoffset:1}
+.map.pre .st,.map.pre #traveller{opacity:0}
+.map.draw .road,.map.draw .road-mid{stroke-dasharray:1;animation:roadDraw 1.6s var(--ease) forwards}
+.map.draw .st{animation:pinIn .55s var(--ease) both;animation-delay:calc(var(--k)*130ms + 500ms)}
+.map.draw #traveller{animation:fade .5s ease both 1.7s}
+@keyframes roadDraw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes pinIn{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes ringPulse{0%{transform:scale(1);opacity:1}70%{transform:scale(1.45);opacity:0}100%{opacity:0}}
+.sparkle{fill:var(--gold);animation:twinkle 2.4s ease-in-out infinite}
+@keyframes twinkle{0%,100%{opacity:.2;transform:scale(.6)}50%{opacity:1;transform:scale(1)}}
+
+/* Narrow list */
+.list{display:none;list-style:none;margin:0;padding:8px 0;background:var(--paper);border:1px solid var(--line);border-radius:18px}
+.list li{position:relative}
+.list li:not(:last-child)::after{content:"";position:absolute;inset-inline-start:35px;top:50px;bottom:-6px;border-inline-start:3px dotted var(--line)}
+.list button{all:unset;box-sizing:border-box;display:flex;align-items:center;gap:12px;width:100%;padding:8px 14px;cursor:pointer;border-radius:10px}
+.list button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.list .b{flex:0 0 44px;height:44px;border-radius:50%;border:2.5px solid #B3BCDA;display:grid;place-items:center;background:var(--paper);color:var(--ink-2);transition:all .3s;font-size:20px}
+.list .done .b{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+.list .on .b{background:linear-gradient(135deg,var(--accent),var(--accent-2));border-color:transparent;color:#fff;transform:scale(1.08);box-shadow:0 8px 18px -8px var(--accent)}
+.list .t{display:grid;line-height:1.4;flex:1}
+.list .t b{font-size:15px}
+.list .t small{color:var(--ink-2);font-size:12.5px}
+.list .pc{font-size:12px;color:var(--accent-2);font-weight:700;display:none}
+.work .list .pc{display:inline}
+.list .ph{font-size:12px;color:var(--ink-2);padding:10px 16px 2px;font-weight:700}
+
+/* Stage (sheet) */
+.sheet{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:clamp(18px,3vw,34px);display:grid;gap:20px;scroll-margin-top:76px;overflow:hidden;position:relative;box-shadow:0 30px 60px -44px #2B3A8A}
+.sheet::before{content:"";position:absolute;inset:0 0 auto 0;height:6px;background:linear-gradient(90deg,var(--accent),var(--accent-2))}
+.sheet.m-case::before{background:linear-gradient(90deg,#F59E8B,var(--gold))}
+.sheet.m-work::before{background:linear-gradient(90deg,#7DD3E8,var(--accent-2))}
+.filmbar{position:absolute;inset:6px 0 auto 0;height:3px;background:transparent}
+.filmbar i{display:block;height:100%;width:0;background:#1F2A5A}
+.in-next{animation:inNext .55s var(--ease) both}
+.in-prev{animation:inPrev .55s var(--ease) both}
+.in-mode{animation:inMode .5s var(--ease) both}
+@keyframes inNext{from{opacity:0;transform:translateX(calc(-50px * var(--s)));filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
+@keyframes inPrev{from{opacity:0;transform:translateX(calc(50px * var(--s)));filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
+@keyframes inMode{from{opacity:0;transform:translateY(16px) scale(.985);filter:blur(4px)}to{opacity:1;transform:none;filter:none}}
+.sh-top{display:flex;flex-wrap:wrap;align-items:center;gap:18px}
+.hero{width:96px;height:96px;position:relative;flex:none;display:grid;place-items:center}
+.hero::before{content:"";position:absolute;inset:-6px;border-radius:50%;background:radial-gradient(circle,#DCE3FF 0%,#EFE9FF 55%,transparent 72%);animation:breathe 3.5s ease-in-out infinite}
+.hero .disc{position:absolute;inset:8px;border-radius:50%;background:linear-gradient(145deg,#fff,#EEF1FF);box-shadow:inset 0 0 0 1.5px #D8DFFF,0 12px 24px -14px var(--accent)}
+.hero svg.big{position:relative;width:46px;height:46px;fill:none;stroke:url(#heroGrad);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.hero svg.big *{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.4s var(--ease) forwards .2s}
+.hero .orb{position:absolute;inset:0;animation:spin 7s linear infinite}
+.hero .orb::after{content:"";position:absolute;top:2px;inset-inline-start:50%;width:9px;height:9px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px var(--gold)}
+.hero .num{position:absolute;bottom:-2px;inset-inline-end:-4px;background:var(--ink);color:#fff;font-weight:800;font-size:13px;border-radius:99px;padding:1px 8px;border:2px solid #fff}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes breathe{50%{transform:scale(1.08)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.sh-title{display:grid;gap:4px;min-width:0;flex:1}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:12px;font-weight:700;padding:2px 10px;border-radius:99px;background:var(--accent-soft);color:var(--accent)}
+.chip.mode-c{background:var(--peach);color:#B4542F}
+.chip.mode-w{background:var(--aqua);color:#1F6F86}
+h2{font-family:var(--display);font-weight:800;font-size:clamp(23px,3vw,32px);margin:0;line-height:1.35}
+h2 small{font-family:var(--body);font-weight:500;font-size:14px;color:var(--ink-2);margin-inline-start:8px;direction:ltr;unicode-bidi:isolate}
+.replay{font:inherit;font-size:13px;font-weight:600;border:1px solid var(--line);background:var(--paper);color:var(--ink-2);padding:6px 12px;border-radius:99px;cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.replay:hover{color:var(--accent);border-color:var(--accent)}
+.q{font-size:clamp(17px,2vw,20px);font-weight:600;margin:0;max-width:62ch;font-family:var(--display)}
+.q .ql{font-family:var(--body);color:var(--ink-2);font-weight:500;font-size:.85em}
+h3{font-size:13px;letter-spacing:.03em;color:var(--ink-2);margin:0 0 6px;font-weight:700;display:flex;gap:6px;align-items:center}
+
+.rv{opacity:0;animation:rv .6s var(--ease) both;animation-delay:calc(var(--i,0) * 110ms + var(--base,0ms))}
+@keyframes rv{from{opacity:0;transform:translateY(14px);filter:blur(3px)}to{opacity:1;transform:none;filter:none}}
+
+/* Explain: the machine */
+.flow{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:center;background:linear-gradient(180deg,#FAFBFF,#F1F4FF);border:1px solid var(--line);border-radius:18px;padding:22px;position:relative;overflow:hidden}
+.flow::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 35%,#ffffff99 50%,transparent 65%);transform:translateX(calc(110% * var(--s)));animation:beam 2.6s ease-in-out .4s both}
+@keyframes beam{to{transform:translateX(calc(-110% * var(--s)))}}
+.flow .fin,.flow .fout{border-radius:14px;padding:14px 16px;font-weight:600;min-width:0;display:flex;gap:10px;align-items:flex-start}
+.flow .fin{background:var(--sky);animation:slideIn .7s var(--ease) both}
+.flow .fout{background:var(--butter);animation:popOut .7s var(--ease) both 1s,glow 2.2s ease-in-out 1.7s 2}
+.flow small{display:block;font-size:12px;color:var(--ink-2);font-weight:700;margin-bottom:2px}
+.flow .fi{font-size:26px;flex:none;color:var(--accent)}
+.flow .fout .fi{color:#C27A00}
+.gear{width:96px;height:96px;position:relative;display:grid;place-items:center}
+.gear svg.rim{position:absolute;inset:0;animation:spin 8s linear infinite}
+.gear .gi{position:relative;width:40px;height:40px;fill:none;stroke:var(--accent);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;animation:pop .5s var(--ease) both .45s}
+.arrow{font-size:22px;color:var(--accent-2);animation:nudge 1.4s ease-in-out infinite}
+[dir="ltr"] .arrow{transform:scaleX(-1)}
+@keyframes nudge{50%{translate:calc(-5px * var(--s)) 0}}
+@keyframes slideIn{from{opacity:0;transform:translateX(calc(30px * var(--s)))}to{opacity:1;transform:none}}
+@keyframes popOut{from{opacity:0;transform:translateX(calc(-24px * var(--s))) scale(.92)}to{opacity:1;transform:none}}
+@keyframes pop{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:none}}
+@keyframes glow{0%,100%{box-shadow:0 0 0 0 #F5B94A00}50%{box-shadow:0 0 0 9px #F5B94A55}}
+.io{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.io>div{border:1px solid var(--line);border-radius:14px;padding:12px 14px;min-width:0}
+.io p{margin:0}
+.cols{display:grid;grid-template-columns:1.1fr 1fr;gap:20px;align-items:start}
+.cols>*{min-width:0}
+.steps{margin:0;padding:0;list-style:none;display:grid;gap:10px;counter-reset:s}
+.steps li{display:grid;grid-template-columns:30px 1fr;gap:10px;align-items:start;counter-increment:s}
+.steps li::before{content:counter(s);width:30px;height:30px;border-radius:50%;background:var(--lilac);color:var(--accent-2);display:grid;place-items:center;font-weight:800;font-size:14px}
+[dir="rtl"] .steps li::before{content:counter(s,arabic-indic)}
+.trap{background:var(--rose);border-radius:14px;padding:12px 16px}
+.trap h3{color:var(--warn)}
+.trap p{margin:0}
+.check{background:var(--lilac);border-radius:14px;padding:12px 16px;display:grid;gap:8px}
+.check p{margin:0;font-weight:600}
+.check button{justify-self:start;font:inherit;font-size:13px;font-weight:700;border:0;background:var(--paper);color:var(--accent-2);padding:6px 12px;border-radius:99px;cursor:pointer}
+.check .ans{margin:0;font-weight:500;border-top:1px dashed #C9C0FF;padding-top:8px;animation:rv .4s var(--ease) both}
+
+/* Case scenes */
+.scene{border-radius:18px;padding:18px;background:linear-gradient(180deg,#FFFDF8,#FFF6EA);border:1px solid #F6E3CC;display:grid;gap:14px;min-width:0;position:relative;overflow:hidden}
+.scene>h3{color:#B4542F}
+.scene .spot{position:absolute;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,#FFE7B866,transparent 70%);top:-120px;inset-inline-end:-60px;pointer-events:none;animation:drift 9s ease-in-out infinite alternate}
+.sd-grid{display:grid;grid-template-columns:84px 1fr 26px 1fr;gap:8px 10px;align-items:stretch;position:relative}
+.sd-grid .hd{font-size:12px;font-weight:800;color:var(--ink-2);display:flex;gap:6px;align-items:center}
+.sd-grid .nm{font-weight:800;align-self:center;display:flex;gap:8px;align-items:center}
+.av-c{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:800;color:#fff;flex:none}
+.sd-grid .say,.sd-grid .did{border-radius:12px;padding:8px 10px;font-size:14px}
+.sd-grid .say{background:var(--sky);animation:slideIn .6s var(--ease) both;animation-delay:calc(var(--i)*170ms)}
+.sd-grid .did{background:var(--peach);animation:popOut .6s var(--ease) both;animation-delay:calc(var(--i)*170ms + 90ms)}
+.sd-grid .neq{align-self:center;justify-self:center;font-weight:800;color:var(--warn);font-size:18px;animation:pop .4s var(--ease) both;animation-delay:calc(var(--i)*170ms + 320ms)}
+.quad{display:grid;grid-template-columns:1fr 1fr;gap:10px;position:relative}
+.quad>div{border-radius:14px;padding:12px 14px;animation:pop .55s var(--ease) both;animation-delay:calc(var(--i)*190ms);min-width:0;position:relative}
+.quad b{display:flex;gap:6px;align-items:center;font-size:12px;letter-spacing:.04em;margin-bottom:4px}
+.quad ul{margin:0;padding-inline-start:18px;font-size:14px}
+.q1{background:var(--sky)}.q2{background:var(--peach)}.q3{background:var(--lilac)}.q4{background:var(--rose)}
+.quad .hy{font-weight:500;color:var(--ink-2)}
+.persona{display:flex;gap:12px;align-items:center}
+.persona .av-c{width:46px;height:46px;font-size:18px}
+.tension{border-radius:14px;padding:12px 16px;background:linear-gradient(90deg,#FFE3A3,#FFD0C2);font-weight:700;animation:sweep .9s var(--ease) both 1s,glow 2.2s ease-in-out 1.9s 2}
+@keyframes sweep{from{clip-path:inset(0 0 0 100%)}to{clip-path:inset(0)}}
+[dir="ltr"] .tension{animation-name:sweepL,glow}
+@keyframes sweepL{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0)}}
+.clusters{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.cl{border:1.5px dashed #E8CDB0;border-radius:14px;padding:10px;display:grid;gap:8px;align-content:start;min-width:0}
+.cl>b{font-size:14px;color:#9A4A26;animation:rv .4s ease both 1.5s}
+.note{border-radius:6px;padding:7px 9px;font-size:13px;box-shadow:0 4px 10px -5px #0003;animation:fly 1.1s var(--ease) both;animation-delay:calc(var(--i)*70ms)}
+.note.n1{background:#FFF1A8}.note.n2{background:#D7ECFF}.note.n3{background:#FFD9DF}.note.n4{background:#E5DEFF}.note.n5{background:#FFE2C6}
+@keyframes fly{from{opacity:0;transform:translate(var(--tx),var(--ty)) rotate(var(--r)) scale(1.1)}60%{opacity:1}to{opacity:1;transform:rotate(var(--rr,0deg))}}
+.aside{margin:0;font-size:14px;color:var(--ink-2)}
+.ptbl{display:grid;gap:8px}
+.prow{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr) 120px;gap:10px;align-items:center;padding:8px 10px;border-radius:12px;background:#fff;animation:rv .5s var(--ease) both;animation-delay:calc(var(--i)*150ms)}
+.prow .who{font-size:12.5px;color:var(--ink-2)}
+.bar-t{height:10px;border-radius:99px;background:#F1E6DA;position:relative;overflow:hidden}
+.bar-t i{position:absolute;inset-block:0;inset-inline-start:0;width:0;border-radius:99px;background:linear-gradient(90deg,var(--gold),#F59E8B);animation:grow 1.1s var(--ease) forwards;animation-delay:calc(var(--i)*150ms + 300ms)}
+@keyframes grow{to{width:var(--w)}}
+.cls{font-size:12px;font-weight:800;padding:2px 8px;border-radius:99px;justify-self:start}
+.cls.p{background:var(--accent-soft);color:var(--accent)}.cls.a{background:#F1F1F4;color:var(--ink-2)}.cls.o{background:var(--rose);color:var(--warn)}
+.prow.win{outline:2px solid var(--accent);animation:rv .5s var(--ease) both,glowB 2s ease-in-out 1.7s 2}
+.prow.out{animation:rv .5s var(--ease) both,wob .9s ease 2.1s 2}
+@keyframes glowB{50%{box-shadow:0 0 0 7px #4C6FFF33}}
+@keyframes wob{25%{transform:rotate(-1deg)}75%{transform:rotate(1deg)}}
+.chain{display:grid;justify-items:stretch}
+.lnk{background:#fff;border-radius:12px;padding:10px 14px;border:1px solid #F1E2D1;animation:drop .55s var(--ease) both;animation-delay:calc(var(--i)*330ms)}
+.lnk small{display:block;color:var(--ink-2);font-size:12.5px}
+.lnk .lv{font-weight:800;color:#B4542F;margin-inline-end:6px}
+.dn{justify-self:center;color:#E3A47E;font-size:18px;line-height:1.3;animation:rv .3s ease both;animation-delay:calc(var(--i)*330ms + 220ms)}
+.lnk.root{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;border:0;animation:drop .55s var(--ease) both,glow2 2s ease-in-out 2.5s 2;animation-delay:calc(var(--i)*330ms),2.5s}
+.lnk.root small,.lnk.root .lv{color:#fff}
+@keyframes drop{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:none}}
+@keyframes glow2{50%{box-shadow:0 0 0 9px #9B7BFF44}}
+.ticks{display:flex;flex-wrap:wrap;gap:8px}
+.tk{background:#fff;border-radius:99px;padding:4px 12px;font-size:13px;font-weight:700;display:inline-flex;gap:6px;align-items:center;animation:pop .4s var(--ease) both;animation-delay:calc(var(--i)*170ms + var(--base,0ms));box-shadow:0 4px 10px -6px #4C6FFF}
+.tk::before{content:"✓";color:#fff;background:var(--accent);width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font-size:11px}
+.ladder{display:flex;flex-direction:column-reverse;gap:8px;position:relative}
+.rung{border-radius:12px;padding:10px 14px;animation:climb .65s var(--ease) both;animation-delay:calc(var(--i)*460ms);display:flex;gap:10px;align-items:flex-start}
+.rung .ri{font-size:22px;flex:none}
+.rung b{display:block;font-size:12px;letter-spacing:.04em;color:var(--ink-2)}
+.rung.r1{background:#fff;margin-inline-end:24%}.rung.r2{background:var(--sky);margin-inline-end:12%}
+.rung.r3{background:linear-gradient(135deg,#FFE7A6,#FFD2C4);font-weight:700;animation:climb .65s var(--ease) both,glow 2.2s ease-in-out 1.7s 2;animation-delay:calc(var(--i)*460ms),1.7s}
+@keyframes climb{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+.pov{font-size:clamp(17px,2.1vw,21px);line-height:2.3;font-weight:600;margin:0;font-family:var(--display)}
+.slot{border-radius:8px;padding:3px 8px;-webkit-box-decoration-break:clone;box-decoration-break:clone;animation:fill .9s var(--ease) both;animation-delay:var(--d)}
+[dir="ltr"] .slot{animation-name:fillL}
+.slot.u{background:var(--sky)}.slot.n{background:var(--butter)}.slot.b{background:var(--lilac)}
+.kw{font-weight:800;color:var(--accent-2);animation:rv .3s ease both;animation-delay:var(--d)}
+@keyframes fill{from{clip-path:inset(0 0 0 100%);opacity:.2}to{clip-path:inset(0);opacity:1}}
+@keyframes fillL{from{clip-path:inset(0 100% 0 0);opacity:.2}to{clip-path:inset(0);opacity:1}}
+.banned{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:13px}
+.banned span{background:#fff;border-radius:99px;padding:2px 10px;position:relative;animation:rv .3s ease both;animation-delay:calc(var(--i)*120ms + 2.7s)}
+.banned span::after{content:"";position:absolute;inset-inline:6px;top:50%;height:2px;background:var(--warn);transform:scaleX(0);transform-origin:center;animation:strike .4s ease forwards;animation-delay:calc(var(--i)*120ms + 3.1s)}
+@keyframes strike{to{transform:scaleX(1)}}
+.alt{display:grid;grid-template-columns:46px 1fr;gap:12px;align-items:stretch}
+.gauge{border-radius:99px;background:linear-gradient(180deg,#FFD9D3,#E2E9FF 50%,#FFD9D3);position:relative}
+.gauge::before,.gauge::after{position:absolute;inset-inline:0;text-align:center;font-size:14px}
+.gauge::before{content:"☁";top:6px}.gauge::after{content:"🔍";bottom:6px;font-size:12px}
+.gauge i{position:absolute;inset-inline:6px;height:30px;border-radius:99px;background:linear-gradient(135deg,var(--accent),var(--accent-2));top:28px;animation:settle 1.8s var(--ease) forwards 1.3s;box-shadow:0 6px 14px -4px #4C6FFF99}
+@keyframes settle{0%{top:28px}45%{top:calc(100% - 58px)}100%{top:calc(50% - 15px)}}
+.alts{display:grid;gap:8px}
+.avr{border-radius:12px;padding:10px 14px;background:#fff;display:grid;grid-template-columns:auto 1fr;gap:4px 10px;animation:rv .55s var(--ease) both;animation-delay:calc(var(--i)*320ms)}
+.avr b{font-size:12px;color:var(--ink-2)}
+.avr .x{color:var(--warn);font-weight:800}
+.avr.ok{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;animation:rv .55s var(--ease) both,glow2 2s ease-in-out 3.1s 2;animation-delay:calc(var(--i)*320ms),3.1s}
+.avr.ok b,.avr.ok .x{color:#fff}
+.answers{display:flex;flex-wrap:wrap;gap:8px}
+.answers span{background:var(--butter);border-radius:99px;padding:5px 12px;font-size:14px;font-weight:600;animation:burst .55s var(--ease) both;animation-delay:calc(var(--i)*160ms + 3.4s);display:inline-flex;gap:6px;align-items:center}
+@keyframes burst{from{opacity:0;transform:scale(.3) rotate(-10deg)}to{opacity:1;transform:none}}
+.outb{border-radius:14px;padding:14px 16px;background:linear-gradient(135deg,#FFF3C4,#FFE0CF);font-weight:700;position:relative;overflow:hidden;animation:popOut .65s var(--ease) both var(--od,1.8s),glow 2.2s ease-in-out calc(var(--od,1.8s) + .6s) 2}
+.outb .ol{display:flex;gap:6px;align-items:center;font-size:12px;color:#B4542F;font-weight:800;margin-bottom:2px}
+.outb::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,#ffffffd8 50%,transparent 70%);transform:translateX(calc(120% * var(--s)));animation:shine 1.5s ease-out calc(var(--od,1.8s) + .5s) both}
+@keyframes shine{to{transform:translateX(calc(-120% * var(--s)))}}
+
+/* Work */
+.carry{background:var(--aqua);border-radius:14px;padding:12px 16px;animation:slideIn .6s var(--ease) both}
+.carry h3{color:#1F6F86}
+.carry p{margin:0;white-space:pre-line}
+.carry .empty{color:var(--ink-2)}
+.form{display:grid;gap:14px}
+.fld{display:grid;gap:4px;animation:rv .45s var(--ease) both;animation-delay:calc(var(--i)*60ms)}
+.fld label{font-size:13px;font-weight:700;color:var(--ink-2)}
+textarea,input[type=text],select{font:inherit;font-size:15px;color:var(--ink);background:#FAFBFF;border:1.5px solid var(--line);border-radius:10px;padding:8px 12px;width:100%;resize:vertical;transition:border-color .2s,box-shadow .2s,background .2s}
+textarea{min-height:44px;field-sizing:content}
+textarea:focus,input:focus,select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft);background:#fff}
+.rowset{display:grid;gap:10px}
+.rowcard{border:1px solid var(--line);border-radius:14px;padding:10px;display:grid;gap:8px;grid-template-columns:repeat(var(--c),minmax(0,1fr));animation:rv .45s var(--ease) both;animation-delay:calc(var(--i)*70ms)}
+.rowcard .rn{grid-column:1/-1;font-size:12px;font-weight:800;color:var(--accent-2)}
+.rowcard .fld{animation:none}
+.chks{display:flex;flex-wrap:wrap;gap:8px}
+.chks label{display:inline-flex;gap:6px;align-items:center;background:#FAFBFF;border:1.5px solid var(--line);border-radius:99px;padding:5px 12px;font-size:14px;font-weight:600;cursor:pointer}
+.chks input{accent-color:var(--accent)}
+.compose{border-radius:14px;padding:14px 16px;background:linear-gradient(135deg,#F3F0FF,#E8F3FF);font-weight:600;font-size:17px;line-height:2;font-family:var(--display)}
+.compose h3{font-family:var(--body)}
+.compose .ph{color:#A0A8C4;font-weight:500}
+.warnline{font-family:var(--body);font-size:13.5px;color:var(--warn);font-weight:700;margin:0}
+.okline{font-family:var(--body);font-size:13.5px;color:var(--ok);font-weight:700;margin:0}
+.wfoot{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;font-size:13px;color:var(--ink-2)}
+.meter{flex:1;min-width:160px;height:8px;background:var(--line);border-radius:99px;overflow:hidden}
+.meter i{display:block;height:100%;background:linear-gradient(90deg,#7DD3E8,var(--accent-2));border-radius:99px;transition:width .5s var(--ease)}
+.hintbox{font-size:13.5px;color:var(--ink-2);background:#FAFBFF;border:1px dashed var(--line);border-radius:12px;padding:8px 12px}
+.hintbox summary{cursor:pointer;font-weight:700}
+
+.nav{display:flex;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding-top:16px}
+.nav button{font:inherit;font-weight:700;font-size:14px;padding:9px 16px;border-radius:12px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform .2s}
+.nav button:hover:not(:disabled){border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+.nav button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.nav button:disabled{opacity:.4;cursor:default}
+.nav .nx{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;border:0;box-shadow:0 10px 20px -12px var(--accent)}
+.nav .nx:hover:not(:disabled){color:#fff}
+
+.after{display:grid;gap:10px}
+.after h3{font-family:var(--display);font-size:18px;margin:0;color:var(--ink)}
+.road2{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:14px;color:var(--ink-2)}
+.road2 span{border:1px dashed var(--line);border-radius:10px;padding:4px 10px;background:var(--paper)}
+.road2 i{font-style:normal;color:#AFB8D6}
+[dir="ltr"] .road2 i{transform:scaleX(-1);display:inline-block}
+.road2 .gate{border-style:solid;border-color:var(--accent);color:var(--accent);font-weight:700;background:var(--accent-soft)}
+
+/* Cinema overlays */
+.cine{position:fixed;inset:0;z-index:30;display:grid;place-items:center;pointer-events:none}
+.cine[hidden]{display:none!important}
+.cine .lb{position:absolute;inset-inline:0;height:11vh;background:#0F1530;transition:transform .5s var(--ease)}
+.cine .lb.t{top:0;transform:translateY(-100%)}
+.cine .lb.b{bottom:0;transform:translateY(100%)}
+.cine.show .lb{transform:none}
+.cine .veil{position:absolute;inset:0;background:radial-gradient(ellipse at center,#FFFFFFF2 0%,#F1F3FFE8 60%,#E5E9FFE0 100%);opacity:0;transition:opacity .45s}
+.cine.show .veil{opacity:1}
+.cine .ct{position:relative;text-align:center;display:grid;gap:8px;justify-items:center;opacity:0;transform:scale(.94);filter:blur(8px);transition:all .55s var(--ease) .12s}
+.cine.show .ct{opacity:1;transform:none;filter:none}
+.cine .ct .kick{font-size:13px;letter-spacing:.3em;font-weight:700;color:var(--accent-2);text-transform:uppercase}
+.cine .ct .big{font-family:var(--display);font-weight:800;font-size:clamp(34px,6vw,64px);line-height:1.2;color:var(--ink)}
+.cine .ct .sub{font-size:15px;color:var(--ink-2);direction:ltr}
+.cine .ct .hero{width:120px;height:120px}
+.cine .ct .hero svg.big{width:56px;height:56px}
+.intro{position:fixed;inset:0;z-index:35;display:grid;place-items:center;background:radial-gradient(ellipse at 50% 40%,#FFFFFF 0%,#EEF1FF 55%,#E1E6FF 100%);transition:opacity .8s ease,visibility .8s}
+.intro.out{opacity:0;visibility:hidden}
+.intro .lb{position:absolute;inset-inline:0;height:12vh;background:#0F1530;animation:lbIn .8s var(--ease) both}
+.intro .lb.t{top:0}.intro .lb.b{bottom:0}
+.intro.out .lb.t{transform:translateY(-100%);transition:transform .7s var(--ease)}
+.intro.out .lb.b{transform:translateY(100%);transition:transform .7s var(--ease)}
+@keyframes lbIn{from{transform:scaleY(0)}to{transform:none}}
+.intro .rays{position:absolute;inset:-20%;background:conic-gradient(from 0deg at 50% 40%,transparent 0 8%,#C9D6FF55 10%,transparent 13% 30%,#E6D9FF55 33%,transparent 36% 55%,#FFE3C955 58%,transparent 61% 80%,#C9D6FF44 83%,transparent 86%);animation:spin 40s linear infinite;opacity:.8}
+.intro .ic{position:relative;display:grid;gap:14px;justify-items:center;text-align:center;padding:24px;max-width:760px}
+.intro .kick{font-size:13px;letter-spacing:.3em;color:var(--accent-2);font-weight:700;text-transform:uppercase;animation:rvb 1s var(--ease) both .4s}
+.intro .t1{font-family:var(--display);font-weight:800;font-size:clamp(34px,6.5vw,72px);line-height:1.15;margin:0;animation:rvb 1.2s var(--ease) both .7s}
+.intro .t1 em{font-style:normal;background:linear-gradient(90deg,var(--accent),var(--accent-2),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent;background-size:200% 100%;animation:sheen 4s linear infinite}
+.intro .t2{color:var(--ink-2);margin:0;font-size:clamp(15px,1.8vw,18px);animation:rvb 1s var(--ease) both 1.2s}
+.intro .icons{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.intro .icons span{width:42px;height:42px;border-radius:50%;background:#fff;display:grid;place-items:center;color:var(--accent);box-shadow:0 8px 18px -10px var(--accent);animation:pinIn .5s var(--ease) both;animation-delay:calc(var(--k)*110ms + 1.4s);font-size:20px}
+.intro button{font:inherit;font-weight:800;font-size:16px;border:0;border-radius:99px;padding:12px 26px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;cursor:pointer;box-shadow:0 14px 30px -12px var(--accent);animation:rvb 1s var(--ease) both 2.3s,glow2 2.4s ease-in-out 3.3s infinite}
+.intro button:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.intro .skip{background:transparent;color:var(--ink-2);box-shadow:none;font-weight:600;font-size:13px;padding:6px 10px;animation:rvb 1s ease both 2.5s}
+@keyframes rvb{from{opacity:0;transform:translateY(18px);filter:blur(10px)}to{opacity:1;transform:none;filter:none}}
+@keyframes sheen{to{background-position:-200% 0}}
+
+.modal{position:fixed;inset:0;background:#1B244555;display:grid;place-items:center;padding:16px;z-index:45}
+.modal[hidden]{display:none!important}
+.modal>div{background:var(--paper);border-radius:16px;padding:20px;max-width:420px;display:grid;gap:12px;animation:pop .3s var(--ease) both}
+.modal p{margin:0}
+.modal .row{display:flex;gap:8px}
+.modal button{font:inherit;font-weight:700;border-radius:10px;padding:8px 14px;cursor:pointer;border:1px solid var(--line);background:var(--paper)}
+.modal .danger{background:var(--warn);color:#fff;border:0}
+.toast{position:fixed;bottom:calc(16px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:8px 16px;border-radius:99px;font-size:14px;font-weight:600;z-index:50;animation:pop .3s var(--ease) both}
+.toast[hidden]{display:none!important}
+
+html[data-view="mobile"] .map{display:none}
+html[data-view="mobile"] .list{display:block}
+html[data-view="mobile"] .io,html[data-view="mobile"] .cols{grid-template-columns:1fr}
+html[data-view="mobile"] .flow{grid-template-columns:1fr}
+html[data-view="mobile"] .gear{justify-self:center}
+html[data-view="mobile"] .arrow{rotate:-90deg;justify-self:center}
+html[data-view="mobile"] .hero{width:76px;height:76px}
+html[data-view="mobile"] .sd-grid{grid-template-columns:1fr;gap:4px}
+html[data-view="mobile"] .sd-grid .hd,html[data-view="mobile"] .sd-grid .neq{display:none}
+html[data-view="mobile"] .sd-grid .nm{margin-top:10px}
+html[data-view="mobile"] .prow,html[data-view="mobile"] .quad,html[data-view="mobile"] .rowcard{grid-template-columns:1fr}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0ms!important;animation-iteration-count:1!important;transition:none!important}
+  .bar-t i{width:var(--w)}
+}
+
+/* ---- v4 additions: check stations, evidence file, new scenes ---- */
+.map>svg{aspect-ratio:1000/350}
+.st.chk .dot{rx:6}
+.st.chk .dia{fill:var(--paper);stroke:#C7B9FF;stroke-width:2.5;stroke-dasharray:5 4;transition:fill .35s,stroke .35s}
+.st.chk.done .dia{fill:var(--lilac);stroke:var(--accent-2);stroke-dasharray:none}
+.st.chk.on .dia{fill:url(#gradPin);stroke:none}
+.st.chk .pic{color:var(--accent-2)}
+.st.chk.on .pic{color:#fff}
+.st.chk .lbl{font-size:13.5px;fill:var(--accent-2)}
+.st.chk .tag{font-size:11.5px}
+.link{fill:none;stroke:#C7B9FF;stroke-width:2;stroke-dasharray:4 5}
+.legend2{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:12.5px;color:var(--ink-2);padding:4px 10px 8px}
+.legend2 span{display:inline-flex;gap:6px;align-items:center}
+.legend2 .lm{width:14px;height:14px;border-radius:50%;background:var(--accent-soft);border:2px solid var(--accent)}
+.legend2 .lr{width:12px;height:12px;transform:rotate(45deg);background:var(--lilac);border:2px dashed var(--accent-2)}
+.chip.must{background:var(--ink);color:#fff}
+.chip.rec{background:var(--lilac);color:var(--accent-2)}
+.list li.chkli button{padding-inline-start:30px}
+.list li.chkli .b{flex-basis:36px;height:36px;border-radius:10px;transform:rotate(45deg);border-style:dashed;border-color:#C7B9FF;font-size:16px}
+.list li.chkli .b svg{transform:rotate(-45deg)}
+.list li.chkli .on .b{transform:rotate(45deg) scale(1.08)}
+.list li.chkli::after{display:none}
+
+/* JTBD scene */
+.situ{border-radius:12px;padding:10px 14px;background:#fff;font-weight:700;border:1px dashed #E8CDB0;animation:rv .5s var(--ease) both}
+.layers{display:flex;flex-direction:column-reverse;gap:8px}
+.layer{border-radius:14px;padding:12px 14px;display:grid;grid-template-columns:36px 1fr;gap:10px;align-items:start;animation:climb .6s var(--ease) both;animation-delay:calc(var(--i)*420ms + 300ms);position:relative}
+.layer .li{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:#ffffffb0;font-size:18px}
+.layer b{display:block;font-size:12px;letter-spacing:.04em;color:var(--ink-2)}
+.layer small{display:block;color:var(--ink-2);font-size:12.5px;margin-top:2px}
+.layer.l1{background:var(--sky);margin-inline:0}
+.layer.l2{background:var(--rose);margin-inline:4%}
+.layer.l3{background:var(--lilac);margin-inline:8%}
+.layer .fail{position:absolute;inset-inline-end:10px;top:10px;font-size:11.5px;font-weight:800;color:#fff;background:var(--warn);border-radius:99px;padding:2px 8px;animation:pop .4s var(--ease) both 2.2s,throb 1.2s ease-in-out 2.6s 3}
+@keyframes throb{50%{transform:scale(1.12)}}
+
+/* Evidence ladder scene */
+.lrows{display:grid;gap:8px}
+.lrow{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:10px;align-items:center;background:#fff;border-radius:12px;padding:8px 12px;animation:rv .5s var(--ease) both;animation-delay:calc(var(--i)*150ms)}
+.lrow small{display:block;color:var(--ink-2);font-size:12px}
+.rungs{display:grid;grid-template-columns:repeat(6,1fr);gap:3px;direction:ltr}
+.rungs i{height:12px;border-radius:3px;background:#F1E6DA;position:relative;overflow:hidden}
+.rungs i::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--gold),#F59E8B);transform:scaleX(0);transform-origin:left;animation:fillR .3s ease forwards;animation-delay:calc(var(--i)*150ms + var(--j)*110ms + 300ms)}
+.rungs i.off::after{display:none}
+@keyframes fillR{to{transform:scaleX(1)}}
+.lrow .rl{font-size:12px;font-weight:800;color:#B4542F;text-align:end}
+.lrow.key{outline:2px solid var(--accent);animation:rv .5s var(--ease) both,glowB 2s ease-in-out 2s 2}
+.rungkey{display:flex;flex-wrap:wrap;gap:4px 10px;font-size:12px;color:var(--ink-2)}
+
+/* Problem detection scene */
+.pdq{display:grid;gap:8px}
+.pdq div{background:#fff;border-radius:12px;padding:8px 12px;animation:slideIn .5s var(--ease) both;animation-delay:calc(var(--i)*260ms)}
+.pdq b{color:#B4542F;margin-inline-end:6px}
+.stamp{justify-self:center;font-family:var(--display);font-weight:800;font-size:clamp(16px,2.2vw,20px);color:var(--warn);border:3px solid var(--warn);border-radius:10px;padding:6px 14px;transform:rotate(-4deg);animation:stamp .5s cubic-bezier(.3,1.6,.5,1) both 1.4s;background:#fff8}
+@keyframes stamp{from{opacity:0;transform:scale(2.4) rotate(-12deg)}to{opacity:1;transform:rotate(-4deg)}}
+.bins{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.bin{border-radius:12px;padding:8px;border:1.5px dashed #E8CDB0;display:grid;gap:6px;align-content:start;min-width:0}
+.bin>b{font-size:12px;letter-spacing:.04em;color:var(--ink-2)}
+.bin .card{border-radius:8px;padding:6px 8px;font-size:13px;background:#fff;box-shadow:0 4px 10px -6px #0003;animation:fly .9s var(--ease) both;animation-delay:calc(var(--i)*200ms + 1.9s)}
+.bin.prob{border-color:var(--accent);border-style:solid;background:var(--accent-soft)}
+.bin.sol .card{text-decoration:line-through;text-decoration-color:var(--warn);opacity:.75}
+.traps{display:flex;flex-wrap:wrap;gap:6px}
+.traps span{background:#fff;border-radius:99px;padding:3px 10px;font-size:12.5px;font-weight:600;animation:pop .35s var(--ease) both;animation-delay:calc(var(--i)*140ms + 3s)}
+.traps span::before{content:"☐ ";color:var(--ink-2)}
+.traps span.ok::before{content:"✓ ";color:var(--accent)}
+
+/* Reframing scene */
+.frames{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.frame{border-radius:16px;padding:14px;background:#fff;display:grid;gap:8px;align-content:start;min-width:0;animation:rv .6s var(--ease) both;animation-delay:calc(var(--i)*300ms)}
+.frame h4{margin:0;font-family:var(--display);font-size:16px}
+.frame dl{margin:0;display:grid;gap:6px;font-size:13.5px}
+.frame dt{font-size:11.5px;font-weight:800;color:var(--ink-2);letter-spacing:.04em}
+.frame dd{margin:0}
+.frame.a{animation:rv .6s var(--ease) both,dim .8s ease forwards 2.6s}
+.frame.b{animation:rv .6s var(--ease) both,lift .8s var(--ease) forwards 2.6s;animation-delay:300ms,2.6s}
+@keyframes dim{to{opacity:.45;filter:grayscale(.8)}}
+@keyframes lift{to{transform:translateY(-6px);box-shadow:0 0 0 3px var(--accent),0 20px 30px -18px var(--accent)}}
+.verdict{font-weight:800;font-size:13px;border-radius:99px;padding:2px 10px;justify-self:start;opacity:0;animation:pop .4s var(--ease) forwards 3s}
+.frame.a .verdict{background:var(--rose);color:var(--warn)}
+.frame.b .verdict{background:var(--accent);color:#fff}
+
+/* People tabs (empathy) */
+.ptabs{display:flex;flex-wrap:wrap;gap:6px}
+.ptabs button{font:inherit;font-size:13px;font-weight:700;border:1.5px solid #F1E2D1;background:#fff;border-radius:99px;padding:3px 10px 3px 4px;display:inline-flex;gap:6px;align-items:center;cursor:pointer;color:var(--ink)}
+[dir="rtl"] .ptabs button{padding:3px 4px 3px 10px}
+.ptabs button .av-c{width:24px;height:24px;font-size:11px}
+.ptabs button[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.ptabs button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+#empBox{display:grid;gap:12px}
+
+/* Evidence file */
+.vault{position:fixed;inset:0;z-index:42;background:#18203F66;backdrop-filter:blur(6px);display:grid;place-items:stretch;padding:max(12px,3vh) max(12px,3vw)}
+.vault[hidden]{display:none!important}
+.vbox{background:var(--bg);border-radius:22px;overflow:hidden;display:grid;grid-template-rows:auto auto 1fr;max-width:1080px;width:100%;margin:0 auto;box-shadow:0 40px 80px -30px #18203F;animation:inMode .5s var(--ease) both}
+.vhead{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;padding:16px 20px;background:linear-gradient(135deg,#1F2A5A,#4C6FFF);color:#fff}
+.vhead h2{color:#fff;font-size:clamp(18px,2.4vw,24px)}
+.vhead p{margin:0;font-size:13px;opacity:.85}
+.vhead button{font:inherit;font-weight:700;border:0;border-radius:99px;padding:7px 14px;background:#ffffff26;color:#fff;cursor:pointer}
+.vhead button:focus-visible{outline:2px solid #fff}
+.vtabs{display:flex;gap:6px;overflow-x:auto;padding:10px 16px;background:var(--paper);border-bottom:1px solid var(--line)}
+.vtabs button{font:inherit;font-size:13.5px;font-weight:700;border:1.5px solid var(--line);background:var(--paper);border-radius:99px;padding:5px 12px;cursor:pointer;white-space:nowrap;display:inline-flex;gap:6px;align-items:center;color:var(--ink)}
+.vtabs button .av-c{width:22px;height:22px;font-size:11px}
+.vtabs button[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft);color:var(--accent)}
+.vbody{overflow:auto;padding:18px 20px 28px;display:grid;gap:14px;align-content:start}
+.vlegend{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:13px;color:var(--ink-2);background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:8px 12px}
+.vlegend .u{text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:3px;text-underline-offset:4px;color:var(--ink);font-weight:700}
+.vlegend .c{border:2px solid var(--warn);border-radius:99px;padding:0 8px;color:var(--ink);font-weight:700}
+.pcard{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:16px;display:grid;gap:14px;animation:rv .5s var(--ease) both}
+.pc-top{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.pc-top .av-c{width:54px;height:54px;font-size:22px}
+.pc-top h3{font-family:var(--display);font-size:22px;color:var(--ink);margin:0}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px}
+.facts div{background:var(--bg);border-radius:10px;padding:8px 10px;font-size:13.5px}
+.facts small{display:block;font-size:11.5px;color:var(--ink-2);font-weight:700}
+.scenebox{background:linear-gradient(135deg,#FFF6E6,#FFEDE2);border-radius:14px;padding:12px 14px;font-family:var(--display);font-size:15.5px;line-height:1.9}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.two>div{min-width:0}
+.mk{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.mk li{border-radius:10px;padding:6px 10px;background:var(--bg);cursor:pointer;font-size:14px;transition:background .2s;user-select:none}
+.mk li:hover{background:var(--accent-soft)}
+.mk li:focus-visible{outline:2px solid var(--accent)}
+.mk li.m1{text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:3px;text-underline-offset:5px}
+.mk li.m2{box-shadow:inset 0 0 0 2px var(--warn);border-radius:99px}
+.boxes{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.boxes div{border-radius:12px;padding:10px 12px;font-size:14px}
+.boxes b{display:block;font-size:12px;letter-spacing:.04em;color:var(--ink-2);margin-bottom:2px}
+.bx1{background:var(--sky)}.bx2{background:var(--butter)}.bx3{background:var(--aqua)}.bx4{background:var(--rose)}
+.inote{font-style:italic;color:var(--ink-2);border-inline-start:3px solid var(--accent-2);padding-inline-start:10px;margin:0}
+.bring{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.openv{font:inherit;font-weight:700;font-size:13px;border:1.5px dashed #E8CDB0;background:#fff;color:#B4542F;border-radius:99px;padding:5px 12px;cursor:pointer;justify-self:start;display:inline-flex;gap:6px;align-items:center}
+.openv:hover{border-style:solid}
+html[data-view="mobile"] .bins{grid-template-columns:1fr 1fr}
+html[data-view="mobile"] .frames,html[data-view="mobile"] .two,html[data-view="mobile"] .bring,html[data-view="mobile"] .lrow{grid-template-columns:1fr}
+
+
+/* ---- v5: phones, foldables, touch ---- */
+html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
+textarea,input[type=text],select{font-size:16px}
+button,[role="button"],.st,.mk li{touch-action:manipulation}
+button,[role="button"],.chip,.tk{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+button:active:not(:disabled),[role="button"]:active{transform:scale(.97)}
+.modes button:active{transform:none}
+.mk li:active{background:var(--accent-soft)}
+@media (hover:none){
+  .nav button:hover:not(:disabled){transform:none;border-color:var(--line);color:var(--ink)}
+  .nav .nx:hover:not(:disabled){color:#fff}
+  .tools button:hover,.replay:hover{border-color:var(--line);color:inherit}
+  .tools .film:hover{filter:none;color:#fff}
+  .mk li:hover{background:var(--bg)}
+  .st:hover .dot{stroke:#B3BCDA}
+}
+.vbody,.sheet{overscroll-behavior:contain}
+
+/* Intro chooser */
+.intro{overflow-y:auto;overscroll-behavior:contain;padding-block:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-bottom,0px))}
+.intro .ic{margin-block:auto}
+.choose{display:grid;gap:14px;width:100%;max-width:640px;animation:rvb 1s var(--ease) both 1.9s}
+.choose .cl2{font-size:12.5px;font-weight:800;color:var(--ink-2);letter-spacing:.08em;text-transform:uppercase}
+.langseg{display:inline-flex;gap:4px;background:#ffffffcc;border:1px solid var(--line);border-radius:99px;padding:4px;justify-self:center}
+.intro .langseg button{font:inherit;font-weight:800;font-size:15px;border:0;border-radius:99px;padding:8px 20px;background:transparent;color:var(--ink-2);cursor:pointer;box-shadow:none;animation:none;min-height:44px}
+.intro .langseg button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.intro .mcards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.intro .mcard{font:inherit;text-align:start;border:2px solid var(--line);background:#ffffffd9;border-radius:18px;padding:14px;display:grid;gap:6px;align-content:start;cursor:pointer;color:var(--ink);box-shadow:0 10px 24px -20px var(--accent);animation:none;min-height:44px;transition:border-color .25s,transform .25s,box-shadow .25s}
+.intro .mcard .mi{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:20px;background:var(--accent-soft);color:var(--accent)}
+.intro .mcard b{font-family:var(--display);font-size:17px}
+.intro .mcard small{color:var(--ink-2);font-size:13px;line-height:1.5}
+.intro .mcard[aria-pressed="true"]{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft),0 14px 30px -16px var(--accent);transform:translateY(-2px)}
+.intro .mcard[aria-pressed="true"] .mi{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff}
+.intro .mcard:focus-visible,.intro .langseg button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.intro #introGo{min-height:48px}
+
+/* Foldable / small tablet: 761–1024 */
+@media (max-width:1024px){
+  .wrap{padding-inline:16px}
+  .cols{grid-template-columns:1fr}
+  .st .lbl{font-size:17px}
+  .st .tag{font-size:13.5px}
+  .st.chk .lbl{font-size:15px}
+}
+
+/* Phones (incl. folded cover screens) */
+html[data-view="mobile"] .wrap{gap:14px;padding-block:16px 48px}
+html[data-view="mobile"] h1{font-size:clamp(22px,7vw,30px)}
+html[data-view="mobile"] .lede{font-size:14.5px}
+html[data-view="mobile"] .bar{position:static;padding-block:4px;display:grid;gap:8px;background:transparent;backdrop-filter:none}
+html[data-view="mobile"] .modes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+html[data-view="mobile"] .modes button{justify-content:center;padding:9px 6px;font-size:13px;gap:5px;min-height:44px}
+html[data-view="mobile"] .tools{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;margin-inline:-16px;padding-inline:16px;scroll-padding-inline:16px}
+html[data-view="mobile"] .tools::-webkit-scrollbar{display:none}
+html[data-view="mobile"] .tools button{flex:none;min-height:40px}
+html[data-view="mobile"] .modehint{font-size:13px}
+html[data-view="mobile"] /* station strip */
+  .list{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;padding:10px;margin-inline:-16px;border-radius:0;border-inline:0;scrollbar-width:none;position:sticky;top:env(safe-area-inset-top,0px);z-index:6;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(10px)}
+html[data-view="mobile"] .list::-webkit-scrollbar{display:none}
+html[data-view="mobile"] .list .ph{display:none}
+html[data-view="mobile"] .list li{flex:none;scroll-snap-align:center}
+html[data-view="mobile"] .list li::after{display:none}
+html[data-view="mobile"] .list button{flex-direction:column;gap:6px;width:96px;padding:6px 4px;text-align:center;border-radius:14px}
+html[data-view="mobile"] .list li.chkli button{padding-inline-start:4px}
+html[data-view="mobile"] .list .b{flex-basis:auto;width:42px;height:42px}
+html[data-view="mobile"] .list li.chkli .b{width:34px;height:34px}
+html[data-view="mobile"] .list .t{justify-items:center}
+html[data-view="mobile"] .list .t b{font-size:12.5px;line-height:1.35}
+html[data-view="mobile"] .list .t small{display:none}
+html[data-view="mobile"] .list .on{background:var(--accent-soft)}
+html[data-view="mobile"] .sheet{border-radius:18px;padding:16px;scroll-margin-top:96px;gap:16px}
+html[data-view="mobile"] .sh-top{gap:12px}
+html[data-view="mobile"] .hero{width:64px;height:64px}
+html[data-view="mobile"] .hero svg.big{width:32px;height:32px}
+html[data-view="mobile"] h2{font-size:21px}
+html[data-view="mobile"] h2 small{display:block;margin-inline-start:0;font-size:12.5px}
+html[data-view="mobile"] .replay{order:3}
+html[data-view="mobile"] .q{font-size:16.5px}
+html[data-view="mobile"] .scene{padding:14px}
+html[data-view="mobile"] .bins{grid-template-columns:1fr 1fr}
+html[data-view="mobile"] .alt{grid-template-columns:30px 1fr}
+html[data-view="mobile"] .nav{gap:8px}
+html[data-view="mobile"] .nav button{flex:1;font-size:13px;padding:10px 8px;min-height:44px}
+html[data-view="mobile"] .after{display:none}
+html[data-view="mobile"] .vault{padding:0}
+html[data-view="mobile"] .vbox{border-radius:0;height:100%;height:100dvh;max-width:none}
+html[data-view="mobile"] .vhead{padding:calc(12px + env(safe-area-inset-top,0px)) 16px 12px}
+html[data-view="mobile"] .vbody{padding:14px 14px calc(24px + env(safe-area-inset-bottom,0px))}
+html[data-view="mobile"] .facts{grid-template-columns:1fr 1fr}
+html[data-view="mobile"] .intro .mcards{grid-template-columns:1fr}
+html[data-view="mobile"] .intro .mcard{grid-template-columns:40px 1fr;align-items:center;column-gap:12px;padding:12px}
+html[data-view="mobile"] .intro .mcard .mi{grid-row:span 2}
+html[data-view="mobile"] .intro .ic{padding:12px 16px;gap:12px}
+html[data-view="mobile"] .intro .t2{font-size:14.5px}
+html[data-view="mobile"] .intro .icons span{width:34px;height:34px;font-size:16px}
+html[data-view="mobile"] .cine .ct .big{font-size:clamp(28px,9vw,40px)}
+
+@media (max-width:380px){
+  .modes button .ico{display:none}
+  .facts{grid-template-columns:1fr}
+  .bins{grid-template-columns:1fr}
+  .intro .icons{display:none}
+}
+/* landscape phones: keep intro scrollable and compact */
+@media (max-height:520px){
+  .intro .icons,.intro .t2{display:none}
+  .intro .lb{height:6vh}
+}
+.intro{padding-block:calc(12vh + 12px)}
+html[data-view="mobile"] .intro{padding-block:calc(5vh + 10px)}
+html[data-view="mobile"] .intro .lb{height:5vh}
+html[data-view="mobile"] .sh-top .sh-title{flex:1 1 calc(100% - 90px)}
+html[data-view="mobile"] .sh-top .replay{margin-inline-start:auto}
+
+@media (max-height:520px){.intro{padding-block:calc(6vh + 8px)}}
+/* ---- v6: explicit view mode (auto-detected, user can override) ---- */
+html:not(.js) .intro,html:not(.js) .cine{display:none!important}
+.nojs{max-width:640px;margin:40px auto;padding:20px;border-radius:16px;background:#fff;border:2px solid var(--accent);font-size:17px;line-height:1.9;text-align:center}
+html[data-view="mobile"] .wrap{max-width:560px}
+html.forcewide body{overflow-x:auto}
+html.forcewide .wrap{min-width:1000px}
+.devseg button .ico{width:1.2em;height:1.2em}
+.detect{font-size:12.5px;color:var(--ink-2);margin-top:-6px}
+.detect b{color:var(--accent)}
+html[data-view="mobile"] .tools #btnPresent{display:none}
+</style>
+<noscript><div class="nojs">هذا الملف يحتاج متصفح يشغّل الجافاسكربت. افتحه في Safari أو Chrome بدل معاينة الملفات.<br>This file needs a browser with JavaScript. Open it in Safari or Chrome instead of a file preview.</div></noscript>
+<div class="amb" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+<div class="grain" aria-hidden="true"></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="heroGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4C6FFF"/><stop offset="1" stop-color="#9B7BFF"/></linearGradient></defs></svg>
+
+<div class="wrap" id="wrap">
+  <header>
+    <div class="eyebrow" id="eyebrow"></div>
+    <h1 id="h1"></h1>
+    <p class="lede" id="lede"></p>
+  </header>
+
+  <div class="bar">
+    <div class="modes" role="group" id="modes">
+      <span class="pill" id="pill"></span>
+      <button type="button" data-mode="explain"></button>
+      <button type="button" data-mode="case"></button>
+      <button type="button" data-mode="work"></button>
+    </div>
+    <div class="tools">
+      <button type="button" class="film" id="btnFilm"></button>
+      <button type="button" id="btnVault"></button>
+      <button type="button" id="btnFx" aria-pressed="true"></button>
+      <button type="button" id="btnLang"></button>
+      <button type="button" id="btnView"></button>
+      <button type="button" id="btnPresent"></button>
+      <button type="button" id="btnExport" hidden></button>
+      <button type="button" id="btnClear" hidden></button>
+    </div>
+  </div>
+  <p class="modehint" id="modehint"></p>
+
+  <nav class="map pre" id="mapWrap"><svg id="map" viewBox="0 0 1000 350" role="group"></svg><div class="legend2" id="legend2"></div></nav>
+  <ol class="list" id="list"></ol>
+
+  <article class="sheet" id="sheet" aria-live="polite"></article>
+
+  <section class="after">
+    <h3 id="afterT"></h3>
+    <div class="road2" id="road2"></div>
+  </section>
+</div>
+
+<div class="vault" id="vault" hidden role="dialog" aria-modal="true" aria-labelledby="vT">
+  <div class="vbox">
+    <div class="vhead"><div><h2 id="vT"></h2><p id="vS"></p></div><button type="button" id="vClose"></button></div>
+    <div class="vtabs" id="vtabs"></div>
+    <div class="vbody" id="vbody"></div>
+  </div>
+</div>
+
+<div class="cine" id="cine" hidden aria-hidden="true"><div class="veil"></div><div class="lb t"></div><div class="lb b"></div><div class="ct" id="cineCt"></div></div>
+
+<div class="intro" id="intro" role="dialog" aria-modal="true" aria-labelledby="introT">
+  <div class="rays" aria-hidden="true"></div>
+  <div class="lb t"></div><div class="lb b"></div>
+  <div class="ic">
+    <div class="kick" id="introK"></div>
+    <h2 class="t1" id="introT"></h2>
+    <p class="t2" id="introS"></p>
+    <div class="icons" id="introIcons" aria-hidden="true"></div>
+    <div class="choose">
+      <span class="cl2" id="chDev"></span>
+      <div class="langseg devseg" role="group" id="devseg"><button type="button" data-view="mobile"></button><button type="button" data-view="desktop"></button></div>
+      <span class="detect" id="detect"></span>
+      <span class="cl2" id="chLang"></span>
+      <div class="langseg" role="group" id="langseg"><button type="button" data-lang="ar">العربية</button><button type="button" data-lang="en">English</button></div>
+      <span class="cl2" id="chMode"></span>
+      <div class="mcards" role="group" id="mcards"></div>
+    </div>
+    <button type="button" id="introGo"></button>
+    <button type="button" class="skip" id="introSkip"></button>
+  </div>
+</div>
+
+<div class="modal" id="modal" hidden><div role="dialog" aria-modal="true" aria-labelledby="mt">
+  <p id="mt"><b></b></p><p id="md"></p>
+  <div class="row"><button type="button" class="danger" id="mYes"></button><button type="button" id="mNo"></button></div>
+</div></div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+/* ================= DATA ================= */
+const IC={
+ mic:'<rect x="9" y="3" width="6" height="11" rx="3" pathLength="1"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M8 21h8" pathLength="1"/>',
+ face:'<circle cx="12" cy="12" r="9" pathLength="1"/><path d="M12 3v18M3 12h18" pathLength="1"/><circle cx="7.5" cy="7.5" r="1" pathLength="1"/><path d="M15 16.5c1 .8 2 .8 3 0" pathLength="1"/>',
+ layers:'<path d="M12 3l9 5-9 5-9-5z" pathLength="1"/><path d="M3 13l9 5 9-5" pathLength="1"/><path d="M3 17.5l9 5 9-5" pathLength="1"/>',
+ ladder:'<path d="M7 3v18M17 3v18M7 7h10M7 12h10M7 17h10" pathLength="1"/>',
+ detect:'<circle cx="11" cy="11" r="7" pathLength="1"/><path d="M20 20l-4-4M8 11l2 2 4-4" pathLength="1"/>',
+ notes:'<rect x="3" y="3" width="8" height="8" rx="1.5" pathLength="1"/><rect x="13" y="5" width="8" height="8" rx="1.5" pathLength="1"/><rect x="6" y="13" width="8" height="8" rx="1.5" pathLength="1"/>',
+ bars:'<path d="M3 21h18M6 18v-4M11 18V9M16 18v-6" pathLength="1"/><path d="M4 9l5-4 5 3 6-5" pathLength="1"/>',
+ roots:'<path d="M12 3v7M12 10c-4 0-6 3-6 7M12 10c4 0 6 3 6 7M12 10v11M6 17l-2 3M18 17l2 3" pathLength="1"/><circle cx="12" cy="3" r="1.2" pathLength="1"/>',
+ bulb:'<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z" pathLength="1"/><path d="M12 7v3" pathLength="1"/>',
+ target:'<circle cx="12" cy="12" r="9" pathLength="1"/><circle cx="12" cy="12" r="5" pathLength="1"/><circle cx="12" cy="12" r="1.5" pathLength="1"/>',
+ compass:'<circle cx="12" cy="12" r="9" pathLength="1"/><path d="M15.5 8.5l-2 5-5 2 2-5z" pathLength="1"/>',
+ frames:'<rect x="3" y="4" width="10" height="13" rx="1.5" pathLength="1"/><rect x="11" y="7" width="10" height="13" rx="1.5" pathLength="1"/>',
+ book:'<path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5"/>',
+ flask:'<path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3"/><path d="M7 15h10"/>',
+ pen:'<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13 7l4 4"/>',
+ film:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9l5 3-5 3z"/>',
+ pause:'<rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/>',
+ folder:'<path d="M3 6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>',
+ spark:'<path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/>',
+ globe:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/>',
+ screen:'<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>',
+ down:'<path d="M12 4v11M7 10l5 5 5-5M5 20h14"/>',
+ trash:'<path d="M4 7h16M10 7V4h4v3M6 7l1 13h10l1-13"/>',
+ replay:'<path d="M4 12a8 8 0 1 0 3-6.2M4 4v4h4"/>',
+ in:'<path d="M3 12h12M11 7l5 5-5 5M17 4h3v16h-3"/>',
+ out:'<path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 15.6 7.1 18.2l.9-5.5-4-3.9 5.5-.8z"/>',
+ warn:'<path d="M12 4l9 16H3z"/><path d="M12 10v4M12 17v.5"/>',
+ q:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14M12 17v.5"/>',
+ steps:'<path d="M4 20h5v-5h5v-5h5V5"/>',
+ user:'<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>',
+ heart:'<path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/>',
+ brain:'<path d="M9 4a3 3 0 0 0-3 3 3 3 0 0 0-2 5 3 3 0 0 0 2 5 3 3 0 0 0 3 3V4zM15 4a3 3 0 0 1 3 3 3 3 0 0 1 2 5 3 3 0 0 1-2 5 3 3 0 0 1-3 3V4z"/>',
+ chat:'<path d="M4 5h16v11H9l-5 4z"/>',
+ hand:'<path d="M8 13V5a1.5 1.5 0 0 1 3 0v6M11 11V4a1.5 1.5 0 0 1 3 0v7M14 11V6a1.5 1.5 0 0 1 3 0v8a6 6 0 0 1-6 6h-1a5 5 0 0 1-4-2l-3-4a1.5 1.5 0 0 1 2.3-2L8 14"/>',
+ eye:'<path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>'
+};
+
+const UI={
+ eyebrow:['FIN 557 · الفصل الثاني · Understanding the Customer','FIN 557 · Chapter Two · Understanding the Customer'],
+ h1:['من <em>البيانات الخام</em> إلى سؤال <em>HMW</em>: الرحلة كاملة','From <em>raw data</em> to a <em>How-Might-We</em>: the full journey'],
+ lede:['أدوات الفصل الثاني الأربع عشرة مدموجة في رحلة واحدة: ٩ محطات إلزامية على الطريق الرئيسي، و٣ محطات فحص موصى بها تتفرع منه، وملف الأدلة كامل. اختر طريقة العرض، أو اضغط «شغّل الفيلم» وتفرّج.','All fourteen Chapter Two tools merged into one journey: 9 mandatory stations on the main road, 3 recommended check stations branching off it, and the full evidence file. Pick a view, or press “Play the film” and watch.'],
+ m_explain:['الشرح الأساسي','Explanation'],m_case:['تطبيق الكيس','Class case'],m_work:['ورشتي','My workshop'],
+ film:['شغّل الفيلم','Play the film'],filmStop:['أوقف الفيلم','Stop the film'],vault:['ملف الأدلة','Evidence file'],fx:['مؤثرات سينمائية','Cinema effects'],lang:['English','العربية'],present:['وضع العرض','Present'],export:['صدّر ورشتي','Export workshop'],clear:['مسح الورشة','Clear workshop'],
+ hint_explain:['الشرح الأساسي: وش تسوي في كل محطة، وش تحتاج قبلها، ووش تطلع منها.','Explanation: what you do at each station, what it needs, and what it produces.'],
+ hint_case:['تطبيق الكيس: نمشي على حزمة «Saving Money» محطة محطة، والحركة تبرز أهم شي يطلع من كل محطة. القصص الكاملة في «ملف الأدلة».','Class case: we walk the “Saving Money” pack station by station; the motion highlights what each station produces. Full stories are in the “Evidence file”.'],
+ hint_work:['ورشتي: الحقول فاضية تعبّيها من بحثك الفعلي. كل محطة تعرض لك اللي طلع من المحطات اللي تعتمد عليها.','My workshop: blank fields for your own research. Each station shows what came out of the stations it depends on.'],
+ station:['المحطة','Station'],check:['محطة فحص','Check station'],must:['إلزامي في Submission 1','Mandatory · Submission 1'],rec:['موصى به','Recommended'],
+ legMain:['محطة إلزامية على الطريق الرئيسي','Mandatory station on the main road'],legChk:['محطة فحص موصى بها (تتفرع من الطريق)','Recommended check (branches off the road)'],
+ ask:['السؤال اللي تجاوبه:','The question it answers:'],need:['تحتاج قبلها','You need first'],give:['تعطيك','It gives you'],needD:['بالتفصيل: تحتاج','In detail: needs'],giveD:['بالتفصيل: تعطيك','In detail: gives'],
+ how:['كيف تسويها','How to do it'],trap:['فخ شائع','Common trap'],checkY:['اختبر نفسك','Check yourself'],reveal:['اكشف الجواب','Reveal the answer'],replay:['أعد الحركة','Replay'],
+ prev:['السابق','Previous'],end:['نهاية الخريطة','End of the map'],outL:['يطلع من المحطة','Comes out of this station'],
+ from:['من','From'],emptyCarry:['ما عبّيت المحطات اللي قبل للحين. تقدر تكمل، بس الأفضل ترجع لها أول.','You have not filled the earlier stations yet. You can carry on, but it is better to go back first.'],
+ seeCase:['شوف كيف سويناها في الكيس','See how the class case did it'],complete:['اكتمال المحطة:','Station complete:'],
+ saveLocal:['محفوظ على هذا الجهاز','Saved on this device'],saveCloud:['محفوظ في حسابك، يظهر لك على أي جهاز','Saved to your account, on any device'],saving:['يحفظ…','Saving…'],
+ full:['الجملة كاملة','The full sentence'],fullQ:['السؤال كامل','The full question'],phPov:['تظهر الجملة هنا لما تعبّي الحقول.','The sentence appears here as you fill the fields.'],phHmw:['يظهر السؤال هنا.','The question appears here.'],
+ bannedW:['فيها كلمات حلول: ','Contains solution words: '],bannedW2:['. احذفها عشان تبقى المشكلة مفتوحة.','. Remove them to keep the problem open.'],noBanned:['ما فيها كلمات حلول.','No solution words.'],
+ hidden:['فيه حل مدسوس: ','Hidden solution: '],twoQ:['فيه «و» في التقدم، يمكن يكون سؤالين.','“and” in the progress: this may be two questions.'],openQ:['السؤال مفتوح.','The question is open.'],
+ afterT:['بعد آخر محطة، تكمل الرحلة','After the last station, the journey continues'],
+ road2:[['Submission 1 · Stage Gate 1 dossier','الفصل الثالث: السوق والمنافسة والسيناريوهات','Stage Gate 1','Value Proposition · Business Model · الأرقام · التنظيم · التموضع','Stage Gate 2'],['Submission 1 · Stage Gate 1 dossier','Chapter Three: market, competition, scenarios','Stage Gate 1','Value Proposition · Business Model · numbers · regulation · positioning','Stage Gate 2']],
+ introK:['FIN 557 · الفصل الثاني','FIN 557 · Chapter Two'],introT:['رحلة <em>فهم العميل</em>','Understanding <em>the Customer</em>'],introS:['أربع عشرة أداة، اثنا عشر محطة، وستة أشخاص. رحلة تحوّل كلام الناس وأفعالهم إلى سؤال يفتح باب الابتكار.','Fourteen tools, twelve stations, six people. A journey that turns what people say and do into a question that opens innovation.'],
+ introGo:['ابدأ الرحلة','Begin the journey'],introSkip:['تخطَّ المقدمة','Skip intro'],
+ chLang:['اختر اللغة','Choose a language'],chDev:['نوع الشاشة','Screen type'],v_mobile:['جوال','Phone'],v_desktop:['لابتوب','Laptop'],detected:['تعرّفنا على جهازك تلقائياً: ','We detected your device: '],viewBtn:['عرض ','View: '],chMode:['كيف تبي تمشي الرحلة؟','How do you want to travel?'],
+ md_explain:['أفهم كل محطة: وش تسوي، وش تحتاج، ووش تطلع منها.','Understand each station: what to do, what it needs, what it produces.'],
+ md_case:['أشوف كيس الكلاس «Saving Money» مطبّق محطة محطة.','Watch the class case “Saving Money” applied station by station.'],
+ md_work:['أعبّي الرحلة بنفسي من بحثي الفعلي.','Fill in the journey myself from real research.'],
+ clearT:['تمسح كل اللي كتبته في الورشة؟','Clear everything in your workshop?'],clearD:['ما تقدر ترجعه بعد المسح.','This cannot be undone.'],yes:['امسح','Clear'],no:['تراجع','Cancel'],
+ cleared:['انمسحت الورشة','Workshop cleared'],exported:['تم تجهيز الملف','File ready'],copied:['نسخت الورشة كنص، الصقها في أي مستند','Workshop copied as text: paste it anywhere'],noCopy:['ما قدرت أنسخ تلقائياً','Could not copy automatically'],noFs:['وضع العرض غير متاح هنا','Present mode is not available here'],
+ hypo:[' · فرضية',' · hypothesis'],evidence:['الدليل: ','Evidence: '],mapL:['خريطة المحطات','Station map'],modesL:['طريقة العرض','View'],openVault:['افتح القصص الكاملة','Open the full stories'],
+ vT:['ملف الأدلة: Saving Money','Evidence file: Saving Money'],vS:['٦ مقابلات (٤٠ دقيقة لكل وحدة) + ٣ جلسات مراقبة. أدلة خام بدون تحليل.','6 interviews (about 40 minutes each) + 3 observation sessions. Raw evidence, no analysis.'],close:['إغلاق','Close'],
+ vBefore:['قبل الكلاس','Before class'],vField:['ملاحظات ميدانية','Field observations'],
+ vLegend:['اضغط على أي سطر: مرة = <span class="u">فعل</span>، مرتين = <span class="c">مفاجأة</span>، ثلاث = مسح. تنحفظ علاماتك.','Tap any line: once = <span class="u">an action</span>, twice = <span class="c">a surprise</span>, three times = clear. Your marks are saved.'],
+ fAge:['العمر والعمل','Age · work'],fInc:['الدخل','Income'],fWhere:['وين مدخراته','Where savings live'],fNow:['المدخرات الحالية','Savings now'],
+ inWords:['بكلامهم','In their words'],sawDo:['اللي شفناهم يسوونه','What we saw them do'],moment:['موقف مالي حكوه','A money moment they told us'],tried:['جربوا قبل','Already tried'],work:['الحيلة اللي اخترعوها','Their own workaround'],tension:['تناقض يستاهل الانتباه','A tension worth noticing'],inote:['ملاحظة المحاور','Interviewer’s note'],
+ bring1:['سلوك لاحظته يتكرر عند أكثر من شخص','One behaviour you saw repeating across people'],bring2:['شي ما توقعته','One thing you did not expect']
+};
+
+const PPL={sara:['سارة','Sara','#6C8CFF'],faisal:['فيصل','Faisal','#F08A6B'],reem:['ريم','Reem','#A982FF'],khalid:['خالد','Khalid','#3FA7C9'],huda:['هدى','Huda','#E8A93B'],omar:['عمر','Omar','#E06D8F']};
+const PORDER=['sara','faisal','reem','khalid','huda','omar'];
+
+/* ---- Evidence pack (full) ---- */
+const PACK={
+ before:{
+  intro:['هذي بحوث عملاء عن مشكلة يومية وحدة: محاولة بناء عادة ادخار. ستة أشخاص، ست حياة مختلفة، وإحباط واحد. البيانات خام ومقصود إنها شوي فوضوية: بدون تحليل ولا استنتاجات ولا جواب في الآخر.','This is customer research about one everyday money struggle: trying to build a saving habit. Six people, six very different lives, one shared frustration. It is deliberately raw and a little messy: no analysis, no conclusions, no answer at the back.'],
+  todo:[['اقرأ الحزمة كاملة مرة وحدة، بهدوء. لا تحاول تحل شي، وقاوم فكرة التطبيق.','حط خط تحت أي شي سوّاه الشخص (فعل، عادة، حيلة)، ودائرة على أي شي فاجأك.','انتبه للأماكن اللي يقول فيها الشخص شي عن نفسه ويسوي عكسه، وعلّمها.','تعال ومعك شيئين مكتوبين: سلوك تكرر عند أكثر من شخص، وشي ما توقعته.'],['Read the whole pack once, slowly. Do not try to solve anything yet. Resist the urge to think of an app.','Underline anything a person DID (an action, a habit, a workaround) and circle anything that surprised you.','Notice where what someone SAYS about themselves and what they actually DO don’t match. Mark it.','Come with two things written down: one behaviour you noticed repeating across people, and one thing you did not expect.']],
+  note:['افصل بين اللي يقوله الناس واللي يسوونه. الناس صادقين، بس مو دايم دقيقين عن سلوكهم. الذهب تقريباً دايم في المكان اللي يختلف فيه الاثنين.','Separate what people SAY from what they DO. People are honest, but they are not always accurate about their own behaviour. The gold is almost always where the two disagree.'],
+  how:['المقابلات في بيوتهم أو مقهى يختارونه، ومسجلة بإذنهم. المحاور سأل عن الماضي بس، مواقف وتحويلات وشهور حقيقية، وما سأل أبداً «هل بتستخدم…». أي رقم مذكور شافوه على جوالهم أو كتبوه، وإذا خمّنوا مكتوب إنه تخمين. الأسماء وبعض التفاصيل متغيرة.','Interviews in people’s homes or a café of their choosing, recorded with permission. The interviewer asked only about the past (real moments, real transfers, real months) and never “would you use…”. Numbers were shown on their phone or written down; guesses are marked. Names and a few details are changed.'],
+  remember:['لا تجي بحل. تعال وأنت لاحظت أنماط وتناقضات ومفاجآت. لو لقيت نفسك تقول «يحتاجون تطبيق…»، وقف وارجع لوش سوّى الشخص فعلاً.','Do not arrive with a solution. Arrive having noticed patterns, contradictions and surprises. If you catch yourself thinking “they just need an app that…”, stop, and go back to what the person actually did.']
+ },
+ people:{
+ sara:{age:['٢٦ · تنفيذية تسويق · الرياض','26 · marketing executive · Riyadh'],inc:['راتب ثابت ينزل يوم ٢٧','Steady salary, paid on the 27th'],where:['نفس تطبيق المصروف، على بعد ضغطة','Same app as spending, one tap away'],now:['أقل من ١,٠٠٠ ريال (اضطرت تتأكد)','Under 1,000 SAR (she had to check)'],
+  scene:['يوم ٢٧، نزل الراتب الصبح وحوّلت ٢,٠٠٠ ريال للمدخرات واحتفلت بقهوة بـ٢٨ ريال. بحلول يوم ٩، عشاء خطوبة صديقة وفستان «أكيد بلبسه مرة ثانية» سحبوا ١,٢٠٠. يوم ١٩ الحصالة فيها ٣٠٠، وهي تقول بصدق إنها «تحاول هالشهر».','It is the 27th. Sara’s salary landed this morning and she has already moved 2,000 riyals into her savings pot, a small victory she marks with a 28-riyal coffee. By the 9th, a friend’s engagement dinner and a dress “she’ll definitely wear again” have pulled 1,200 of it back. By the 19th the pot reads 300. She will tell you, and mean it, that she is “really trying this month.”'],
+  q:[['«أقول لنفسي بدخر اللي يتبقى آخر الشهر. بس ما يتبقى شي يذكر.»','«ينزل الراتب، وبصراحة خلال أسبوع ما يحسسني إنه كثير.»','«عندي حساب ادخار، بس هو جنب حسابي الأساسي، فإذا نقصني شي أرجّعه. ودايم ناوية أرده بعدين.»','«ما أحس إن حساب الادخار فلوس منفصلة. هي فلوسي بس في تبويب ثاني.»','«كل عيد أقول هالسنة بكون منظمة. وبعدين يجي العيد.»','«لو سألتني كم في مدخراتي لازم أفتح التطبيق. أتوقع… ثمانمية؟»'],['“I keep telling myself I’ll save whatever is left at the end of the month. There’s just never much left.”','“My salary comes in and honestly within a week it doesn’t feel like a lot anymore.”','“I have a savings account, but it’s right there next to my main account, so if I’m short I just move it back. I always mean to put it back later.”','“I don’t even think of the savings account as separate money. It’s just my money, in a different tab.”','“Every Eid I say this is the year I’ll be organised. And then Eid happens.”','“If you asked me what’s in my savings right now I’d have to open the app. I’d guess… eight hundred?”']],
+  d:[['مدخراتها في نفس تطبيق البنك، على بعد ضغطة من المصروف، والرصيدين جنب بعض.','تحوّل يوم الراتب وترجّع جزء قبل نهاية الشهر. توقعت مرتين، ولما عدّينا معها طلعت أربع.','تشيك رصيدها كذا مرة في اليوم، وتصرف براحة أكثر أول أسبوع بعد الراتب.','ما غيّرت الإعدادات الافتراضية من فتحت الحساب.','ما سوّت تحويل تلقائي: «أحب أقرر كل شهر». وكل شهر تقرر وتتراجع.','ما عرفت رصيد مدخراتها بدون التطبيق، والرقم الحقيقي ٦٤٠.'],['Keeps savings in the same banking app, one tap from spending; both balances sit side by side.','Transfers to savings on payday, then moves part back before month-end. She guessed “twice”; counted together it was four.','Checks her balance several times a day and spends more freely in the first week after payday.','Has never changed the default since the day she opened the account.','Never set up an automatic transfer: “I like to decide each month.” Each month she decides, and each month she un-decides.','Could not tell us her savings without opening the app; the real figure was 640.']],
+  m:['المرة الوحيدة اللي نجحت ما كانت فكرتها. الربيع اللي فات أرسلت ٤,٠٠٠ ريال لأمها «تمسكها» لرحلة، وما طلبتها. «إني أطلب من أمي فلوس أنا عطيتها حسيت كأني أعترف بشي». الرحلة اندفعت كاملة، وما كررتها: «حسيتها طفولية شوي، أنا عمري ٢٦».','The one time it worked, it wasn’t her idea. Last spring she sent 4,000 riyals to her mother to “hold” for a trip and never asked for it back. “Asking my mother for money I gave her felt like admitting something.” The trip was paid in full. She has not done it again: “It felt a bit childish, honestly. I’m 26.”'],
+  t:['تطبيق ميزانية حذفته بعد أسبوعين («يقول لي اللي صرفته، وأنا أعرفه») · حساب في بنك ثاني ما كمّلت أوراقه · ميزانية على ورق مرتين في يناير.','A budgeting app, deleted after two weeks (“It just told me what I’d already spent”) · an account at a second bank, paperwork never finished · a paper budget, done twice in January.'],
+  w:['ترسل الفلوس لأمها تمسكها، لأن طلبها محرج كفاية إنها تخليها.','Sends money to her mother to hold, because getting it back is awkward enough that she leaves it alone.'],
+  x:['تقول ما عندها انضباط، لكن المرة الوحيدة اللي كانت الفلوس صعبة الوصول ادخرت بدونه. وتشوف هالنجاح محرج، مو طريقة.','She says she lacks discipline, but the one time money was hard to reach she saved without any. She describes that success as embarrassing rather than as a method.'],
+  n:['لما قالت «ما عندي انضباط» ضحكت. ولما حكت عن فلوس أمها سكتت وقالت «هذاك نجح وبس». ما انتبهت إنهم نفس الشهر.','When she said “I lack discipline” she laughed. When she described the money with her mother she went quiet and said “that just worked.” She did not seem to notice those were the same month.'],
+  emp:{th:['«المدخرات مو فلوس منفصلة، هي فلوسي في تبويب ثاني» (قالتها حرفياً)','“Savings aren’t separate money, just my money in another tab” (her own words)'],fe:['إحراج من الطريقة اللي نجحت (سمّتها «طفولية»)','Embarrassment about the method that worked (called it “childish”)']}},
+ faisal:{age:['٢٩ · مصمم مستقل · جدة','29 · freelance designer · Jeddah'],inc:['غير منتظم: ٣,٠٠٠ إلى ١٨,٠٠٠ ريال شهرياً','Irregular: 3,000–18,000 SAR a month'],where:['وين ما خلّتها آخر فاتورة','Wherever the last invoice left it'],now:['تتغير كل أسبوع','Changes every week'],
+  scene:['دخله يجي دفعات. مشروع هوية يدفع ١٥,٠٠٠ مرة وحدة، وبعدها ستة أسابيع «تقريباً ولا شي» وهو يلاحق العميل الجاي وناسي يرسل فاتورة اللي قبله. فيه «فيصل الغني» أسبوع ما تنزل الدفعة، و«فيصل الحذر» باقي الوقت، والحذر غالباً هو اللي يدفع عن الغني.','Faisal’s income arrives in lumps. A branding project pays 15,000 riyals in one transfer; then six weeks of “almost nothing” while he chases the next client and forgets to send the invoice for the last one. There is “rich Faisal”, the week a payment clears, and “careful Faisal” the rest of the time. Careful Faisal usually ends up paying for rich Faisal.'],
+  q:[['«شهور أدخل الضعف، وشهور تقريباً ولا شي. خطة ادخار ثابتة ما تناسب حياتي.»','«لما تنزل دفعة كبيرة أحس إني غني فأدخر مبلغ. وبعدين يجي شهر هادي وأرجّعه كله.»','«التطبيقات اللي تسحب مبلغ ثابت كل شهر؟ جربت واحد. سحب علي في شهر سيء وطفيته نفس اليوم.»','«المشكلة مو إني ما أدخر. أدخر كثير… لمدة أسبوع تقريباً.»','«كل نصيحة مالية قريتها تفترض راتب يوم ٢٧. أنا ما عندي ٢٧.»','«الشهر الزين يحسسني إني حليتها، والشهر السيء يثبت إني ما حليتها.»'],['“Some months I make double, some months almost nothing. A fixed savings plan just doesn’t fit my life.”','“When a big payment lands I feel rich, so I finally save a chunk. Then a slow month comes and I take it all back.”','“Those apps that pull a fixed amount every month? I tried one. It overdrew me in a bad month and I turned it off the same day.”','“The problem isn’t that I don’t save. I save a LOT, for about a week.”','“Every finance tip I’ve ever read assumes a salary on the 27th. I don’t have a 27th.”','“A good month makes me feel like I’ve solved it. A bad month proves I haven’t.”']],
+  d:[['يدخر دفعات كبيرة بعد ما تنزل الفاتورة: ٦,٠٠٠ يوم نزلت دفعة مارس.','يسحب في الشهور الهادية: ٥,٥٠٠ من الـ٦,٠٠٠ راحت قبل نهاية مايو.','طفّى أداة الادخار الآلي بعد ما سحبت في شهر قليل، وما رجّعها.','ما يتابع شي، ويقرر صرفه حسب إحساسه إنه «مرتاح» هالأسبوع.','يرسل الفواتير متأخر، أحياناً بأسابيع، فتطول الشهور الهادية.','رقم «المسموح أصرفه» في راسه تغيّر ٣,٠٠٠ ريال في نفس المقابلة.'],['Saves in large, irregular bursts right after a big invoice is paid: 6,000 the day a March payment cleared.','Pulls savings back in slow months: 5,500 of that 6,000 was gone by the end of May.','Turned off an auto-saving tool after it withdrew in a low month; has never turned it back on.','Tracks nothing; decides what he can spend from how “flush” he feels that week.','Invoices late, sometimes weeks late, which stretches the slow months.','His “safe to spend” figure moved by 3,000 riyals in a single conversation.']],
+  m:['ثلاث شهور والادخار الآلي ممتاز: ١,٠٠٠ تروح يوم ١. بعدين شهر فيه شغلة صغيرة وحدة، وسحب الألف عادي، وانرفضت بطاقته في البنزينة والناس وراه. «طفيته في المواقف. انحرجت وعصبت عليه، ما يعرف شي عن شهري». جاه أربع شهور زينة بعدها، والأداة باقية مطفية.','For three months the auto-saving was perfect: 1,000 gone on the 1st. Then a month with one small job. It took the 1,000 anyway, and his card bounced at the petrol station with people behind him. “I turned it off in the car park. I was embarrassed, and I was angry at it. It didn’t know anything about my month.” He has had four good months since. The tool stayed off.'],
+  t:['ادخار آلي ثابت (طفّاه بعد أول شهر سيء) · ظرف كاش احتياطي («بس كاش، فأحياناً أصرفه») · طلب ٥٠٪ مقدم من العملاء («ينفع لما أتذكر»).','A fixed monthly auto-save, off after the first bad month · a cash “buffer” envelope (“but it’s just cash, so sometimes I spend it”) · asking clients for 50% upfront (“that actually helps, when I remember”).'],
+  w:['يخلي مبلغ كاش احتياطي في البيت عشان الشهر الهادي ما يجبره يسحب من المدخرات، بس أحياناً يصرف الاحتياطي بعد.','Keeps a cash buffer at home so a slow month doesn’t force him to raid his real savings, but he sometimes spends the buffer too.'],
+  x:['يلوم دخله المتقطع، لكن اللي خذله خطة تجاهلت دخله. شي يتكيف مع اللي يدخل ما انعرض عليه، وما دوّر عليه.','He blames his irregular income, yet what failed him was a plan that ignored his income completely. Something that flexed with what came in was never offered, and he never went looking for it.'],
+  n:['لام دخله أربع مرات في عشرين دقيقة، وحكى مرة عن أداة فشلت لأنها تجاهلت دخله، وما ربط بين الاثنين.','He blamed his income four times in twenty minutes. He described a tool that failed because it ignored his income once, and did not connect the two.'],
+  emp:{th:['«الأدوات المالية مصممة لأصحاب الرواتب» («ما عندي ٢٧»)','“Money tools are built for salaried people” (“I don’t have a 27th”)'],fe:['إحراج وغضب من الأداة (طفاها في المواقف بعد ما انرفضت بطاقته)','Embarrassed and angry at the tool (turned it off in the car park after the bounce)']}},
+ reem:{age:['٢٤ · معلمة · الدمام','24 · school teacher · Dammam'],inc:['راتب ثابت','Steady salary'],where:['جمعية مع زميلات غرفة المعلمات','A staff-room savings circle (jam’iyyah)'],now:['كم مية في البنك، و١٢,٠٠٠ من الجمعية في أكتوبر','A few hundred in the bank; 12,000 due from the circle in October'],
+  scene:['يوم ٢٨، قبل أي شي، ترسل ريم ١,٠٠٠ ريال لعبير اللي تدير جمعية غرفة المعلمات: ١٢ معلمة، كل وحدة ١,٠٠٠، ووحدة تقبض ١٢,٠٠٠ كل شهر. دورها في أكتوبر، وقررت إنها مقدم سيارة. «عمري ما ملكت ١٢,٠٠٠ ريال. وعمري ما فوّت دفعة». حسابها الشخصي تتوقع فيه «كم مية»، وما تشيك.','On the 28th of every month, before she buys anything else, Reem sends 1,000 riyals to Abeer, the colleague who runs the staff-room jam’iyyah: twelve teachers, 1,000 each, one person collects 12,000 every month. Her turn is in October, and it is already going to a car deposit. “I have never had 12,000 riyals in my life. And I have never, ever missed a payment.” Her own savings account, she thinks, has “a few hundred” in it. She doesn’t look.'],
+  q:[['«عمري ما قدرت أدخر لحالي. بس في جمعية مع زميلاتي، ودايم حصتي جاهزة.»','«مو موضوع فلوس، بس ما أقدر أكون اللي تخذل المجموعة.»','«لما يجي دوري عندي خطة له. ولما مو دوري… أدفع وأنسى.»','«لحالي الادخار شي أسويه في نفسي. مع المجموعة شي أسويه مع ناس.»','«ما أحد اضطر يلاحقني. كان متّ من الفشيلة.»','«حسابي؟ أتوقع فيه كم مية. ما أشيك عليه.»'],['“I could never save on my own. But I’m in a jam’iyyah with colleagues, and somehow I always have my share ready.”','“It’s not about the money really. I just can’t be the one who lets the group down.”','“When it’s my month to collect, I already have a plan for it. When it’s not, I just… make the payment and forget it.”','“Alone, saving feels like something I’m doing to myself. In the group it feels like something I’m doing with people.”','“Nobody has ever had to chase me. I would be mortified.”','“My own savings account? I think there’s a few hundred in it. I don’t really look.”']],
+  d:[['تدفع كل شهر، جمعيتين ورا بعض في ٣ سنين، ولا مرة تأخرت.','تدفع للجمعية قبل الإيجار: «الإيجار بنك، هذي عبير».','ما تقدر تدخر نفس الألف لحالها، وحسابها تحت ١,٠٠٠ من تتذكر.','تتكلم عن الضغط الاجتماعي بوضوح: «أنقص في كل شي ولا أكون اللي ناقصة».','ما تتابع ولا تسوي ميزانية، وتقول «مو شخص أرقام».','فتحت حساب ادخار «لأنه المفروض يكون عندك واحد»، وما تعرف رصيده.'],['Contributes every month; two circles back-to-back over three years, never once late.','Pays the group before rent: “Rent is the bank. This is Abeer.”','Cannot save the same 1,000 alone: her personal savings have stayed under 1,000 for as long as she remembers.','Describes the social pressure openly: “I’d rather be short on everything else than be the one who’s short.”','Does not track or budget; says she “isn’t a numbers person.”','Opened a savings account “because you’re supposed to have one”; not sure of the balance.']],
+  m:['في مارس سيارتها احتاجت تصليح بـ٢,٣٠٠. دفعت من مصروفها و«أكلت نودلز أسبوع» ولا فوّتت ألف الجمعية، ودورها باقي له سبع شهور. «هذي الفلوس مو لي للحين، للمجموعة». نفس الأسبوع حسابها فيه ٤١٠، وما خطر لها تستخدمه.','In March her car needed 2,300 riyals of repairs. She paid out of spending money and “ate noodles for a week” rather than skip that month’s 1,000, with her payout still seven months away. “That money isn’t mine yet. It belongs to the group.” The same week her personal savings had 410 riyals in it. It did not occur to her to use it.'],
+  t:['حساب ادخار (فتحته وتجاهلته) · تحدي ٥٢ أسبوع من إنستقرام (خمس أسابيع) · تحويل شهري تلقائي («رجعته نفس الأسبوع، ما فيه أحد في الطرف الثاني»).','A savings account, opened and ignored · a “52-week challenge” from Instagram, five weeks · an automatic monthly transfer (“I moved it back the same week. There was nobody on the other end.”)'],
+  w:['تعامل دفعة الجمعية كفاتورة وراها شخص: تدفعها أول شي، لأن فيه إنسان ينتظر، مو تطبيق.','Treats the group contribution like a bill with a person attached. She pays it first, because a person is waiting, not an app.'],
+  x:['لحالها «ما تقدر تدخر»، ومع المجموعة تدخر بسهولة من ٣ سنين. الفلوس ما تغيرت، المساءلة هي اللي تغيرت. وتسمي اللي ينجح «مو ادخار حقيقي».','Alone she “can’t save”. Inside a group she saves effortlessly, and has for three years. The money didn’t change; the accountability did. She describes the one that works as “not really saving.”'],
+  n:['وصفت نفسها «سيئة مع الفلوس» وهي توري سجل ٣ سنين من الدفعات الكاملة على جوالها.','She described herself as “bad with money” while showing us a three-year record of perfect monthly payments on her phone.'],
+  emp:{th:['«فلوس الجمعية مو ملكي» (قالت: «للمجموعة»)','“The circle money isn’t mine” (she said: “it belongs to the group”)'],fe:['خوف إنها تخذل زميلاتها (تفضّل تجوع ولا تكون «اللي ناقصة»)','Fear of letting colleagues down (would rather go hungry than be “the one who’s short”)']}},
+ khalid:{age:['٣١ · مهندس · الرياض','31 · engineer · Riyadh'],inc:['راتب ثابت','Steady salary'],where:['«حصالة هدف» مقفلة في تطبيق منفصل','A locked “goal pot” in a separate app'],now:['تزيد كل شهر من ١٤ شهر','Grown every month for 14 months'],
+  scene:['يدخر لسيارة يقدر نظرياً يشتريها الحين، بس يبيها كاش. حصالته «كامري ٢٠٢٧» تحتاج ثلاث شاشات ومبلغ تكتبه وتأكيد ويوم انتظار عشان تسحب. بدأ السحب خمس مرات هالسنة وكمّل مرة. «عند الشاشة الثانية أكون اقتنعت أتراجع. هذا مو قوة مني، هذي الشاشة مزعجة».','Khalid is saving for a car he could, technically, already afford; he wants to buy it outright. His goal pot, named “Camry 2027”, takes three screens, a typed amount, a confirmation and a one-day wait to withdraw from. He has started that process maybe five times this year and finished it once. “By the second screen I’ve usually talked myself out of it. That’s not me being strong. That’s the screen being annoying.”'],
+  q:[['«سحب الفلوس ياخذ كم خطوة، وبصراحة هالتعقيد هو اللي ينقذني.»','«لو كانت سهلة الوصول كان راحت. الإزعاج هو الميزة.»','«طفيت الإشعارات، رسائل «صرفت كذا» كانت توترني.»','«الفلوس اللي ما أشوفها هي الوحيدة اللي فعلاً عندي.»','«زوجتي تحسبني منضبط. لا، أنا بس كسول في الاتجاه الصح.»','«ما أبي أفكر في الفلوس كل يوم. أبي أفكر فيها مرة وحدة صح، وخلاص.»'],['“Moving money out of it takes a few steps, and honestly that friction is what saves me.”','“If it were easy to reach, it’d be gone. The annoyance is the feature.”','“I turned off the app’s notifications though. The constant ‘you spent X’ messages just stressed me out.”','“The money I can’t see is the only money I actually have.”','“My wife thinks I’m disciplined. I’m not. I’m just lazy in the right direction.”','“I don’t want to think about money every day. I want to think about it once, properly, and then not.”']],
+  d:[['يستخدم حصالة مقفلة صعبة الوصول: ثلاث شاشات ومبلغ مكتوب ويوم انتظار.','بدأ السحب خمس مرات هالسنة وكمّل مرة.','طفّى إشعارات الصرف بعد أسبوع تقريباً.','يشيك على الحصالة «يمكن مرتين في الشهر»، وتزيد كل شهر من ١٤ شهر.','فلوس الصرف في تطبيق بنك ثاني: «تطبيق ثاني، مزاج ثاني».','ضبط كل شي في ليلة وحدة بعد ما شاف زميله، وما لمس الإعدادات من وقتها.'],['Uses a locked goal pot that is deliberately harder to access: three screens, a typed amount, a one-day delay.','Started a withdrawal five times this year, completed one.','Disabled spending notifications after about a week.','Checks the pot “maybe twice a month” and likes seeing it grow. It has grown every month for 14 months.','Keeps his spending money in a different bank app: “different app, different mood.”','Set it all up in one evening after watching a colleague, and has not touched the settings since.']],
+  m:['في رمضان ولد عمه طلب يتسلف ٣,٠٠٠. فتح خالد الحصالة، ووصل لشاشة المبلغ ووقف. «سلّفته ١,٠٠٠ من الجاري وقلت له هذا اللي عندي. مو كذب بالضبط. الفلوس الثانية مو متاحة، حتى لي. أظن هذي هي الحيلة كلها».','During Ramadan a cousin asked to borrow 3,000 riyals. Khalid opened the goal pot, got as far as the amount screen, and stopped. “I lent him 1,000 from my current account and told him that was what I had. It wasn’t exactly a lie. The other money is… not available. Even to me. I think that’s the whole trick.”'],
+  t:['إشعارات الصرف (طفاها بعد أسبوع: «كل تنبيه رعب صغير») · جدول ميزانية (تركه بعد شهرين) · المدخرات في الحساب الأساسي «بقوة الإرادة» («دامت قد ما تتوقع»).','Spending notifications, off after a week (“Every ping was a small panic”) · a budgeting spreadsheet, abandoned after two months · keeping savings in his main account “with willpower” (“that lasted about as long as you’d expect”).'],
+  w:['لما يغريه شي، ما يكمل خطوات السحب، والتعب نفسه يقنعه يتراجع.','When tempted, he simply doesn’t finish the multi-step withdrawal. The effort talks him out of it.'],
+  x:['اللي ينفعه (تعقيد، انتظار، فلوس بعيدة) عكس تصميم «سهل وفوري وبضغطة» اللي تتنافس عليه تطبيقات الفلوس. لقاه بالصدفة ويسميه كسل.','The thing that helps him (friction, delay, money out of reach) is the exact opposite of the “easy, instant, one-tap” design most money apps compete on. He found it by accident and calls it laziness.'],
+  n:['اعتذر مرتين إنه «ممل». ورصيده الوحيد في الحزمة اللي ما نزل أبداً.','He apologised, twice, for being “boring.” His is the only savings balance in this pack that has only ever gone up.'],
+  emp:{th:['«الفلوس المتاحة لي مو آمنة مني» («مو متاحة، حتى لي»)','“Money I can reach isn’t safe from me” (“not available, even to me”)'],fe:['راحة لما ما يفكر في الفلوس، وتوتر من التنبيهات («رعب صغير»)','Calm when not thinking about money; stress from pings (“a small panic”)']}},
+ huda:{age:['٢٧ · ممرضة (مناوبات) · الرياض','27 · nurse (shift work) · Riyadh'],inc:['راتب ثابت','Steady salary'],where:['ظرف كاش في درج جنب السرير','A cash envelope in a bedside drawer'],now:['٤,٩٠٠ ريال، ما تغيرت من فبراير','4,900 SAR, unchanged since February'],
+  scene:['هدى تشتغل مناوبات ١٢ ساعة، وعندها ظرف بني جنب سريرها مكتوب عليه «إسطنبول، أغسطس». كل راتب تحط ٧٠٠ وتكتب المجموع على الظرف. «أحب أمسكه. الرصيد في التطبيق مجرد رقم، هذا… تخين». الظرف مكتوب عليه ٤,٩٠٠ من فبراير، لما تأجلت الرحلة سنة.','Huda works twelve-hour shifts and keeps a brown envelope in the drawer beside her bed. On it, in marker: “ISTANBUL — AUGUST.” Each payday she put 700 riyals in and wrote the new total on the front. “I like holding it. An app balance is just a number. This is… thick.” The envelope says 4,900. It has said 4,900 since February, when the trip was pushed back a year.'],
+  q:[['«كنت أدخر بشكل ممتاز للرحلة، بعدين تأجلت سنة و… وقفت. صارت بعيدة مرة.»','«أحب أشوف الرقم يزيد. إذا ما فيه خط نهاية واضح، الادخار ما له معنى.»','«إني أشوف الرزمة تكبر يحمسني أكثر من رقم في تطبيق.»','«لازم أشوف النهاية. إذا شفتها ما أحد يوقفني، وإذا ما شفتها ولا شي.»','«هدف بعد سنتين؟ هذا مو هدف، هذي أمنية.»','«لما تأجلت الرحلة ما قررت أوقف. بس ما حطيت الـ٧٠٠ اللي بعدها. واللي بعدها.»'],['“I was saving really well for a trip, then the trip got pushed a year and I just… stopped. It felt too far away to bother.”','“I like seeing a number go up. When there’s no clear finish line, saving feels pointless.”','“Seeing the stack grow is more motivating than a number in an app.”','“I need to be able to see the end. If I can see the end, I’m unstoppable. If I can’t, I’m nothing.”','“A goal in two years? That’s not a goal. That’s a wish.”','“When the trip moved I didn’t decide to stop. I just didn’t put the next 700 in. And then the next.”']],
+  d:[['ادخرت ٧٠٠ شهرياً تسع شهور ورا بعض والرحلة لها تاريخ، وصفر في الأربع شهور بعدها.','تكتب المجموع على الظرف كل راتب، وتصوره وترسله لأختها.','تخلي الفلوس كاش لأن التقدم اللي تشوفه يحمسها أكثر من التطبيق.','تتفاعل بقوة مع المراحل، ووصلت هدف العمرة قبل وقته بأسبوعين.','عندها حساب ادخار فيه ٢,١٠٠ ما تغير من سنة: «مو لشي».','ما فتحت الدرج «قاصدة» من فبراير.'],['Saved 700 a month, nine months in a row, while the trip had a date; zero in the four months since.','Writes the running total on the envelope each payday, photographs it, and sends the photo to her sister.','Keeps physical cash because visible progress motivates her more than an app balance.','Responds strongly to milestones; hit her Umrah target two weeks early and “felt like I’d won something.”','Has a bank savings account with 2,100 riyals, unchanged for over a year: “not for anything.”','Has not opened the drawer “on purpose” since February.']],
+  m:['أحسن فترة كانت عمرة مع أمها بعد ثلاث شهور: «ثلاث شهور مثالية، كنت أشوفها، كل راتب أقرب بالثلث». وأسوأ شي الظرف اللي في الدرج: «ما صرفته، بس وقفت أضيف. ما عليه تاريخ الحين، فما فيه شي أقرب له».','Her best run was the Umrah trip with her mother, three months out: “Three months is perfect. I could see it. Every payday I was a third closer.” Her worst is the envelope still in the drawer: “The money’s still there. I didn’t spend it. I just stopped adding. There’s no date on it now, so there’s nothing to be closer to.”'],
+  t:['ميزة «هدف الادخار» في تطبيق البنك («داخل التطبيق، فنسيت إنها موجودة») · جمعية أختها (طلعت لأن دورها جا بدري) · ادخار «لغير شي» («صفر»).','The bank app’s “savings goal” feature (“it was inside the app, so I forgot it existed”) · her sister’s jam’iyyah, left after her turn came too early · saving “for nothing in particular” (“Zero.”)'],
+  w:['ظرف كاش في البيت تشوفه وتلمسه، والمجموع مكتوب عليه.','A home cash envelope she can see and touch, with the total written on the front.'],
+  x:['ادخارها يشتغل بتقدم ظاهر نحو هدف قريب. شيل خط النهاية وتنهار العادة. ما كان انضباط أبداً، وهي تعرف.','Her saving is powered by visible progress toward a near goal. Remove the finish line and the habit collapses completely. It was never discipline, and she knows it.'],
+  n:['كانت تلمس الظرف وهي تحكي عن العمرة، ووقفت لما حكت عن التأجيل.','She touched the envelope while talking about the Umrah trip, and stopped touching it when she talked about the delay.'],
+  emp:{th:['«الادخار بدون موعد ما له معنى» («هذي أمنية»)','“Saving without a date is pointless” (“That’s a wish”)'],fe:['فقدت الحماس من تأجلت الرحلة (وقفت تلمس الظرف)','Deflated since the trip moved (stopped touching the envelope)']}},
+ omar:{age:['٢٣ · خريج جديد · الرياض','23 · new graduate · Riyadh'],inc:['راتب مبتدئ، أول وظيفة، له ٨ شهور','Entry salary, first job, 8 months in'],where:['ما عنده مكان للحين','Nowhere yet'],now:['صفر، و٤ خطط تقسيط شغالة','Zero. Four BNPL plans running'],
+  scene:['راتب عمر ٥,٥٠٠ ينزل يوم ١. الإيجار ٢,٠٠٠ يطلع نفس اليوم. بعدين الجوال والبنزين ونادي نادراً يروحه، وقسطين من الشهر اللي فات، و«أكل وأشياء». يوم ١٨ يعيش على «اللي يتبقى»، وهالشهر ١٤٠ ريال. الادخار يجي بعد كل هذا، وعمره ما جا.','Omar’s salary of 5,500 riyals lands on the 1st. Rent, 2,000, goes out the same day. Then the phone, petrol, a gym he rarely visits, two buy-now-pay-later instalments from last month, and “food and stuff.” By about the 18th he is living on “whatever’s left”, which this month was 140 riyals. Saving, in the order he thinks about money, comes after all of that. It has never come.'],
+  q:[['«فعلاً ما يتبقى شي أدخره. بعد الإيجار والأساسيات خلاص.»','«أدفع كل شي أول وأحاول أدخر الباقي، وهو تقريباً ولا شي.»','«أستخدم «اشترِ الحين وادفع بعدين» كثير. وقت الدفع يحسسك إنه ببلاش، وبعدين ثلاث دفعات تنزل الشهر الجاي وأتأخر.»','«أنا مو سيء مع الفلوس، بس ما فيه فلوس أكون زين معها.»','«الدفع لاحقاً ما يحسسك إنه صرف. يحسسك إنه… جدولة.»','«الكل يقول ابدأ بدري. أبدأ بإيش؟ لما يزيد دخلي بجدّ فيها.»'],['“There’s genuinely nothing left to save. By the time rent and the essentials are gone, that’s it.”','“I pay everything else first and try to save what remains, which is basically nothing.”','“I use buy-now-pay-later a lot. It feels free at checkout, but then three payments hit next month and I’m behind again.”','“I’m not bad with money. There just isn’t any money to be good with.”','“Pay-later doesn’t feel like spending. It feels like… scheduling.”','“Everyone says start early. Start with what? When I earn more I’ll get serious about it.”']],
+  d:[['يدخر آخر شي بعد كل الصرف، وما ادخر شي في ٨ شهور.','أربع خطط تقسيط مع بعض، وما عرف المجموع الشهري بدون ما يشيك: ١,١٨٠.','اشترى سماعات وجاكيت بـ٢,٤٠٠، كل واحد على ثلاث دفعات: «كانت ٨٠٠ بس في الشهر».','ما يفصل بين الفواتير والصرف والادخار: حساب واحد ورصيد واحد.','ما يشيك رصيده إلا لما تنرفض البطاقة.','صرف زيادته في الشهر الخامس قبل ما تنزل، واشترك في خطتين تقسيط زيادة.'],['Saves last, after all spending, so has saved nothing in eight months of work.','Four BNPL plans at once; could not say the monthly total without checking: 1,180.','Bought 2,400 riyals of headphones and a jacket in three instalments each: “it was only 800 a month.”','No separation between bills, spending and saving: one account, one balance.','Checks his balance only when a card is declined.','Spent a raise in month five before it arrived, signing up for two more instalment plans the week he heard about it.']],
+  m:['في شهره الثاني جاه بونص ١,٥٠٠. «كنت ناوي أدخره. بعدين جا تخفيض، ثلاث دفعات كل وحدة ٥٠٠، تقريباً ببلاش، والبونص غطى الأولى». الدفعتين الباقية طلعت من شهور «ما يتبقى فيها شي». «يعني البونص كلفني ألف ريال». ضحك، وبعدين سكت.','In his second month he got a 1,500-riyal bonus. “I was going to save it. Honestly. Then there was a sale: three payments of 500, basically free, the bonus covered the first one.” The next two came out of months where there was already “nothing left.” “So in a way the bonus cost me a thousand riyals.” He laughed, then stopped.'],
+  t:['وعد نفسه يدخر ٥٠٠ شهرياً («وعدت تقريباً ثمان مرات») · حساب ادخار فتحه أول ما توظف وما حط فيه شي · ميزة التقريب في البنك (طفاها بعد ما انرفضت بطاقته بسبب ٣ ريال).','Promising himself to save 500 a month (“I’ve promised about eight times”) · a savings account opened at onboarding, never funded · the bank’s “round up” feature, off after a card was declined for 3 riyals.'],
+  w:['لما يبي شي يقسطه عشان يحس إنه يقدر عليه الحين، وعمر الشهر الجاي يتصرف.','When he wants something, he splits it into instalments so it feels affordable now; next month’s version of him deals with it.'],
+  x:['يدخر «اللي يتبقى» وما يتبقى شي. الترتيب نفسه (اصرف أول، ادخر آخر) يضمن النتيجة اللي يلومها على راتبه.','He saves “what’s left” and there is never anything left. The order (spend first, save last) guarantees the outcome he blames on his salary.'],
+  n:['قال «ما يتبقى شي» سبع مرات، وكل شي خلاه «ما يتبقى» كان شي قرر يشتريه.','He used the phrase “nothing left” seven times. Each thing that made it “nothing” was something he had decided to buy.'],
+  emp:{th:['«الادخار يبدأ لما يزيد الدخل» («لما يزيد دخلي بجدّ فيها»)','“Saving starts when income rises” (“When I earn more I’ll get serious”)'],fe:['ندم لحظي مخفي بضحكة (البونص «كلفني ألف»)','A flash of regret covered by a laugh (the bonus “cost me a thousand”)']}}
+ },
+ field:[['كذا واحد مدخراته في نفس التطبيق على بعد ضغطة من المصروف، وأغلبهم رجّعوا فلوس مرة على الأقل هالشهر.','Several people keep their savings in the same app, one tap from spending, and most had moved money back at least once this month.'],['اللي ادخروا بنجاح تقريباً دايم كان بينهم وبين الفلوس شي: قفل، مجموعة، شخص، تطبيق منفصل، درج في غرفة ثانية.','People who saved successfully almost always had something standing between themselves and the money: a lock, a group, a person, a separate app, a drawer in another room.'],['كلمة «انضباط» تتكرر، تقريباً دايم لتفسير فشل، وتقريباً أبداً لتفسير نجاح.','The word “discipline” came up constantly, nearly always to explain a failure, almost never to explain a success.'],['التحويلات الثابتة فشلت مع أي دخل متغير. كلها انطفت بعد شهر سيء وحد، وولا وحدة رجعت.','Automatic, fixed transfers failed for anyone with variable income; every one was switched off after a single bad month, and none were switched back on.'],['التقدم الظاهر (رزمة تكبر، مرحلة، هدف بتاريخ) خلاهم يكملون، والرصيد المجرد لا.','Visible progress (a growing stack, a milestone, a goal with a date) kept people going; an abstract balance did not.'],['تقريباً ما أحد غيّر إعداد افتراضي في تطبيقه البنكي، واللي غيّر (خالد) هو اللي يدخر.','Almost no one had ever changed a default setting in their banking app. The ones who had (Khalid) were the ones saving.'],['ثلاثة من ستة ما عرفوا مدخراتهم بفرق أقل من ٥٠٠ ريال بدون ما يشيكون، واللي عرفوا هم اللي عندهم قفل أو تاريخ.','Three of the six could not state their savings within 500 riyals without checking. The two who could were the two with a lock or a date.'],['سلوك يوم الراتب متطابق عند الموظفين: نوايا حلوة أول ٤٨ ساعة، ثم فتور.','Payday behaviour was identical across the salaried people: a burst of good intentions in the first 48 hours, then drift.'],['كل اللي يدخرون قرروا مرة وحدة (حصالة، جمعية، تاريخ على ظرف) ووقفوا يقررون. واللي ما يدخرون يقررون من جديد كل شهر ويخسرون.','Everyone who was saving had made the decision once (set up a pot, joined a group, wrote a date on an envelope) and then stopped deciding. Everyone who wasn’t was deciding fresh every month, and losing.'],['التقسيط ما انوصف أبداً كديْن: «جدولة»، «توزيع»، «تقريباً ببلاش».','Buy-now-pay-later was never described as debt. It was “scheduling”, “spreading it”, or “basically free”.']]
+};
+
+/* ================= VIEW MODE ================= */
+document.documentElement.classList.add('js');
+let viewPref='auto';
+try{const vp=localStorage.getItem('fin557-view');if(vp==='mobile'||vp==='desktop'||vp==='auto')viewPref=vp;}catch(e){}
+const vpMeta=document.querySelector('meta[name="viewport"]');const vpOrig=vpMeta?vpMeta.getAttribute('content'):null;
+const isTop=(()=>{try{return window.top===window;}catch(e){return false;}})();
+function detectView(){const w=Math.min(window.innerWidth,document.documentElement.clientWidth||window.innerWidth);const coarse=window.matchMedia&&matchMedia('(pointer:coarse)').matches;const sw=Math.min(screen.width||w,screen.height||w);return (w<=760||(coarse&&sw<=500))?'mobile':'desktop';}
+let autoView=detectView();
+function effView(){return viewPref==='auto'?autoView:viewPref;}
+function applyView(){
+  const v=effView(),h=document.documentElement;h.setAttribute('data-view',v);h.classList.remove('forcewide');
+  if(v==='desktop'&&autoView==='mobile'){if(isTop&&vpMeta)vpMeta.setAttribute('content','width=1100, viewport-fit=cover');else h.classList.add('forcewide');}
+  else if(vpMeta&&vpOrig)vpMeta.setAttribute('content',vpOrig);
+}
+applyView();
+/* ================= STATIONS ================= */
+let lang='ar';
+try{const l=localStorage.getItem('fin557-lang');if(l==='en'||l==='ar')lang=l;}catch(e){}
+const T=p=>Array.isArray(p)?(lang==='ar'?p[0]:p[1]):p;
+const DIG='٠١٢٣٤٥٦٧٨٩';
+const num=n=>lang==='ar'?String(n).replace(/\d/g,d=>DIG[d]):String(n);
+const U=k=>T(UI[k]);
+const ico=(k,c='ico')=>`<svg class="${c}" viewBox="0 0 24 24" aria-hidden="true">${IC[k]}</svg>`;
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const PH={d:'Discover',s:'Synthesize',f:'Define'};
+const PHL={d:['اجمع','Collect'],s:['افهم','Make sense'],f:['حدّد','Define']};
+
+const S=[
+{id:'raw',ph:'d',icon:'mic',must:1,name:['البيانات الخام','Raw data'],tool:'Interview + Observation',
+ q:['وش صار فعلاً؟ مو وش يقول الشخص إنه بيسوي.','What actually happened, not what the person says they would do.'],
+ inS:['شخص حقيقي + موقف حقيقي','A real person + a real moment'],outS:['اقتباسات + أفعال + حيل','Quotes + actions + workarounds'],
+ need:['ولا شي، هذي نقطة البداية.','Nothing. This is where it starts.'],
+ give:['اقتباسات بكلام الشخص نفسه، وأفعال شفتها أو وصفها بالتفصيل، والحيل اللي اخترعها، وملاحظات مراقبة تكشف الفرق بين كلامه وفعله.','Quotes in the person’s own words, actions you saw or they described in detail, the workarounds they invented, and observation notes that expose the gap between words and actions.'],
+ how:[['اسأل عن الماضي بس: «احكِ لي عن آخر مرة حاولت تدخر». ولا تسأل أبداً «هل بتستخدم…».','تابع القصة: «وبعدين؟ وليش كذا؟». المحاور يتكلم ٢٠٪ من الوقت بس، وبعد الختام اسكت وانتظر.','خلال ساعة عبّي ورقة التسجيل: وش قال (حرفياً)، وش سوّى، ووش فاجأك.','المراقبة (موصى بها): اجلس جنب الشخص وهو يستخدم تطبيقه، وسجّل الأفعال بس مع الوقت. بعدها قارنها بكلامه.'],['Ask about the past only: “Walk me through the last time you tried to save.” Never ask “would you use…”.','Follow the story: “What next? Why that?” The interviewer talks 20% of the time; after the close, stay silent and wait.','Within an hour, fill the record sheet: what they said (verbatim), what they did, what surprised you.','Observation (recommended): sit beside them as they use their app and record actions only, with the time. Then compare with what they said.']],
+ trap:['تسأل عن المستقبل: «هل بتستخدم تطبيق يسوي كذا؟». الجواب رأي، مو دليل.','Asking about the future: “Would you use an app that…?” The answer is an opinion, not evidence.'],
+ check:[['سألت شخص: «هل بتستخدم تطبيق يقفل مدخراتك؟» وقال: «أكيد!». هل هذا دليل؟','لا. هذا رأي عن المستقبل، ومكانه الدرجة ٢ من ٦ في سلّم الأدلة. الدليل هو وش سوّى آخر مرة حاول يدخر.'],['You asked: “Would you use an app that locks your savings?” They said “Definitely!” Is that evidence?','No. It is an opinion about the future, rung 2 of 6 on the Evidence Ladder. Evidence is what they did the last time they tried to save.']]},
+{id:'emp',ph:'d',icon:'face',must:1,name:['خريطة التعاطف','Empathy map'],tool:'Empathy Map',
+ q:['وش يقول هذا الشخص، ووش يسوي، ووش يفكر، ووش يحس؟','What does this person say, do, think and feel?'],
+ inS:['مقابلة + مراقبة','Interview + observation'],outS:['تناقض بين القول والفعل','A say/do tension'],
+ need:['مقابلة الشخص، وملاحظات المراقبة لو فيه.','The person’s interview, plus observation notes if any.'],
+ give:['صفحة لكل شخص فيها الأربعة أرباع، والتناقض بين كلامه وفعله.','One page per person with four quadrants, and the tension between words and actions.'],
+ how:[['«يقول»: اقتباسات حرفية بدون تعديل.','«يسوي»: أفعال بس، بدون آراء. لازم يكون مليان مثل «يقول».','«يفكر» و«يحس»: فرضيات تكتب جنبها الدليل بين قوسين.','اقرأ الأرباع مع بعض ودوّر على التناقض، واكتبه في السطر الأخير. ولا ربع فيه منتج أو ميزة.'],['SAYS: verbatim quotes, unedited.','DOES: actions only, no opinions. It should be as full as SAYS.','THINKS and FEELS: hypotheses, with the evidence in brackets.','Read across the quadrants, find the tension, write it in the last row. No quadrant contains a product or feature.']],
+ trap:['تكتب منتج أو ميزة في أي ربع، أو تكتب «يحس» بدون دليل. الخريطة تصف الشخص، ما تقترح حل.','Writing a product or feature in any quadrant, or a FEELS line with no evidence. The map describes the person; it does not propose a solution.'],
+ check:[['«خالد يتوتر من الإشعارات». في أي ربع تنكتب، ووش ينقصها؟','ربع «يحس». وهي فرضية تحتاج دليل بين قوسين: (طفّى الإشعارات بعد أسبوع وقال: «كل تنبيه رعب صغير»).'],['“Khalid gets anxious from notifications.” Which quadrant, and what is missing?','FEELS. It is a hypothesis and needs evidence in brackets: (turned notifications off after a week: “every ping was a small panic”).']]},
+{id:'jtbd',ph:'d',icon:'layers',must:1,name:['الوظيفة المطلوب إنجازها','Jobs to Be Done'],tool:'Jobs to Be Done',
+ q:['وش يحاول الشخص ينجزه فعلاً؟','What is the person really trying to get done?'],
+ inS:['خريطة التعاطف + الاقتباسات','Empathy map + quotes'],outS:['الوظيفة بثلاث طبقات','The job in three layers'],
+ need:['خريطة التعاطف، خصوصاً ربعي «يحس» و«يفكر»، واقتباسات المقابلة.','The Empathy Map, especially FEELS and THINKS, and the interview quotes.'],
+ give:['ثلاث أسطر: الوظيفة العملية والعاطفية والاجتماعية، والطبقة اللي تفشل فيها الحلول الحالية.','Three lines (functional, emotional, social job) and the layer on which today’s solutions fail.'],
+ how:[['اكتب الموقف بصيغة «لما…»: لما ينزل راتبي، لما يغريني شي، لما يتأجل الهدف.','الوظيفة العملية: المهمة اللي لازم تنقضي، بكلام الشخص.','العاطفية من ربع «يحس»: كيف يبي يحس. والاجتماعية: كيف يبي يشوفه الناس اللي يهمونه.','حدد الطبقة اللي تفشل فيها الحلول الحالية. نادراً تكون العملية.'],['State the situation as “when I…”: when my salary lands, when something tempts me, when a goal date moves.','Functional job: the practical task that must get done, in the person’s terms.','Emotional job from FEELS: how they want to feel. Social job: how they want to be seen by people who matter.','Name the layer where current solutions fail. It is rarely the functional one.']],
+ trap:['تكتب الوظيفة كمنتج («يبي تطبيق ادخار»)، أو توقف عند الطبقة العملية وتفوّت السبب الحقيقي لرفض الحلول.','Writing the job as a product (“wants a savings app”), or stopping at the functional layer and missing why solutions get rejected.'],
+ check:[['تطبيق الميزانية عند سارة يسوي وظيفته العملية. ليش حذفته؟','لأنه فشل في الطبقة العاطفية: «يقول لي اللي صرفته، وأنا أعرفه». ما خلاها تحس بسيطرة.'],['Sara’s budgeting app did its functional job. Why did she delete it?','It failed on the emotional layer: “It just told me what I’d already spent.” It did not make her feel in control.']]},
+{id:'lad',ph:'d',icon:'ladder',must:0,chk:1,name:['سلّم الأدلة','Evidence Ladder'],tool:'Evidence Ladder',
+ q:['وش من قناعاتنا دليل، ووش منها أمل؟','Which of our beliefs are evidence, and which are hope?'],
+ inS:['ادعاءات الفريق عن العميل','The team’s claims about the customer'],outS:['كل ادعاء على درجة من ٦','Each claim on a rung of 6'],
+ need:['الادعاءات اللي طلعت من المقابلات والمراقبة وخريطة التعاطف والـ JTBD.','The claims from interviews, observation, the Empathy Map and JTBD.'],
+ give:['كل ادعاء على درجة من «افتراض» إلى «التزام»، ووش يرفعه درجة. يدخل في ملف Stage Gate 1 كدليل.','Each claim placed from “assumption” to “committed”, with what would lift it a rung. It goes into the Stage Gate 1 dossier as proof.'],
+ how:[['اكتب كل ادعاء عن العميل في سطر، بكلام بسيط.','سجّل مصدره: نقاش فريق، اقتباس، فعل موصوف، مراقبة، تكرار، أو دفع فلوس ووقت.','حط الدرجة بأمانة: ١ افتراض، ٢ رأي، ٣ سلوك سابق، ٤ مُشاهد، ٥ متكرر، ٦ التزام. الاقتباس القوي يبقى ٢.','أهم ثلاث ادعاءات لازم تكون ٣ أو أعلى. اللي تحت ارجع فيها للمقابلات.'],['List every claim about the customer, one per row, in plain words.','Record its source: team talk, a quote, a described action, an observation, a repeat, money or time spent.','Assign the rung honestly: 1 assumption, 2 opinion, 3 past behaviour, 4 observed, 5 repeated, 6 committed. A forceful quote is still 2.','Your three key claims must sit on rung 3 or above. Below that, go back to interviews.']],
+ trap:['تعطي الاقتباس الحماسي درجة عالية. «أكيد بستخدمه» تبقى رأي مهما كانت قوية.','Giving an enthusiastic quote a high rung. “I’d definitely use it” stays an opinion however strong it sounds.'],
+ check:[['ريم تدفع ١,٠٠٠ ريال كل شهر للجمعية من ٣ سنين. أي درجة؟','٦، التزام: صرفت فلوس فعلاً وبشكل متكرر.'],['Reem has paid 1,000 riyals a month to the circle for 3 years. Which rung?','6, committed: she has actually spent money, repeatedly.']]},
+{id:'det',ph:'d',icon:'detect',must:0,chk:1,name:['اختبار المشكلة','Problem-Detection Test'],tool:'Problem-Detection Test',
+ q:['هل لقينا مشكلة حقيقية لشخص حقيقي؟','Have we detected a real problem for a real person?'],
+ inS:['التعاطف + JTBD + السلّم','Empathy + JTBD + Ladder'],outS:['حكم + مشكلة بلا حل','A verdict + a solution-free problem'],
+ need:['خريطة التعاطف (مين)، والـ JTBD (وش)، وسلّم الأدلة (الدليل).','The Empathy Map (who), JTBD (what) and the Evidence Ladder (evidence).'],
+ give:['حكم على الفكرة (حقيقية، مُساء تأطيرها، أو مفترضة) وعبارة مشكلة منظفة من الحل تبدأ منها جملة الـ POV.','A verdict on the idea (real, misframed, or assumed) and a solution-free problem statement that the POV starts from.'],
+ how:[['مين: شخص محدد في موقف محدد، مو «الكل» ولا فئة عمرية.','وش: المشكلة اللي كانت موجودة قبل أي فكرة، بدون اسم منتج.','الدليل: سلوك متكرر، حيل، وقت أو فلوس ضايعة، تخلّي عن أدوات، استعداد يتصرف.','الحكم، ثم افرز العبارة: عرض، افتراض، مشكلة، حل. وافحص الفخاخ الأربعة.'],['WHO: a specific person in a situation, not “everyone” or a demographic.','WHAT: the lived problem that existed before any idea, with no product name.','EVIDENCE: repeated behaviour, workarounds, wasted time or money, abandoned tools, willingness to act.','Give the verdict, then sort the statement: symptom, assumption, problem, solution. Check the four traps.']],
+ trap:['الوقوع في أحد الفخاخ الأربعة: البداية بالحل، «نعرف عميلنا»، مقاييس داخلية («نبي استخدام أعلى»)، أو بحث مجامل («قالوا عاجبهم»).','Falling into one of the four traps: solution-first, “we know this customer”, internal metrics (“we need higher usage”), or polite research (“they said they like it”).'],
+ check:[['«الشباب ما عندهم ثقافة مالية». في أي خانة من الفرز؟','افتراض. والأدلة تعارضه: ريم «مو شخص أرقام» ومع ذلك ملتزمة ٣ سنين.'],['“Young people lack financial literacy.” Which box in the sort?','Assumption. The evidence contradicts it: Reem “isn’t a numbers person” yet has been committed for 3 years.']]},
+{id:'aff',ph:'s',icon:'notes',must:1,name:['التجميع','Affinity'],tool:'Affinity Map',
+ q:['وش المواضيع اللي تطلع من الأدلة نفسها؟','Which themes come out of the evidence itself?'],
+ inS:['كل الملاحظات مفككة','Every note, atomised'],outS:['مجموعات بأسماء سلوك','Clusters named by behaviour'],
+ need:['كل الملاحظات من المقابلات والمراقبة وخرائط التعاطف، وكل ملاحظة في ورقة لحالها.','All notes from interviews, observation and empathy maps, one idea per note.'],
+ give:['مجموعات بأسماء تصف السلوك، والملاحظات الشاذة محطوطة على جنب.','Notes grouped into themes named after behaviour, with outliers kept to one side.'],
+ how:[['فكّك: اقتباس واحد أو فعل واحد أو حيلة وحدة في كل ورقة. بدون ملخصات.','جمّع الأوراق حسب السلوك، مو حسب الشخص.','سمّ كل مجموعة بكلام بسيط يصف وش يصير.','حط الشاذ والتناقضات على جنب ولا ترميها، وبعدين اكتب جملة معنى لكل مجموعة.'],['Atomise: one quote, action or workaround per note. No summaries.','Group notes by behaviour, never by person.','Name each cluster in plain words that describe what happens.','Keep outliers and contradictions aside, never discard them; then write one sentence of meaning per cluster.']],
+ trap:['تفسّر قبل ما تجمّع، أو تجمّع حسب الشخص («ملاحظات سارة»). كذا تطلع لك المواضيع اللي كنت تتوقعها من الأساس.','Interpreting before clustering, or clustering by person (“Sara’s notes”). You end up with the themes you expected all along.'],
+ check:[['جمّعت كل ملاحظات سارة في مجموعة وحدة. وش الغلط؟','التجميع يكون حسب السلوك مو الشخص. ملاحظات سارة تتوزع على «الفلوس القريبة تنصرف» و«الحاجز ينجح».'],['You grouped all of Sara’s notes into one cluster. What is wrong?','Cluster by behaviour, not person. Sara’s notes belong in “money within reach gets spent” and “a barrier works”.']]},
+{id:'pat',ph:'s',icon:'bars',must:1,name:['النمط','Pattern'],tool:'Pattern Finder',
+ q:['وش الشي اللي يتكرر عند أكثر من شخص؟','What keeps happening across several people?'],
+ inS:['المجموعات','The clusters'],outS:['«X يصير لما Y»','“X happens when Y”'],
+ need:['المجموعات من الـ Affinity Map.','The clusters from the Affinity Map.'],
+ give:['نمط في سطر واحد بصيغة «X يصير لما Y»، وحالة شاذة تستاهل التفكير.','One pattern in one line, “X happens when Y”, and an outlier worth examining.'],
+ how:[['اكتب كل نمط محتمل.','عدّ في كم شخص أو موقف يظهر، وتأكد من الملاحظات الميدانية.','أقل من ٣ = حكاية فردية. ٣ أو أكثر = نمط. شخص يخالفه = حالة شاذة.','افحص الشاذ قبل ما تتجاهله، غالباً هو اللي لقى الشي اللي يشتغل.'],['List every candidate pattern.','Count the people or moments it appears in; confirm against field observations.','Under 3 = anecdote. 3 or more = pattern. One person who contradicts it = outlier.','Examine the outlier before dismissing it. They often found what works.']],
+ trap:['تبني الاتجاه على أعلى قصة صوتاً. القصة القوية ممكن تكون شخص واحد بس.','Building the direction on the loudest story. A vivid story can still be one person.'],
+ check:[['سلوك ظهر عند شخصين بس. نمط ولا حكاية؟','حكاية فردية. النمط يحتاج ٣ أشخاص أو مواقف على الأقل.'],['A behaviour shows up in two people only. Pattern or anecdote?','Anecdote. A pattern needs at least three people or moments.']]},
+{id:'why',ph:'s',icon:'roots',must:1,name:['السبب الجذري','Root cause'],tool:'Five Whys',
+ q:['ليش يصير هذا النمط أصلاً؟','Why does this pattern happen at all?'],
+ inS:['النمط + الأدلة','Pattern + evidence'],outS:['سبب جذري إنساني','A human root cause'],
+ need:['النمط، وسلّم الأدلة عشان تتأكد إن كل «ليش» مسنودة بدليل.','The pattern, and the Evidence Ladder to confirm each “why” is backed by a note.'],
+ give:['سبب جذري: إنساني ومحدد ويقدر التصميم يتعامل معه، ومعه سلسلة الأسباب كاملة.','A root cause that is human, specific and actionable, with the full chain behind it.'],
+ how:[['اكتب النمط في أول سطر.','اسأل «ليش؟» واكتب الجواب مع الملاحظة اللي تسنده. أي جواب بدون دليل تخمين ويرفض.','كل مستوى لازم يكون أكثر تحديداً وإنسانية من اللي قبله.','وقف لما يكون السبب إنساني ومحدد وقابل للتصميم، واقرأ السلسلة بالعكس وتأكد من كل حلقة.'],['Write the pattern in the first row.','Ask “why?” and write the answer with the note that supports it. An answer with no evidence is a guess and is rejected.','Each level should be more specific and more human than the last.','Stop when the cause is human, specific and actionable; read the chain backwards and check every link.']],
+ trap:['تقف عند عرض، أو تلوم الشخص («ما يفهمون»)، أو تخلي السبب ميزة ناقصة («ما فيه تنبيه»)، أو آلية ما بينها البحث.','Stopping at a symptom, blaming the person (“they don’t understand”), making the cause a missing feature (“there is no reminder”), or a mechanism the research never showed.'],
+ check:[['وصلت لسبب: «ما فيه ميزة تذكير بالادخار». توقف؟','لا. هذا ميزة ناقصة مو سبب إنساني. اسأل: ليش التذكير بيفرق؟ لين توصل لسلوك أو شعور.'],['You reached: “There is no savings-reminder feature.” Stop?','No. That is a missing feature, not a human cause. Ask why a reminder would matter until you reach a behaviour or a feeling.']]},
+{id:'ins',ph:'s',icon:'bulb',must:1,name:['الاستبصار','Insight'],tool:'Insight Statement',
+ q:['وش السبب الإنساني الخفي اللي يفسّر النمط؟','What hidden human reason explains the pattern?'],
+ inS:['النمط + السبب + الشاذ','Pattern + root + outlier'],outS:['استبصار يغيّر قناعة','An insight that changes a belief'],
+ need:['المجموعات والنمط والسبب الجذري والحالة الشاذة.','The clusters, the pattern, the root cause and the outlier.'],
+ give:['جملة أو جملتين تغيّر شي كان الفريق يصدقه قبل البحث، وتصير «لأن» في جملة الـ POV.','One or two sentences that change something the team believed before the research, and become the “because” of the POV.'],
+ how:[['اكتب الملاحظة الفردية: شخص واحد وسلوك واحد.','اكتب النمط: نفس السلوك عند أكثر من شخص.','اكتب الاستبصار: ليش يصير النمط، ولازم يفسّر الحالة الشاذة بعد.','افحصه بخمسة اختبارات: إنساني، مبني على دليل، غير بديهي، يفسّر، ويفتح أكثر من اتجاه.'],['Write the finding: one person, one behaviour.','Write the pattern: the same behaviour across several people.','Write the insight: why the pattern exists. It must explain the outlier too.','Test it five ways: human, evidence-based, non-obvious, explanatory, generative.']],
+ trap:['استبصار تقدر تكتبه قبل البحث («الناس يبون يدخرون أكثر») هو نمط متنكر. ارجع للأدلة.','An insight you could have written before the research (“young people want to save more”) is a pattern in disguise. Go back to the evidence.'],
+ check:[['«الشباب يبون يدخرون أكثر». هل هذا استبصار؟','لا. تقدر تكتبه قبل البحث، يعني يفشل في اختبار «غير بديهي».'],['“Young people want to save more.” Is that an insight?','No. You could write it before any research, so it fails the non-obvious test.']]},
+{id:'pov',ph:'f',icon:'target',must:1,name:['بيان المشكلة','Point of view'],tool:'Point-of-View',
+ q:['مين بالضبط، وش يحتاج، وليش؟','Who exactly, needs what, and why?'],
+ inS:['مستخدم + تقدم + استبصار','User + progress + insight'],outS:['جملة مشكلة بلا حل','A solution-free problem sentence'],
+ need:['المستخدم من خريطة التعاطف، والتقدم من الـ JTBD، والـ «لأن» من الاستبصار، والعبارة المنظفة من اختبار المشكلة.','The user from the Empathy Map, the progress from JTBD, the “because” from the insight, and the clean statement from the Problem-Detection Test.'],
+ give:['جملة وحدة بدون أي حل: [مستخدم محدد] يحتاج [تقدم] لأن [استبصار].','One sentence with no solution in it: [specific user] needs [progress] because [insight].'],
+ how:[['عبّي الأجزاء الثلاثة من الأدوات اللي قبل.','اكتب ٢ أو ٣ نسخ واقرأها بصوت عالي.','اختر النسخة اللي يفهمها كل الفريق بنفس الطريقة، واكتب ليش اخترتها.','احذف كلمات الحلول: «أبسط، أسرع، تلقائي، تطبيق، منصة». ولازم تقدر تتخيل ٣ حلول مختلفة لها.'],['Fill the three parts from the earlier tools.','Write two or three versions and read them aloud.','Pick the one everyone reads the same way, and record why.','Remove solution words: “simpler, faster, automatic, app, platform”. It must allow at least three different solutions.']],
+ trap:['تدس الحل في الجملة («يحتاج تطبيق يقفل المدخرات»). لو ما تقدر تتخيل ٣ حلول مختلفة لها، فهي مو مشكلة.','Hiding the solution in the sentence (“needs an app that locks savings”). If you cannot imagine three different answers, it is not a problem yet.'],
+ check:[['«الموظف يحتاج تطبيق أسرع للادخار». وش المشكلة فيها؟','فيها حل («تطبيق») وكلمة حل («أسرع»)، وما فيها «لأن» مبنية على استبصار.'],['“The employee needs a faster savings app.” What is wrong?','It contains a solution (“app”) and a solution word (“faster”), and has no evidence-based “because”.']]},
+{id:'hmw',ph:'f',icon:'compass',must:1,name:['سؤال HMW','How Might We'],tool:'How Might We + Altitude Check',
+ q:['كيف نفتح باب الحلول بدون ما نختار حل؟','How do we open the door to solutions without choosing one?'],
+ inS:['بيان المشكلة','The POV statement'],outS:['سؤال مفتوح بخمس إجابات','An open question with five answers'],
+ need:['بيان المشكلة (POV).','The Point-of-View statement.'],
+ give:['سؤال مفتوح واحد، على الارتفاع الصحيح (Altitude Check)، يفتح أكثر من إجابة.','One open question, checked for altitude, that invites several answers.'],
+ how:[['اكتبه بصيغة: كيف ممكن نساعد [المستخدم] [يحقق التقدم] بحيث / بدون [شرط الاستبصار]؟ لو احتجت «و» فهذا سؤالين.','اكتب ٥ إجابات مختلفة في دقيقتين. لو ما طلع لك إلا جواب واحد، الحل مدسوس في السؤال.','فحص الارتفاع (موصى به): اكتب نسخة واسعة جداً ونسخة ضيقة جداً، وحط سؤالك بينهم.','لو قريب من الضيق اصعد: «ليش هذا مهم؟». لو قريب من الواسع انزل: «وش بالضبط؟ لمين؟». احتفظ بالنسخ الثلاث كدليل.'],['Write it as: How might we help [user] [make progress] so that / without [insight condition]? If you need “and”, it is two questions.','List five different answers in two minutes. If only one comes, the solution is hidden in the question.','Altitude check (recommended): write a too-broad and a too-narrow version and place yours between them.','Close to narrow? Ladder up: “why does that matter?” Close to broad? Ladder down: “what specifically, for whom?” Keep all three as proof.']],
+ trap:['سؤال فيه الحل («كيف نسوي تطبيق…») أو بدون مستخدم وموقف. الاثنين يضيّعون كل اللي بنيته في المحطات اللي قبل.','A question with the solution in it (“How might we build an app…”) or with no user and situation. Both waste everything built in the earlier stations.'],
+ check:[['كيف تعرف إن سؤال HMW ضيق جداً؟','لما ما يطلع لك إلا جواب واحد له، لأن الحل مدسوس فيه.'],['How do you know an HMW is too narrow?','When it only has one possible answer. The solution is built into it.']]},
+{id:'ref',ph:'f',icon:'frames',must:0,chk:1,name:['إعادة التأطير','Reframing'],tool:'Reframing',
+ q:['هل اخترنا الإطار الصح للمشكلة؟','Did we choose the right frame for the problem?'],
+ inS:['الاستبصار + POV + الأدلة','Insight + POV + evidence'],outS:['إطار مختار مع أسبابه','A chosen frame with its reasons'],
+ need:['الاستبصار وجملة الـ POV والأدلة اللي وراهم.','The insight, the POV and the evidence behind them.'],
+ give:['إطاران جنب بعض، وش يبني الفريق من كل واحد، والإطار المختار مع أسبابه. التبرير جزء من Submission 1.','Two frames side by side, what a team would build from each, and the chosen frame with its reasons. The reasoning is part of Submission 1.'],
+ how:[['اكتب الإطار (أ): المشكلة مثل ما افترضها الفريق قبل البحث.','اكتب وش بيبني الفريق منه بشكل ملموس: ميزات، شاشات، رسائل.','اكتب الإطار (ب) من الاستبصار والأدلة، ووش بيبني منه.','لكل إطار: الأدلة اللي تدعمه واللي تعارضه. ثم اختر واكتب السبب.'],['Write Frame A: the problem as the team stated it before the research.','List concretely what a team would build from Frame A: features, screens, messages.','Write Frame B from the insight and the evidence, and what a team would build from it.','For each frame, the evidence that supports and contradicts it. Then choose, and record why.']],
+ trap:['تختار الإطار المريح لأنه يناسب حل كنت ناوي عليه. الإطار يقرر وش يعتبر حل جيد.','Choosing the comfortable frame because it fits a solution you already had in mind. The frame decides what counts as a good solution.'],
+ check:[['ليش التبرير جزء من التسليم مو بس الاختيار؟','لأن الإطار فوق كل قرار تصميم، وهنا تنحفظ قيمة البحث أو تضيع.'],['Why is the reasoning part of the submission, not only the choice?','Because the frame sits upstream of every design decision. This is where the value of the research is kept or lost.']]}
+];
+const IDX={};S.forEach((s,i)=>IDX[s.id]=i);
+const mainNo=[];{let n=0;S.forEach((s,i)=>{mainNo[i]=s.chk?null:++n;});}
+const badge=i=>S[i].chk?'◆':num(mainNo[i]);
+
+/* ================= CASE SCENES ================= */
+const av=k=>`<span class="av-c" style="background:${PPL[k][2]}">${T([PPL[k][0],PPL[k][1]]).charAt(0)}</span>`;
+const pn=k=>T([PPL[k][0],PPL[k][1]]);
+const outb=(txt,od)=>`<div class="outb" style="--od:${od}s"><span class="ol">${ico('out')}${U('outL')}</span>${T(txt)}</div>`;
+const spot='<span class="spot"></span>';
+let empPerson='reem';
+function empQuad(k){const P=PACK.people[k];
+ const says=T(P.q).slice(0,3),does=T(P.d).slice(0,4);
+ return `<div class="persona rv">${av(k)}<div><b>${pn(k)} · ${T(P.age)}</b><div style="font-size:13px;color:var(--ink-2)">${T(P.where)}</div></div></div>
+ <div class="quad">
+  <div class="q1" style="--i:0"><b>${ico('chat')}${T(['يقول','SAYS'])}</b><ul>${says.map(x=>`<li>${x}</li>`).join('')}</ul></div>
+  <div class="q2" style="--i:1"><b>${ico('hand')}${T(['يسوي','DOES'])}</b><ul>${does.map(x=>`<li>${x}</li>`).join('')}</ul></div>
+  <div class="q3" style="--i:2"><b>${ico('brain')}${T(['يفكر','THINKS'])}<span class="hy">${U('hypo')}</span></b><ul><li>${T(P.emp.th)}</li></ul></div>
+  <div class="q4" style="--i:3"><b>${ico('heart')}${T(['يحس','FEELS'])}<span class="hy">${U('hypo')}</span></b><ul><li>${T(P.emp.fe)}</li></ul></div>
+ </div>
+ <div class="tension">⚡ ${T(['التناقض: ','Tension: '])}${T(P.x)}</div>`;}
+const CASE={
+raw:()=>{const R=[['sara',['«أدخر اللي يتبقى آخر الشهر»','“I save whatever is left at month-end”'],['رجّعت من المدخرات ٤ مرات في شهر، وهي ظنت مرتين','Moved savings back 4 times in a month; she guessed twice']],['faisal',['«دخلي المتقطع هو المشكلة»','“My irregular income is the problem”'],['طفّى الادخار الآلي بعد ما انرفضت بطاقته في البنزينة','Turned off auto-save after his card bounced at the petrol station']],['reem',['«أنا سيئة مع الفلوس»','“I’m bad with money”'],['٣ سنين دفعات جمعية بدون ولا تأخير','3 years of savings-circle payments, never once late']],['khalid',['«أنا كسول مو منضبط»','“I’m lazy, not disciplined”'],['بدأ سحب من حصالته ٥ مرات، وكمّل مرة وحدة','Started a withdrawal 5 times, finished once']],['huda',['«ما وقفت، بس ما حطيت»','“I didn’t stop, I just didn’t add”'],['٧٠٠ ريال شهرياً ٩ شهور، ثم صفر بعد تأجيل الرحلة','700 SAR a month for 9 months, then zero after the trip moved']],['omar',['«ما يتبقى شي»','“There’s nothing left”'],['٤ أقساط بـ ١,١٨٠ ريال شهرياً، وما يعرف المجموع','4 BNPL plans worth 1,180 SAR a month; did not know the total']]];
+ return `<div class="scene">${spot}<h3>${ico('mic')}${T(['٦ مقابلات + ٣ جلسات مراقبة: وش قالوا مقابل وش سوّوا','6 interviews + 3 observation sessions: what they said vs what they did'])}</h3>
+ <div class="sd-grid"><span class="hd">${ico('user')}${T(['الشخص','Person'])}</span><span class="hd">${ico('chat')}${T(['قال','Said'])}</span><span class="hd"></span><span class="hd">${ico('eye')}${T(['سوّى فعلاً','Actually did'])}</span>
+ ${R.map((r,i)=>`<span class="nm rv" style="--i:${i}">${av(r[0])}${pn(r[0])}</span><span class="say" style="--i:${i}">${T(r[1])}</span><span class="neq" style="--i:${i}">≠</span><span class="did" style="--i:${i}">${T(r[2])}</span>`).join('')}</div>
+ <button type="button" class="openv rv" style="--base:1.4s" data-open-vault="sara">${ico('folder')}${U('openVault')}</button>
+ ${outb(['الذهب في الفجوة: كلهم يفسرون أنفسهم بـ«انضباط» أو «دخل»، وأفعالهم تقول شي ثاني.','The gold is in the gap: they explain themselves with “discipline” or “income”, and their actions say something else.'],1.8)}</div>`;},
+emp:()=>`<div class="scene">${spot}<h3>${ico('face')}${T(['ست خرائط تعاطف، وحدة لكل شخص. اختر:','Six empathy maps, one per person. Choose:'])}</h3>
+ <div class="ptabs" role="group">${PORDER.map(k=>`<button type="button" data-emp="${k}" aria-pressed="${k===empPerson}">${av(k)}${pn(k)}</button>`).join('')}</div>
+ <div id="empBox">${empQuad(empPerson)}</div>
+ ${outb(['ست خرائط، وفي كل وحدة سطر تناقض. التناقض هو المدخل للتحليل.','Six maps, each with one tension line. The tension is the input to synthesis.'],2.3)}</div>`,
+jtbd:()=>`<div class="scene">${spot}<h3>${ico('layers')}${T(['نرصّ الوظيفة بثلاث طبقات','Stack the job in three layers'])}</h3>
+ <div class="situ">${T(['الموقف: «لما ينزل راتبي أو تنزل دفعة…»','Situation: “When my salary or a payment lands…”'])}</div>
+ <div class="layers">
+  <div class="layer l1" style="--i:0"><span class="li">🛠️</span><div><b>${T(['عملية · وش لازم أسوي','FUNCTIONAL · what I need to do'])}</b>${T(['أحط الفلوس في مكان ما ألمسه لين أوصل الهدف','Put money somewhere I won’t touch until the goal'])}<small>${U('evidence')}${T(['خالد: «الفلوس اللي ما أشوفها هي الوحيدة اللي عندي»','Khalid: “The money I can’t see is the only money I have”'])}</small></div></div>
+  <div class="layer l2" style="--i:1"><span class="li">💗</span><div><b>${T(['عاطفية · كيف أبي أحس','EMOTIONAL · how I want to feel'])}</b>${T(['أحس إني مسيطر بدون ما أفكر في الفلوس كل يوم أو أتوتر','In control, without thinking about money every day or panicking'])}<small>${U('evidence')}${T(['خالد: «كل تنبيه رعب صغير» · سارة حذفت تطبيق الميزانية','Khalid: “every ping a small panic” · Sara deleted the budget app'])}</small></div><span class="fail">${T(['هنا تفشل الحلول','Solutions fail here'])}</span></div>
+  <div class="layer l3" style="--i:2"><span class="li">👥</span><div><b>${T(['اجتماعية · كيف أبي ينشاف','SOCIAL · how I want to be seen'])}</b>${T(['مسؤول، مو «طفولي»، ومو اللي يخذل المجموعة','Responsible, not “childish”, never the one who lets the group down'])}<small>${U('evidence')}${T(['سارة: «طفولية» · ريم: «ما أقدر أكون اللي تخذل المجموعة» · فيصل انحرج في البنزينة','Sara: “childish” · Reem: “can’t be the one who lets the group down” · Faisal embarrassed at the pump'])}</small></div><span class="fail">${T(['وهنا بعد','And here'])}</span></div>
+ </div>
+ ${outb(['الحلول الحالية تنجح عملياً وتفشل عاطفياً واجتماعياً: تحرج، أو توتر، أو تخلي الطريقة الناجحة تبان طفولية.','Today’s solutions work functionally and fail emotionally and socially: they embarrass, stress, or make the working method look childish.'],2.6)}</div>`,
+lad:()=>{const R=[[['«الشباب ناقصهم انضباط»','“Young people lack discipline”'],['قناعة الفريق قبل البحث','The team’s belief before research'],1],[['فيصل: «خطة ثابتة ما تناسب حياتي»','Faisal: “a fixed plan doesn’t fit my life”'],['اقتباس','A quote'],2],[['خالد يتراجع عن السحب في الشاشة الثانية','Khalid backs out at the second screen'],['فعل وصفه بالتفصيل (٥ بدايات، ١ إكمال)','A described action (5 starts, 1 finish)'],3],[['سارة ترجّع المدخرات للجاري','Sara moves savings back to current'],['عدّينا التحويلات معها: ٤','We counted the transfers with her: 4'],4],[['المدخرات تصمد لما فيه حاجز خارجي','Savings hold when there is an outside barrier'],['٤ أشخاص + الملاحظات الميدانية','4 people + field observations'],5,1],[['ريم تلتزم بالجمعية كل شهر','Reem commits to the circle every month'],['١,٠٠٠ ريال شهرياً من ٣ سنين','1,000 SAR a month for 3 years'],6]];
+ const RN=[['افتراض','Assumption'],['رأي','Opinion'],['سلوك سابق','Past behaviour'],['مُشاهد','Observed'],['متكرر','Repeated'],['التزام','Committed']];
+ return `<div class="scene">${spot}<h3>${ico('ladder')}${T(['نوزن كل ادعاء: دليل ولا أمل؟','Weigh each claim: evidence or hope?'])}</h3>
+ <div class="rungkey rv">${RN.map((r,i)=>`<span>${num(i+1)} ${T(r)}</span>`).join(' · ')}</div>
+ <div class="lrows">${R.map((r,i)=>`<div class="lrow ${r[3]?'key':''}" style="--i:${i}"><div><b>${T(r[0])}</b><small>${T(r[1])}</small></div><div><div class="rungs">${[0,1,2,3,4,5].map(j=>`<i class="${j<r[2]?'':'off'}" style="--i:${i};--j:${j}"></i>`).join('')}</div><div class="rl">${num(r[2])} · ${T(RN[r[2]-1])}</div></div></div>`).join('')}</div>
+ ${outb(['الادعاء الأساسي (الحاجز الخارجي) على الدرجة ٥، والمطلوب ٣ أو أكثر. وأما «نقص الانضباط» فدرجة ١: مجرد افتراض.','The central claim (an outside barrier) sits on rung 5; the minimum is 3. “Lack of discipline” is rung 1: just an assumption.'],2.3)}</div>`;},
+det:()=>{const Q=[[['مين؟','WHO?'],['موظف شاب مدخراته على بعد ضغطة من مصروفه (سارة، عمر)، مو «الكل»','A young employee whose savings sit one tap from spending (Sara, Omar), not “everyone”']],[['وش؟','WHAT?'],['يخلي الفلوس اللي جنّبها بعيدة لين يوصل هدفه','Keeping money they set aside untouched until a goal']],[['الدليل؟','EVIDENCE?'],['تكرار (سارة ٤ مرات) · حيل (الأم، الظرف، الجمعية، الحصالة) · أدوات متروكة · فلوس ضايعة (بونص عمر كلّفه ألف)','Repetition (Sara ×4) · workarounds (mother, envelope, circle, pot) · abandoned tools · lost money (Omar’s bonus cost him 1,000)']]];
+ const B=[['sym',['عرض','SYMPTOM'],[['أرصدة ادخار منخفضة','Low savings balances']]],['asm',['افتراض','ASSUMPTION'],[['ناقصهم انضباط أو ثقافة مالية','They lack discipline or financial literacy']]],['prob',['مشكلة','PROBLEM'],[['الفلوس المجنّبة قريبة، والقرار يتجدد كل شهر','Set-aside money stays within reach, and the decision is remade every month']]],['sol',['حل (برا المشكلة)','SOLUTION (kept out)'],[['تطبيق يقفل المدخرات','An app that locks savings']]]];
+ return `<div class="scene">${spot}<h3>${ico('detect')}${T(['أربعة أسئلة، وحكم، وفرز','Four questions, a verdict, a sort'])}</h3>
+ <div class="pdq">${Q.map((q,i)=>`<div style="--i:${i}"><b>${T(q[0])}</b>${T(q[1])}</div>`).join('')}</div>
+ <div class="stamp">${T(['حقيقية · لكنها مؤطرة غلط كـ«انضباط»','Real · but misframed as “discipline”'])}</div>
+ <div class="bins">${B.map((b,i)=>`<div class="bin ${b[0]}"><b>${T(b[1])}</b>${b[2].map(c=>`<div class="card" style="--i:${i};--tx:0px;--ty:-60px;--r:${i%2?8:-8}deg">${T(c)}</div>`).join('')}</div>`).join('')}</div>
+ <div class="traps">${[[['البداية بالحل','Solution-first'],1],[['«نعرف عميلنا»','“We know this customer”'],1],[['مقاييس داخلية','Internal metrics'],1],[['بحث مجامل','Polite research'],1]].map((t,i)=>`<span class="${t[1]?'ok':''}" style="--i:${i}">${T(t[0])}</span>`).join('')}</div>
+ ${outb(['الحكم: نكمل. والعبارة المنظفة من الحل هي بداية جملة الـ POV.','Verdict: go. The solution-free statement becomes the start of the POV.'],3.6)}</div>`;},
+aff:()=>{const C=[[['الفلوس القريبة تنصرف','Money within reach gets spent'],1,[['سارة: المدخرات جنب الجاري','Sara: savings next to current'],['عمر: حساب واحد لكل شي','Omar: one account for everything'],['فيصل: يصرف ظرف الطوارئ','Faisal: spends the emergency envelope']]],[['الحاجز ينجح','A barrier works'],2,[['خالد: ٣ شاشات ويوم انتظار','Khalid: 3 screens + 1-day wait'],['سارة: الفلوس عند أمها','Sara: money held by her mother'],['ريم: زميلات ينتظرون','Reem: colleagues are waiting']]],[['الآلي الثابت ينكسر','Fixed automation breaks'],3,[['فيصل: بطاقته انرفضت','Faisal: card bounced'],['عمر: ميزة التقريب انرفضت بـ٣ ريال','Omar: round-up declined for 3 SAR'],['ريم: «ما فيه أحد في الطرف الثاني»','Reem: “nobody on the other end”']]],[['التقدم الظاهر يحفّز','Visible progress motivates'],4,[['هدى: الظرف «تخين» بيدها','Huda: the envelope feels “thick”'],['هدى: العمرة بعد ٣ شهور','Huda: Umrah 3 months out'],['خالد: يحب يشوفه يكبر','Khalid: likes watching it grow']]],[['قرار مرة ولا كل شهر','Decide once vs every month'],5,[['خالد: ضبطها ليلة وحدة','Khalid: set it up in one evening'],['سارة: «أحب أقرر كل شهر»','Sara: “I like to decide each month”']]]];
+ let k=0;const rnd=n=>Math.abs((Math.sin(n*99.1)*43758.5)%1);
+ return `<div class="scene">${spot}<h3>${ico('notes')}${T(['فككنا الأدلة لأوراق، وجمّعناها حسب السلوك (مو حسب الشخص)','Evidence atomised into notes, grouped by behaviour (not by person)'])}</h3>
+ <div class="clusters">${C.map(c=>`<div class="cl"><b>${T(c[0])}</b>${c[2].map(n=>{k++;const tx=Math.round(rnd(k)*300-150),ty=Math.round(rnd(k+7)*-220-40),r=Math.round(rnd(k+3)*50-25),rr=(rnd(k+11)*4-2).toFixed(1);return `<div class="note n${c[1]}" style="--i:${k};--tx:${tx}px;--ty:${ty}px;--r:${r}deg;--rr:${rr}deg">${T(n)}</div>`;}).join('')}</div>`).join('')}</div>
+ <p class="aside rv" style="--base:1.7s">${T(['على جنب (شاذ): هدى عندها حاجز ووقفت · عمر يسمي التقسيط «جدولة» مو ديْن','Set aside (outliers): Huda had a barrier and stopped · Omar calls BNPL “scheduling”, not debt'])}</p>
+ ${outb(['٥ مجموعات بأسماء تصف وش يصير، والشاذ محفوظ ما انرمى.','Five clusters named after what happens; outliers kept, not thrown away.'],2.1)}</div>`;},
+pat:()=>{const P=[[['المدخرات تصمد لما فيه حاجز خارجي','Savings hold when there is an outside barrier'],['خالد · سارة · ريم · هدى','Khalid · Sara · Reem · Huda'],4,'p',['نمط','Pattern'],'win'],[['الآلي الثابت ينطفي بعد شهر سيء','Fixed automation is switched off after one bad month'],['فيصل · عمر · ريم','Faisal · Omar · Reem'],3,'p',['نمط','Pattern'],''],[['التقدم الظاهر يحفّز','Visible progress motivates'],['هدى · خالد','Huda · Khalid'],2,'a',['حكاية','Anecdote'],''],[['التقسيط ما ينحسب ديْن','BNPL is not counted as debt'],['عمر','Omar'],1,'a',['حكاية','Anecdote'],''],[['عندها حاجز ووقفت لما راح التاريخ','Had a barrier, stopped when the date went'],['هدى','Huda'],1,'o',['شاذ','Outlier'],'out']];
+ return `<div class="scene">${spot}<h3>${ico('bars')}${T(['نعدّ: كم شخص يظهر فيه كل نمط؟','Count it: how many people show each pattern?'])}</h3><div class="ptbl">
+ ${P.map((p,i)=>`<div class="prow ${p[5]}" style="--i:${i}"><div><b>${T(p[0])}</b><div class="who">${T(p[1])}</div></div><div class="bar-t"><i style="--w:${p[2]/6*100}%;--i:${i}"></i></div><span class="cls ${p[3]}">${T(p[4])} · ${num(p[2])}</span></div>`).join('')}</div>
+ <p class="aside rv" style="--base:1.9s;color:var(--ink)">${T(['الشاذ يعلّمنا: الحاجز يحمي الفلوس اللي انحطت، لكن اللي يخليها <b>تكمّل تحط</b> هو موعد قريب. وفيصل يعلّمنا إن الالتزام لازم <b>يتكيف</b>.','The outlier teaches us: a barrier protects money already put away, but a <b>near date</b> is what keeps people adding. Faisal teaches us the commitment must <b>flex</b>.'])}</p>
+ ${outb(['«المدخرات تصمد لما يمسكها شي من برا، وتنهار لما الوصول سهل والقرار يتجدد كل شهر»','“Savings survive when something outside holds them, and collapse when access is easy and the decision is remade every month.”'],2.4)}</div>`;},
+why:()=>{const L=[[['النمط','Pattern'],['يرجّعون المدخرات أو يوقفون الإضافة','They move savings back or stop adding'],['سارة ٤ تحويلات · هدى صفر من فبراير','Sara 4 transfers · Huda zero since February']],[['ليش ١','Why 1'],['الفلوس متاحة لحظة الإغراء','The money is reachable at the moment of temptation'],['المدخرات على بعد ضغطة من الجاري','Savings one tap from the current account']],[['ليش ٢','Why 2'],['القرار يتجدد كل شهر','The decision is remade every month'],['حماس أول ٤٨ ساعة بعد الراتب ثم فتور','A burst in the first 48 hours after payday, then drift']],[['ليش ٣','Why 3'],['يعتبرون الادخار مسألة انضباط','They treat saving as a matter of discipline'],['كلمة «انضباط» تجي مع كل فشل','“Discipline” comes up with every failure']],[['ليش ٤','Why 4'],['حيلهم الناجحة يشوفونها مخجلة','Their working tricks feel embarrassing'],['سارة: «طفولي» · خالد: «كسل» · ريم: «مو ادخار»','Sara “childish” · Khalid “lazy” · Reem “not really saving”']]];
+ return `<div class="scene">${spot}<h3>${ico('roots')}${T(['نسأل «ليش؟» وكل جواب لازم يكون معه دليل','Ask “why?”, and every answer needs evidence'])}</h3><div class="chain">
+ ${L.map((l,i)=>`<div class="lnk" style="--i:${i}"><span class="lv">${T(l[0])}</span>${T(l[1])}<small>${U('evidence')}${T(l[2])}</small></div><div class="dn" style="--i:${i}">↓</div>`).join('')}
+ <div class="lnk root" style="--i:5"><span class="lv">${T(['الجذر','Root'])}</span>${T(['ما يثقون في حيلهم كطريقة صحيحة للادخار، فيرجعون لقوة إرادة تخسر كل شهر','They don’t trust their own workarounds as a real method, so they fall back on willpower that loses every month'])}<small>${T(['يوقف هنا لأنه:','We stop here because it is:'])}</small></div></div>
+ <div class="ticks">${T([['إنساني','محدد','قابل للتصميم'],['Human','Specific','Actionable']]).map((t,i)=>`<span class="tk" style="--i:${i};--base:2.5s">${t}</span>`).join('')}</div></div>`;},
+ins:()=>`<div class="scene">${spot}<h3>${ico('bulb')}${T(['نطلع السلّم: من ملاحظة، لنمط، لاستبصار','Climb the ladder: finding, pattern, insight'])}</h3><div class="ladder">
+ <div class="rung r1" style="--i:0"><span class="ri">👤</span><div><b>${T(['ملاحظة · شخص واحد','Finding · one person'])}</b>${T(['سارة ادخرت بس لما كانت الفلوس عند أمها','Sara only saved when the money sat with her mother'])}</div></div>
+ <div class="rung r2" style="--i:1"><span class="ri">👥</span><div><b>${T(['نمط · أكثر من شخص','Pattern · several people'])}</b>${T(['٤ من ٦ نجحوا لما كان فيه شي بينهم وبين فلوسهم','4 of 6 succeeded when something stood between them and their money'])}</div></div>
+ <div class="rung r3" style="--i:2"><span class="ri">💡</span><div><b>${T(['استبصار · السبب الإنساني','Insight · the human reason'])}</b>${T(['الناس ما يفشلون لأنهم ناقصين انضباط. يدخرون بس لما ينأخذ القرار من أيديهم (شخص، قفل، موعد)، لكنهم يشوفون هذا عكاز محرج، فيرجعون لقوة إرادة تخسر.','People don’t fail to save for lack of discipline. They save only when the decision is taken out of their hands (a person, a lock, a date), yet they see that as an embarrassing crutch and fall back on willpower that loses.'])}</div></div></div>
+ <div class="ticks">${T([['إنساني','مبني على دليل','غير بديهي','يفسّر','يفتح اتجاهات'],['Human','Evidence-based','Non-obvious','Explanatory','Generative']]).map((t,i)=>`<span class="tk" style="--i:${i};--base:1.8s">${t}</span>`).join('')}</div>
+ ${outb(['ويفسّر الشاذ بعد: لما راح تاريخ هدى، راح الالتزام الخارجي.','It explains the outlier too: when Huda’s date disappeared, the outside commitment went with it.'],2.8)}</div>`,
+pov:()=>`<div class="scene">${spot}<h3>${ico('target')}${T(['نركّب الجملة من ثلاث قطع، وكل قطعة جاية من محطة قبلها','Assemble the sentence from three parts, each from an earlier station'])}</h3>
+ <p class="pov"><span class="slot u" style="--d:.2s">${T(['موظف شاب مدخراته على بعد ضغطة من مصروفه','A young employee whose savings sit one tap from spending'])}</span> <span class="kw" style="--d:.9s">${T(['يحتاج','needs'])}</span> <span class="slot n" style="--d:1s">${T(['يحط فلوسه بعيد عن متناوله مرة وحدة وبطريقة يحس إنها محترمة','to put money beyond their own reach once, in a way that feels respectable'])}</span>${T(['،',','])} <span class="kw" style="--d:1.7s">${T(['لأن','because'])}</span> <span class="slot b" style="--d:1.8s">${T(['مدخراته ما تصمد إلا لما يمسكها شي خارجه، لكنه يعتبر هذا عكاز محرج ويرجع لقوة الإرادة.','their savings only survive when something outside holds them, yet they see that as an embarrassing crutch and fall back on willpower.'])}</span></p>
+ <div class="chips rv" style="--base:.2s"><span class="chip" style="background:var(--sky);color:var(--ink)">${T(['المستخدم ← خريطة التعاطف','User ← Empathy Map'])}</span><span class="chip" style="background:var(--butter);color:var(--ink)">${T(['التقدم ← JTBD','Progress ← JTBD'])}</span><span class="chip" style="background:var(--lilac);color:var(--ink)">${T(['لأن ← الاستبصار','Because ← Insight'])}</span></div>
+ <div class="banned"><b class="rv" style="--base:2.6s">${T(['كلمات حلول ما دخلت الجملة:','Solution words kept out:'])}</b>${T([['أبسط','أسرع','تلقائي','تطبيق','منصة'],['simpler','faster','automatic','app','platform']]).map((w,i)=>`<span style="--i:${i}">${w}</span>`).join('')}</div>
+ ${outb(['جملة وحدة يفهمها كل الفريق بنفس الطريقة، وتقدر ترجعها لأدلة البحث.','One sentence the whole team reads the same way, traceable to the research.'],3.5)}</div>`,
+hmw:()=>`<div class="scene">${spot}<h3>${ico('compass')}${T(['نكتب السؤال على ثلاث ارتفاعات، ونختار المناسب','Write the question at three altitudes and pick the right one'])}</h3>
+ <div class="alt"><div class="gauge" aria-hidden="true"><i></i></div><div class="alts">
+  <div class="avr" style="--i:0"><b>${T(['واسع جداً','Too broad'])}</b><span><span class="x">✗</span> ${T(['كيف نساعد السعوديين يدخرون أكثر؟ (ما فيه مستخدم ولا موقف)','How might we help Saudis save more? (no user, no situation)'])}</span></div>
+  <div class="avr ok" style="--i:2"><b>${T(['مناسب','Just right'])}</b><span><span class="x">✓</span> ${T(['كيف ممكن نساعد الموظفين الشباب يلتزمون بمدخراتهم مرة وحدة بعيداً عن متناولهم، بحيث يحسون إن الالتزام ذكاء مو عكاز؟','How might we help young employees commit their savings once, beyond easy reach, so the commitment feels smart rather than a crutch?'])}</span></div>
+  <div class="avr" style="--i:1"><b>${T(['ضيق جداً','Too narrow'])}</b><span><span class="x">✗</span> ${T(['كيف نضيف قفل بثلاث خطوات لحساب الادخار؟ (الحل مختار مسبقاً)','How might we add a 3-step lock to the savings account? (solution already chosen)'])}</span></div>
+ </div></div>
+ <h3 class="rv" style="--base:3.2s">${ico('spark')}${T(['خمس إجابات مختلفة يفتحها السؤال:','Five different answers it invites:'])}</h3>
+ <div class="answers">${T([['🤝 جمعية رقمية مع الزملاء','🧑‍⚖️ أمين موثوق يمسك المبلغ','📅 أهداف بتاريخ قريب وتقدم ظاهر','📈 نسبة ادخار تتكيف مع الدخل','🏦 حساب ادخار في بنك ثاني من أول يوم'],['🤝 A digital savings circle with colleagues','🧑‍⚖️ A trusted custodian who holds the money','📅 Goals with a near date and visible progress','📈 A savings rate that flexes with income','🏦 A savings account at a second bank from day one']]).map((a,i)=>`<span style="--i:${i}">${a}</span>`).join('')}</div>
+ ${outb(['السؤال اللي يدخل فيه الفريق مرحلة الحلول في الفصل الرابع.','The question the team takes into the solution stage in Chapter Four.'],4.3)}</div>`,
+ref:()=>`<div class="scene">${spot}<h3>${ico('frames')}${T(['إطاران لنفس الأدلة: أيهم نختار؟','Two frames for the same evidence: which do we choose?'])}</h3>
+ <div class="frames">
+  <div class="frame a" style="--i:0"><h4>${T(['الإطار (أ): كما افترضناه','Frame A: as first assumed'])}</h4><dl>
+   <dt>${T(['الإطار','THE FRAME'])}</dt><dd>${T(['الناس ناقصهم انضباط ووعي مالي','People lack discipline and financial literacy'])}</dd>
+   <dt>${T(['وش بنبني','WHAT WE’D BUILD'])}</dt><dd>${T(['تطبيق ميزانية، إشعارات صرف، محتوى توعوي','A budgeting app, spending alerts, education content'])}</dd>
+   <dt>${T(['يدعمه','SUPPORTS IT'])}</dt><dd>${T(['الكل يقول «انضباط»','Everyone says “discipline”'])}</dd>
+   <dt>${T(['يعارضه','CONTRADICTS IT'])}</dt><dd>${T(['سارة حذفت تطبيق الميزانية · خالد طفّى الإشعارات · ريم «سيئة مع الفلوس» وسجلها كامل','Sara deleted the budget app · Khalid turned off alerts · Reem “bad with money” with a perfect record'])}</dd></dl><span class="verdict">✗ ${T(['مرفوض','Rejected'])}</span></div>
+  <div class="frame b" style="--i:1"><h4>${T(['الإطار (ب): كما تصفه الأدلة','Frame B: as the evidence describes it'])}</h4><dl>
+   <dt>${T(['الإطار','THE FRAME'])}</dt><dd>${T(['الناس يحتاجون التزام خارجي يلغي قرار كل شهر، ويحسسهم إنه محترم','People need an outside commitment that removes the monthly decision, and feels respectable'])}</dd>
+   <dt>${T(['وش بنبني','WHAT WE’D BUILD'])}</dt><dd>${T(['أدوات التزام، دوائر ادخار، أهداف بتاريخ، نسب تتكيف مع الدخل','Commitment devices, savings circles, dated goals, income-flexing rates'])}</dd>
+   <dt>${T(['يدعمه','SUPPORTS IT'])}</dt><dd>${T(['٤ من ٦ نجحوا بحاجز · كل اللي يدخرون «قرروا مرة»','4 of 6 succeeded with a barrier · every saver “decided once”'])}</dd>
+   <dt>${T(['يعارضه','CONTRADICTS IT'])}</dt><dd>${T(['الالتزام الآلي عند فيصل فشل، يعني لازم يتكيف','Faisal’s automatic commitment failed, so it must flex'])}</dd></dl><span class="verdict">✓ ${T(['اخترناه','Chosen'])}</span></div>
+ </div>
+ ${outb(['اخترنا (ب) لأن أفعال الناس تعارض (أ) مباشرة، و(ب) يفسّر النجاحات والفشل والحالة الشاذة كلها.','We chose B because people’s actions directly contradict A, and B explains the successes, the failures and the outlier.'],3.4)}</div>`
+};
+
+/* ================= WORKBOOK ================= */
+const W={
+ raw:{f:[{t:'rows',k:'iv',n:5,label:['مقابلة','Interview'],cols:[['p',['الشخص والموقف','Person & moment'],['مثال: سارة، ٢٦، يوم الراتب','e.g. Sara, 26, on payday']],['s',['وش قال (اقتباس حرفي)','What they said (verbatim)'],['«…»','“…”']],['d',['وش سوّى فعلاً','What they actually did'],['فعل شفته أو وصفه بالتفصيل','An action you saw or they described in detail']],['x',['وش فاجأك أو ما ركب','What surprised you'],['','']]]},{t:'text',k:'obs',l:['المراقبة: وين اختلف فعله عن كلامه؟','Observation: where did actions differ from words?'],a:1}],
+  out:['iv_p'],hint:['اسأل عن آخر مرة صارت فعلاً، مو عن «هل بتستخدم». خمس مقابلات على الأقل.','Ask about the last time it actually happened, never “would you use”. At least five interviews.']},
+ emp:{f:[{t:'text',k:'who',l:['الشخص والموقف','Person & moment']},{t:'text',k:'says',l:['يقول (اقتباسات)','Says (quotes)'],a:1},{t:'text',k:'does',l:['يسوي (أفعال)','Does (actions)'],a:1},{t:'text',k:'thinks',l:['يفكر (فرضية + الدليل بين قوسين)','Thinks (hypothesis + evidence in brackets)'],a:1},{t:'text',k:'feels',l:['يحس (فرضية + الدليل بين قوسين)','Feels (hypothesis + evidence in brackets)'],a:1},{t:'text',k:'tension',l:['التناقض اللي لقيته','The tension you found'],a:1}],
+  out:['who','tension'],hint:['خريطة لكل شخص. ابدأ بأقوى مقابلة عندك.','One map per person. Start with your strongest interview.']},
+ jtbd:{f:[{t:'text',k:'sit',l:['الموقف: «لما…»','Situation: “When I…”']},{t:'text',k:'fun',l:['الوظيفة العملية + الدليل','Functional job + evidence'],a:1},{t:'text',k:'emo',l:['الوظيفة العاطفية + الدليل','Emotional job + evidence'],a:1},{t:'text',k:'soc',l:['الوظيفة الاجتماعية + الدليل','Social job + evidence'],a:1},{t:'text',k:'fail',l:['الطبقة اللي تفشل فيها الحلول الحالية، وليش','The layer where current solutions fail, and why'],a:1}],
+  out:['fun','fail'],hint:['الطبقة اللي تفشل فيها الحلول نادراً تكون العملية.','The failing layer is rarely the functional one.']},
+ lad:{f:[{t:'rows',k:'cl',n:6,label:['ادعاء','Claim'],cols:[['c',['الادعاء عن العميل','Claim about the customer'],['','']],['s',['مصدره','Where it came from'],['','']],['r',['الدرجة','Rung'],['',''],[['','١ افتراض','٢ رأي','٣ سلوك سابق','٤ مُشاهد','٥ متكرر','٦ التزام'],['','1 Assumption','2 Opinion','3 Past behaviour','4 Observed','5 Repeated','6 Committed']]],['u',['وش يرفعه درجة','What would lift it a rung'],['','']]]}],
+  out:['cl_c'],hint:['أهم ثلاث ادعاءات لازم تكون درجة ٣ أو أعلى.','Your three key claims must sit on rung 3 or above.']},
+ det:{f:[{t:'text',k:'who',l:['مين؟ (شخص في موقف، مو «الكل»)','WHO? (a person in a situation, not “everyone”)']},{t:'text',k:'what',l:['وش؟ (المشكلة قبل أي فكرة، بدون اسم منتج)','WHAT? (the problem before any idea, no product name)'],a:1},{t:'text',k:'ev',l:['الدليل (سلوك متكرر، حيل، فلوس ووقت ضايع، أدوات متروكة)','EVIDENCE (repeated behaviour, workarounds, lost money or time, abandoned tools)'],a:1},{t:'rows',k:'vd',n:1,label:['الحكم','Verdict'],cols:[['v',['الحكم','Verdict'],['',''],[['','مشكلة حقيقية','حقيقية جزئياً / مؤطرة غلط','مفترضة غالباً'],['','Real problem','Partly real / misframed','Largely assumed']]],['w',['ليش','Why'],['','']]]},{t:'text',k:'sym',l:['عرض (اللي يبان)','SYMPTOM (what is visible)']},{t:'text',k:'asm',l:['افتراض (اللي نصدقه)','ASSUMPTION (what we believe)']},{t:'text',k:'prob',l:['المشكلة (اللي صعب فعلاً على الشخص)','PROBLEM (what is actually hard for the person)'],a:1},{t:'text',k:'sol',l:['حل (نبعده عن المشكلة)','SOLUTION (kept out of the problem)']},{t:'checks',k:'tr',items:[['a',['ما بدأنا بالحل','Not solution-first']],['b',['ما اعتمدنا على «نعرف عميلنا»','Not relying on “we know this customer”']],['c',['ما اعتمدنا على مقاييس داخلية','Not internal metrics']],['d',['ما اعتمدنا على بحث مجامل','Not polite research']]]}],
+  out:['prob','vd_v'],hint:['أي عبارة تطيح في خانة عرض أو افتراض أو حل، فهي مو مشكلة للحين.','A statement that lands in symptom, assumption or solution is not a problem yet.']},
+ aff:{f:[{t:'rows',k:'cl',n:5,label:['مجموعة','Cluster'],cols:[['n',['اسم المجموعة (سلوك)','Cluster name (a behaviour)'],['مثال: الفلوس القريبة تنصرف','e.g. Money within reach gets spent']],['notes',['الملاحظات فيها (مين، وش سوّى)','Notes in it (who, what they did)'],['','']],['m',['معناها في جملة (اكتبها آخر شي)','Its meaning in one sentence (write last)'],['','']]]},{t:'text',k:'outl',l:['الملاحظات الشاذة (لا ترميها)','Outliers (keep them)'],a:1},{t:'text',k:'contra',l:['تناقضات بين المجموعات','Contradictions between clusters'],a:1}],
+  out:['cl_n','outl'],hint:['جمّع حسب السلوك، مو حسب الشخص.','Group by behaviour, not by person.']},
+ pat:{f:[{t:'rows',k:'pt',n:4,label:['نمط محتمل','Candidate'],cols:[['c',['النمط المحتمل','Candidate pattern'],['','']],['w',['يظهر عند (أسماء)','Appears in (names)'],['','']],['k',['التصنيف','Class'],['',''],[['','نمط (٣+)','حكاية (أقل من ٣)','شاذ'],['','Pattern (3+)','Anecdote (<3)','Outlier']]]]},{t:'text',k:'line',l:['النمط في سطر: «___ يصير لما ___»','The pattern in one line: “___ happens when ___”'],a:1},{t:'text',k:'odd',l:['الحالة الشاذة ووش ممكن تعني','The outlier and what it may mean'],a:1}],
+  out:['line','odd'],hint:['٣ أشخاص أو مواقف على الأقل عشان يصير نمط.','At least three people or moments to call it a pattern.']},
+ why:{f:[{t:'whys',k:'w',n:5},{t:'text',k:'root',l:['السبب الجذري','Root cause'],a:1},{t:'checks',k:'rc',items:[['h',['إنساني','Human']],['s',['محدد','Specific']],['a',['قابل للتصميم','Actionable']]]}],
+  out:['root'],hint:['كل «ليش» لازم معها ملاحظة تسندها. وقف لما يتحقق الثلاثة.','Every “why” needs a supporting note. Stop when all three hold.']},
+ ins:{f:[{t:'text',k:'find',l:['ملاحظة: شخص واحد، سلوك واحد','Finding: one person, one behaviour'],a:1},{t:'text',k:'pat',l:['نمط: نفس السلوك عند أكثر من شخص','Pattern: the same behaviour across several people'],a:1},{t:'text',k:'ins',l:['الاستبصار: ليش يصير النمط (ويفسّر الشاذ)','Insight: why the pattern exists (and explains the outlier)'],a:1},{t:'checks',k:'it',items:[['h',['إنساني','Human']],['e',['مبني على دليل','Evidence-based']],['n',['غير بديهي','Non-obvious']],['x',['يفسّر','Explanatory']],['g',['يفتح اتجاهات','Generative']]]}],
+  out:['ins'],hint:['لو تقدر تكتبه قبل البحث، فهو مو استبصار.','If you could write it before the research, it is not an insight.']},
+ pov:{f:[{t:'text',k:'u',l:['المستخدم (شخص في موقف)','User (a person in a situation)']},{t:'text',k:'n',l:['يحتاج (تقدم، مو ميزة)','Needs (progress, not a feature)']},{t:'text',k:'b',l:['لأن (الاستبصار)','Because (the insight)'],a:1},{t:'pov'},{t:'text',k:'why',l:['ليش اخترنا هذي النسخة','Why we chose this version'],a:1}],
+  out:['pov'],hint:['الكلمات الممنوعة: أبسط، أسرع، تلقائي، تطبيق، منصة.','Banned words: simpler, faster, automatic, app, platform.']},
+ hmw:{f:[{t:'text',k:'u',l:['كيف ممكن نساعد (المستخدم)','How might we help (user)']},{t:'text',k:'p',l:['(يحقق التقدم)','(make this progress)']},{t:'text',k:'c',l:['بحيث / بدون (شرط الاستبصار)','so that / without (insight condition)']},{t:'hmw'},{t:'rows',k:'ans',n:5,label:['إجابة','Answer'],cols:[['a',['إجابة مختلفة','A different answer'],['','']]]},{t:'text',k:'wide',l:['فحص الارتفاع: نسخة واسعة جداً','Altitude: a too-broad version']},{t:'text',k:'narrow',l:['فحص الارتفاع: نسخة ضيقة جداً','Altitude: a too-narrow version']},{t:'checks',k:'hc',items:[['how',['«كيف» تفترض إنها قابلة للحل','“How” assumes it is solvable']],['might',['«ممكن» تخليها مفتوحة','“Might” keeps it open']],['we',['«نساعد» تخليها مهمة مشتركة','“We” makes it shared']]]}],
+  out:['hmw'],hint:['لو ما طلع لك إلا جواب واحد، الحل مدسوس في السؤال.','If only one answer comes, the solution is hidden in the question.']},
+ ref:{f:[{t:'text',k:'a',l:['الإطار (أ): كما افترضناه','Frame A: as first assumed'],a:1},{t:'text',k:'ab',l:['(أ): وش بنبني منه','A: what we would build'],a:1},{t:'text',k:'ae',l:['(أ): أدلة تدعمه / تعارضه','A: evidence for / against'],a:1},{t:'text',k:'b',l:['الإطار (ب): كما تصفه الأدلة','Frame B: as the evidence describes it'],a:1},{t:'text',k:'bb',l:['(ب): وش بنبني منه','B: what we would build'],a:1},{t:'text',k:'be',l:['(ب): أدلة تدعمه / تعارضه','B: evidence for / against'],a:1},{t:'text',k:'chosen',l:['الإطار المختار، والأسباب','The chosen frame, and the reasons'],a:1}],
+  out:['chosen'],hint:['التبرير جزء من التسليم، مو بس الاختيار.','The reasoning is part of the submission, not only the choice.']}
+};
+const FROM={raw:[],emp:['raw'],jtbd:['emp'],lad:['jtbd'],det:['jtbd','lad'],aff:['raw','emp'],pat:['aff'],why:['pat','lad'],ins:['why','pat'],pov:['det','jtbd','ins'],hmw:['pov'],ref:['ins','pov']};
+const BANNED=['أبسط','أسهل','اسهل','أسرع','اسرع','تلقائي','آلي','تطبيق','منصة','app','platform','faster','simpler','easier','automatic'];
+
+/* ================= STATE ================= */
+let cur=0,mode='explain',F={},store=null,saveT=null,saving=Promise.resolve(),cloud=false,fx=true,film=null,vtab='before';
+const LS='fin557-ch2-journey-v4';
+try{const m=localStorage.getItem(LS+'-mode');if(['explain','case','work'].includes(m))mode=m;}catch(e){}
+try{const d=JSON.parse(localStorage.getItem(LS)||'{}');if(d&&typeof d==='object')F=d;}catch(e){}
+try{fx=localStorage.getItem(LS+'-fx')!=='0';}catch(e){}
+const reduce=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
+const v=k=>(F[k]||'').toString().trim();
+
+function keysOf(id){const out=[];W[id].f.forEach(g=>{
+  if(g.t==='rows')for(let r=0;r<g.n;r++)g.cols.forEach(c=>out.push(`${id}_${g.k}${r}_${c[0]}`));
+  else if(g.t==='text')out.push(`${id}_${g.k}`);
+  else if(g.t==='whys')for(let r=0;r<=g.n;r++){out.push(`${id}_w${r}_t`);out.push(`${id}_w${r}_e`);}
+  else if(g.t==='checks')g.items.forEach(it=>out.push(`${id}_${g.k}_${it[0]}`));
+});return out;}
+function pct(id){const k=keysOf(id);return k.length?Math.round(k.filter(x=>v(x)).length/k.length*100):0;}
+function povText(){const u=v('pov_u'),n=v('pov_n'),b=v('pov_b');if(!u&&!n&&!b)return '';return lang==='ar'?`${u||'[المستخدم]'} يحتاج ${n||'[التقدم]'} لأن ${b||'[الاستبصار]'}`:`${u||'[user]'} needs ${n||'[progress]'} because ${b||'[insight]'}`;}
+function hmwText(){const u=v('hmw_u'),p=v('hmw_p'),c=v('hmw_c');if(!u&&!p&&!c)return '';return lang==='ar'?`كيف ممكن نساعد ${u||'[المستخدم]'} ${p||'[التقدم]'} ${c||'[الشرط]'}؟`:`How might we help ${u||'[user]'} ${p||'[progress]'} ${c||'[condition]'}?`;}
+function outOf(id){const o=[];W[id].out.forEach(k=>{
+  if(k==='pov'){const t=povText();if(t)o.push(t);return;}
+  if(k==='hmw'){const t=hmwText();if(t)o.push(t);return;}
+  const g=W[id].f.find(g=>g.t==='rows'&&k.startsWith(g.k+'_'));
+  if(g){const c=k.slice(g.k.length+1);for(let r=0;r<g.n;r++){const x=v(`${id}_${g.k}${r}_${c}`);if(x)o.push('• '+x);}return;}
+  const x=v(`${id}_${k}`);if(x)o.push(x);});return o.join('\n');}
+
+async function initStore(){
+  try{
+    if(!window.claude||!window.claude.use)return;
+    const [db,user]=await Promise.all([window.claude.use('db'),window.claude.use('user')]);
+    if(!db||!user)return;
+    const uid=await user.id();if(!uid)return;
+    const ref=db.doc(`data/users/${uid}/journey`);
+    const snap=await ref.get();
+    if(snap.exists){const d=snap.data();if(d&&d.f)F={...F,...d.f};}
+    else if(Object.keys(F).length){await ref.set({f:F,at:Date.now()});}
+    store=ref;cloud=true;
+    try{localStorage.setItem(LS,JSON.stringify(F));}catch(e){}
+    if(mode==='work')render('mode');else paintProgress();
+  }catch(e){store=null;}
+}
+function queueSave(){
+  try{localStorage.setItem(LS,JSON.stringify(F));}catch(e){}
+  clearTimeout(saveT);const st=document.getElementById('savest');if(st)st.textContent=U('saving');
+  saveT=setTimeout(()=>{saving=saving.then(async()=>{
+    if(store){try{await store.set({f:F,at:Date.now()});}catch(e){if(e&&e.code==='invalid_argument'){store=null;cloud=false;}}}
+    const s=document.getElementById('savest');if(s)s.textContent=U(cloud?'saveCloud':'saveLocal');});},800);
+}
+
+/* ================= MAP ================= */
+const svg=document.getElementById('map');const NS='http://www.w3.org/2000/svg';
+const el=(t,a={},txt)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(txt!=null)e.textContent=txt;return e;};
+let pts=[],roadPath,stationLen=[],travelLen=0,trav,rafId=0;
+function smooth(p){let d=`M${p[0].x},${p[0].y}`;for(let i=0;i<p.length-1;i++){const p0=p[i-1]||p[i],p1=p[i],p2=p[i+1],p3=p[i+2]||p2;d+=` C${p1.x+(p2.x-p0.x)/6},${p1.y+(p2.y-p0.y)/6} ${p2.x-(p3.x-p1.x)/6},${p2.y-(p3.y-p1.y)/6} ${p2.x},${p2.y}`;}return d;}
+function buildMap(){
+  svg.innerHTML='';stationLen=[];
+  const rtl=lang==='ar',n=S.length,span=830,step=span/(n-1),x0=rtl?915:85;
+  let mi=0;
+  let ck=0;pts=S.map((s,i)=>{const x=rtl?x0-i*step:x0+i*step;if(s.chk){const y=(S[i-1]&&S[i-1].chk)?300:272;return {x,y,chk:1};}const y=(mi++)%2?196:122;return {x,y};});
+  const defs=el('defs');
+  const lg=el('linearGradient',{id:'gradDone',x1:rtl?'1':'0',x2:rtl?'0':'1',y1:'0',y2:'0'});lg.append(el('stop',{offset:'0','stop-color':'#4C6FFF'}));lg.append(el('stop',{offset:'1','stop-color':'#9B7BFF'}));defs.append(lg);
+  const gp=el('linearGradient',{id:'gradPin',x1:'0',y1:'0',x2:'1',y2:'1'});gp.append(el('stop',{offset:'0','stop-color':'#4C6FFF'}));gp.append(el('stop',{offset:'1','stop-color':'#9B7BFF'}));defs.append(gp);
+  const rg=el('radialGradient',{id:'halo'});rg.append(el('stop',{offset:'0','stop-color':'#C9D3FF','stop-opacity':'.9'}));rg.append(el('stop',{offset:'1','stop-color':'#C9D3FF','stop-opacity':'0'}));defs.append(rg);
+  svg.append(defs);
+  const mid=(a,b)=>(pts[a].x+pts[b].x)/2;
+  const B=[{c:'#EEF3FF',a:rtl?1000:0,b:mid(IDX.det,IDX.aff),p:'d'},{c:'#F3F0FF',a:mid(IDX.det,IDX.aff),b:mid(IDX.ins,IDX.pov),p:'s'},{c:'#ECF7FA',a:mid(IDX.ins,IDX.pov),b:rtl?0:1000,p:'f'}];
+  B.forEach(bd=>{const x=Math.min(bd.a,bd.b),w=Math.abs(bd.a-bd.b);svg.append(el('rect',{x,y:0,width:w,height:350,fill:bd.c,opacity:.85}));
+    svg.append(el('text',{x:rtl?x+w-14:x+14,y:26,class:'band-t','text-anchor':'start',direction:rtl?'rtl':'ltr'},`${PH[bd.p]} · ${T(PHL[bd.p])}`));});
+  [[120,62],[480,44],[820,330],[300,336],[640,70]].forEach(([x,y],i)=>svg.append(el('circle',{cx:x,cy:y,r:2.4,class:'sparkle',style:`animation-delay:${i*0.5}s;transform-origin:${x}px ${y}px`})));
+  const mains=pts.filter(p=>!p.chk);
+  const full=[{x:rtl?1000:0,y:122},...mains,{x:rtl?0:1000,y:160}];
+  roadPath=el('path',{d:smooth(full),class:'road',pathLength:'1'});svg.append(roadPath);
+  svg.append(el('path',{d:smooth(full),class:'road-mid',pathLength:'1'}));
+  svg.append(el('path',{class:'road-done',id:'roadDone',d:smooth(full)}));
+  // dashed links from checks to the road
+  S.forEach((s,i)=>{if(!s.chk)return;const p=pts[i];const nb=[i-1,i+1].filter(j=>j>=0&&j<n&&!S[j].chk);nb.forEach(j=>svg.append(el('path',{class:'link',d:`M${p.x},${p.y-16} Q${(p.x+pts[j].x)/2},${(p.y+pts[j].y)/2+20} ${pts[j].x},${pts[j].y+24}`})));
+    if(!nb.length){/* chained check: link to previous check */const j=i-1;svg.append(el('path',{class:'link',d:`M${p.x},${p.y} L${pts[j].x},${pts[j].y}`}));}});
+  const L=roadPath.getTotalLength();
+  pts.forEach(p=>{const ty=p.chk?160:p.y;let best=0,bd=1e9;for(let s=0;s<=700;s++){const l=L*s/700,q=roadPath.getPointAtLength(l),d=(q.x-p.x)**2+(q.y-ty)**2;if(d<bd){bd=d;best=l;}}stationLen.push(best);});
+  let up=0;
+  S.forEach((s,i)=>{
+    const p=pts[i];
+    const g=el('g',{class:'st'+(s.chk?' chk':''),tabindex:'0',role:'button','aria-label':`${s.chk?U('check'):U('station')+' '+num(mainNo[i])}: ${T(s.name)}`,'data-i':i,style:`--k:${i}`});
+    g.append(el('circle',{cx:p.x,cy:p.y,r:44,class:'halo'}));
+    g.append(el('circle',{cx:p.x,cy:p.y,r:s.chk?28:33,class:'ring'}));
+    const C=2*Math.PI*(s.chk?24:30);
+    g.append(el('circle',{cx:p.x,cy:p.y,r:s.chk?24:30,class:'prog','stroke-dasharray':C,'stroke-dashoffset':C,transform:`rotate(-90 ${p.x} ${p.y})`}));
+    if(s.chk){g.append(el('rect',{x:p.x-15,y:p.y-15,width:30,height:30,rx:6,class:'dia',transform:`rotate(45 ${p.x} ${p.y})`}));}
+    else g.append(el('circle',{cx:p.x,cy:p.y,r:24,class:'dot'}));
+    const sz=s.chk?18:24;
+    const icn=el('svg',{x:p.x-sz/2,y:p.y-sz/2,width:sz,height:sz,viewBox:'0 0 24 24',class:'pic',fill:'none',stroke:'currentColor','stroke-width':'1.8','stroke-linecap':'round','stroke-linejoin':'round'});icn.innerHTML=IC[s.icon];g.append(icn);
+    if(!s.chk){const bx=p.x+(rtl?-19:19),by=p.y-19;g.append(el('circle',{cx:bx,cy:by,r:9,class:'badge'}));g.append(el('text',{x:bx,y:by+4,'text-anchor':'middle',class:'bnum'},num(mainNo[i])));}
+    let ly,ty2;
+    if(s.chk){ly=p.y+38;ty2=null;}else{const isUp=(up++)%2===0;ly=isUp?p.y-52:p.y+56;ty2=ly+18;}
+    g.append(el('text',{x:p.x,y:ly,'text-anchor':'middle',class:'lbl',direction:rtl?'rtl':'ltr'},T(s.name)));
+    if(ty2!=null)g.append(el('text',{x:p.x,y:ty2,'text-anchor':'middle',class:'tag'},s.tool.replace(' + Altitude Check','')));
+    g.addEventListener('click',()=>{stopFilm();go(i);});
+    g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();stopFilm();go(i);}});
+    svg.append(g);
+  });
+  trav=el('g',{id:'traveller'});
+  trav.append(el('ellipse',{cx:0,cy:30,rx:9,ry:3,fill:'#4C6FFF33'}));
+  trav.append(el('path',{d:'M0 22c-7-9-11-14-11-19a11 11 0 0 1 22 0c0 5-4 10-11 19z',fill:'url(#gradPin)',stroke:'#fff','stroke-width':2}));
+  trav.append(el('circle',{cx:0,cy:3,r:4,fill:'#fff'}));
+  svg.append(trav);
+  travelLen=stationLen[cur];placeTrav(travelLen);
+  document.getElementById('legend2').innerHTML=`<span><i class="lm"></i>${U('legMain')}</span><span><i class="lr"></i>${U('legChk')}</span>`;
+}
+function placeTrav(l){const q=roadPath.getPointAtLength(l);trav.setAttribute('transform',`translate(${q.x},${q.y-58})`);
+  const done=document.getElementById('roadDone'),L=roadPath.getTotalLength();done.style.strokeDasharray=`${l} ${L}`;}
+function moveTrav(to){
+  if(!roadPath)return;cancelAnimationFrame(rafId);const from=travelLen,target=stationLen[to];
+  if(reduce()){travelLen=target;placeTrav(target);return;}
+  const t0=performance.now(),dur=Math.min(1300,450+Math.abs(target-from)*0.9),ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+  const stp=now=>{const t=Math.min(1,(now-t0)/dur);travelLen=from+(target-from)*ease(t);placeTrav(travelLen);if(t<1)rafId=requestAnimationFrame(stp);};
+  rafId=requestAnimationFrame(stp);
+}
+function buildList(){
+  const ol=document.getElementById('list');ol.innerHTML='';let last='';
+  S.forEach((s,i)=>{
+    if(s.ph!==last){last=s.ph;const h=document.createElement('div');h.className='ph';h.textContent=`${PH[s.ph]} · ${T(PHL[s.ph])}`;ol.append(h);}
+    const li=document.createElement('li');if(s.chk)li.className='chkli';
+    li.innerHTML=`<button type="button" data-i="${i}"><span class="b">${ico(s.icon)}</span><span class="t"><b>${s.chk?'◆ ':num(mainNo[i])+'. '}${T(s.name)}</b><small>${s.chk?U('rec')+' · ':''}${s.tool}</small></span><span class="pc"></span></button>`;
+    li.querySelector('button').addEventListener('click',()=>{stopFilm();go(i,true);});
+    ol.append(li);
+  });
+}
+function paintProgress(){
+  document.querySelectorAll('.st').forEach(g=>{const i=+g.dataset.i,c=g.querySelector('.prog'),C=2*Math.PI*(S[i].chk?24:30);c.setAttribute('stroke-dashoffset',C*(1-pct(S[i].id)/100));});
+  document.querySelectorAll('#list button').forEach(b=>{b.querySelector('.pc').textContent=num(pct(S[+b.dataset.i].id))+(lang==='ar'?'٪':'%');});
+}
+
+/* ================= SHEET ================= */
+const heroHtml=i=>`<div class="hero"><span class="disc"></span><span class="orb"></span><svg class="big" viewBox="0 0 24 24" aria-hidden="true">${IC[S[i].icon]}</svg><span class="num">${badge(i)}</span></div>`;
+function head(){const s=S[cur];const mc=mode==='case'?`<span class="chip mode-c">${U('m_case')}</span>`:mode==='work'?`<span class="chip mode-w">${U('m_work')}</span>`:'';
+ return `<div class="filmbar"><i id="filmI"></i></div><div class="sh-top">${heroHtml(cur)}<div class="sh-title"><div class="chips"><span class="chip">${PH[s.ph]} · ${T(PHL[s.ph])}</span><span class="chip ${s.must?'must':'rec'}">${s.must?U('must'):U('rec')}</span>${mc}</div><h2>${T(s.name)}<small>${s.tool}</small></h2></div>${mode!=='work'?`<button type="button" class="replay" id="replay">${ico('replay')}${U('replay')}</button>`:''}</div>`;}
+function navHtml(){const pa=lang==='ar'?'→ ':'← ',na=lang==='ar'?' ←':' →';
+ return `<div class="nav"><button type="button" id="prev" ${cur===0?'disabled':''}>${pa}${cur>0?T(S[cur-1].name):U('prev')}</button><button type="button" class="nx" id="next" ${cur===S.length-1?'disabled':''}>${cur<S.length-1?T(S[cur+1].name):U('end')}${na}</button></div>`;}
+function explainHtml(){const s=S[cur];const ch=T(s.check);return `
+ <p class="q rv" style="--i:0"><span class="ql">${U('ask')}</span> ${T(s.q)}</p>
+ <div class="flow"><div class="fin"><span class="fi">${ico('in')}</span><div><small>${U('need')}</small>${T(s.inS)}</div></div><span class="arrow">←</span>
+  <div class="gear"><svg class="rim" viewBox="0 0 96 96" aria-hidden="true"><circle cx="48" cy="48" r="42" fill="none" stroke="#C9D3FF" stroke-width="3" stroke-dasharray="6 7"/><circle cx="48" cy="48" r="32" fill="#EEF1FF"/></svg><svg class="gi" viewBox="0 0 24 24" aria-hidden="true">${IC[s.icon]}</svg></div>
+  <span class="arrow">←</span><div class="fout"><span class="fi">${ico('out')}</span><div><small>${U('give')}</small>${T(s.outS)}</div></div></div>
+ <div class="io"><div class="rv" style="--i:2"><h3>${ico('in')}${U('needD')}</h3><p>${T(s.need)}</p></div><div class="rv" style="--i:3"><h3>${ico('out')}${U('giveD')}</h3><p>${T(s.give)}</p></div></div>
+ <div class="cols"><div class="rv" style="--i:4"><h3>${ico('steps')}${U('how')}</h3><ol class="steps">${T(s.how).map(h=>`<li>${h}</li>`).join('')}</ol></div>
+  <div style="display:grid;gap:12px"><div class="trap rv" style="--i:5"><h3>${ico('warn')}${U('trap')}</h3><p>${T(s.trap)}</p></div>
+  <div class="check rv" style="--i:6"><h3>${ico('q')}${U('checkY')}</h3><p>${ch[0]}</p><button type="button" id="reveal">${U('reveal')}</button></div></div></div>`;}
+function fieldHtml(id,g,gi){
+  if(g.t==='text'){const k=`${id}_${g.k}`;return `<div class="fld" style="--i:${gi}"><label for="${k}">${T(g.l)}</label>${g.a?`<textarea id="${k}" data-k="${k}" rows="2"></textarea>`:`<input type="text" id="${k}" data-k="${k}">`}</div>`;}
+  if(g.t==='rows')return `<div class="rowset">${Array.from({length:g.n},(_,r)=>`<div class="rowcard" style="--c:${g.cols.length};--i:${r}"><span class="rn">${T(g.label)}${g.n>1?' '+num(r+1):''}</span>${g.cols.map(c=>{const k=`${id}_${g.k}${r}_${c[0]}`;return `<div class="fld"><label for="${k}">${T(c[1])}</label>${c[3]?`<select id="${k}" data-k="${k}">${c[3][0].map((o,oi)=>`<option value="${esc(o)}">${o?T([o,c[3][1][oi]]):(lang==='ar'?'اختر':'Choose')}</option>`).join('')}</select>`:`<textarea id="${k}" data-k="${k}" rows="1" placeholder="${esc(T(c[2]))}"></textarea>`}</div>`;}).join('')}</div>`).join('')}</div>`;
+  if(g.t==='whys')return `<div class="rowset">${Array.from({length:g.n+1},(_,r)=>{const t=`${id}_w${r}_t`,e=`${id}_w${r}_e`;return `<div class="rowcard" style="--c:2;--i:${r}"><span class="rn">${r===0?T(['النمط','Pattern']):T(['ليش؟ ','Why? '])+num(r)}</span><div class="fld"><label for="${t}">${r===0?T(['النمط أو العرض','Pattern or symptom']):T(['الجواب','Answer'])}</label><textarea id="${t}" data-k="${t}" rows="1" ${r===0&&v('pat_line')?`placeholder="${esc(v('pat_line'))}"`:''}></textarea></div><div class="fld"><label for="${e}">${T(['الدليل (ملاحظة أو اقتباس)','Evidence (note or quote)'])}</label><textarea id="${e}" data-k="${e}" rows="1"></textarea></div></div>`;}).join('')}</div>`;
+  if(g.t==='checks')return `<div class="chks">${g.items.map(it=>{const k=`${id}_${g.k}_${it[0]}`;return `<label><input type="checkbox" data-k="${k}" data-chk="1">${T(it[1])}</label>`;}).join('')}</div>`;
+  if(g.t==='pov')return `<div class="compose"><h3>${ico('target')}${U('full')}</h3><div id="povOut"></div><p id="povWarn"></p></div>`;
+  if(g.t==='hmw')return `<div class="compose"><h3>${ico('compass')}${U('fullQ')}</h3><div id="hmwOut"></div><p id="hmwWarn"></p></div>`;
+  return '';
+}
+function workHtml(){const s=S[cur],w=W[s.id];
+  const carry=FROM[s.id].map(fid=>{const o=outOf(fid);return o?`<div><h3>${ico('in')}${U('from')} ${T(S[IDX[fid]].name)}</h3><p>${esc(o)}</p></div>`:'';}).filter(Boolean);
+  return `${FROM[s.id].length?`<div class="carry">${carry.length?carry.join(''):`<p class="empty">${U('emptyCarry')}</p>`}</div>`:''}
+  <p class="q"><span class="ql">${U('ask')}</span> ${T(s.q)}</p>
+  <div class="hintbox">💡 ${T(w.hint)} <details><summary>${U('seeCase')}</summary><div style="margin-top:8px">${CASE[s.id]()}</div></details></div>
+  <div class="form">${w.f.map((g,gi)=>fieldHtml(s.id,g,gi)).join('')}</div>
+  <div class="wfoot"><span>${U('complete')} <b id="pc">${num(pct(s.id))}${lang==='ar'?'٪':'%'}</b></span><span class="meter"><i id="meter" style="width:${pct(s.id)}%"></i></span><span id="savest">${U(cloud?'saveCloud':'saveLocal')}</span></div>`;}
+const hasBanned=t=>{const low=t.toLowerCase();return BANNED.filter(w=>low.includes(w.toLowerCase()));};
+function refreshCompose(){
+  const po=document.getElementById('povOut');
+  if(po){const t=povText();po.innerHTML=t?esc(t):`<span class="ph">${U('phPov')}</span>`;const w=document.getElementById('povWarn'),b=hasBanned(t);w.className=b.length?'warnline':(t?'okline':'');w.textContent=b.length?U('bannedW')+b.join(lang==='ar'?'، ':', ')+U('bannedW2'):(t?U('noBanned'):'');}
+  const ho=document.getElementById('hmwOut');
+  if(ho){const t=hmwText();ho.innerHTML=t?esc(t):`<span class="ph">${U('phHmw')}</span>`;const w=document.getElementById('hmwWarn'),b=hasBanned(t);const two=lang==='ar'?/ و(?!ل)/.test(v('hmw_p')):/\band\b/i.test(v('hmw_p'));w.className=(b.length||two)?'warnline':(t?'okline':'');w.textContent=b.length?U('hidden')+b.join(', '):two?U('twoQ'):(t?U('openQ'):'');}
+}
+function bindWork(){
+  const id=S[cur].id;
+  document.querySelectorAll('#sheet .form [data-k]').forEach(inp=>{
+    const k=inp.dataset.k;
+    if(inp.dataset.chk)inp.checked=F[k]==='1';else inp.value=F[k]||'';
+    inp.addEventListener(inp.dataset.chk||inp.tagName==='SELECT'?'change':'input',()=>{
+      F[k]=inp.dataset.chk?(inp.checked?'1':''):inp.value;refreshCompose();
+      const p=pct(id);const pc=document.getElementById('pc');if(pc)pc.textContent=num(p)+(lang==='ar'?'٪':'%');const m=document.getElementById('meter');if(m)m.style.width=p+'%';
+      paintProgress();queueSave();});
+  });refreshCompose();
+}
+function bindScene(){
+  document.querySelectorAll('#sheet [data-emp]').forEach(b=>b.addEventListener('click',()=>{
+    empPerson=b.dataset.emp;document.querySelectorAll('#sheet [data-emp]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.emp===empPerson?'true':'false'));
+    const box=document.getElementById('empBox');box.innerHTML=empQuad(empPerson);}));
+  document.querySelectorAll('#sheet [data-open-vault]').forEach(b=>b.addEventListener('click',()=>openVault(b.dataset.openVault)));
+}
+function render(dir){
+  const sh=document.getElementById('sheet'),s=S[cur];
+  document.querySelectorAll('.st').forEach(g=>{const i=+g.dataset.i;g.classList.toggle('on',i===cur);g.classList.toggle('done',i<cur);});
+  document.querySelectorAll('#list button').forEach(b=>{const i=+b.dataset.i;b.classList.toggle('on',i===cur);b.classList.toggle('done',i<cur);b.setAttribute('aria-current',i===cur?'step':'false');});
+  sh.className='sheet m-'+mode;
+  sh.innerHTML=head()+(mode==='explain'?explainHtml():mode==='case'?CASE[s.id]():workHtml())+navHtml();
+  if(dir){void sh.offsetWidth;sh.classList.add(dir==='next'?'in-next':dir==='prev'?'in-prev':'in-mode');}
+  document.getElementById('prev').onclick=()=>{stopFilm();go(cur-1,true);};
+  document.getElementById('next').onclick=()=>{stopFilm();go(cur+1,true);};
+  const rp=document.getElementById('replay');if(rp)rp.onclick=()=>render('mode');
+  const rv=document.getElementById('reveal');if(rv)rv.onclick=()=>{const p=document.createElement('p');p.className='ans';p.textContent=T(S[cur].check)[1];rv.replaceWith(p);};
+  if(mode==='work')bindWork();
+  bindScene();
+  const ol=document.getElementById('list');if(getComputedStyle(ol).display==='flex'){const li=ol.querySelector(`button[data-i="${cur}"]`);if(li){const r=li.getBoundingClientRect(),o=ol.getBoundingClientRect();ol.scrollBy({left:(r.left+r.width/2)-(o.left+o.width/2),behavior:reduce()?'auto':'smooth'});}}
+  paintProgress();
+  if(film!==null)startFilmBar();
+}
+
+/* ================= CINEMA ================= */
+let cineT=[];
+function chapterCard(i,then){
+  const c=document.getElementById('cine'),ct=document.getElementById('cineCt');
+  cineT.forEach(clearTimeout);cineT=[];
+  ct.innerHTML=`<span class="kick">${S[i].chk?U('check'):U('station')+' '+num(mainNo[i])} · ${PH[S[i].ph]}</span>${heroHtml(i)}<span class="big">${T(S[i].name)}</span><span class="sub">${S[i].tool}</span>`;
+  c.hidden=false;void c.offsetWidth;c.classList.add('show');
+  cineT.push(setTimeout(then,700));
+  cineT.push(setTimeout(()=>c.classList.remove('show'),1250));
+  cineT.push(setTimeout(()=>{c.hidden=true;},1800));
+}
+function go(i,scroll){
+  if(i<0||i>=S.length||i===cur)return;
+  const dir=i>cur?'next':'prev';cur=i;moveTrav(i);
+  try{history.replaceState(null,'','#'+S[i].id);}catch(e){}
+  const doRender=()=>{render(dir);if(scroll&&matchMedia('(max-width:760px)').matches)document.getElementById('sheet').scrollIntoView({behavior:'smooth',block:'start'});};
+  if(fx&&!reduce())chapterCard(i,doRender);else doRender();
+}
+const FILM_MS={raw:9500,emp:9000,jtbd:9000,lad:9000,det:10500,aff:9000,pat:9500,why:9500,ins:9000,pov:9500,hmw:11000,ref:10000};
+function startFilmBar(){const b=document.getElementById('filmI');if(!b)return;b.style.transition='none';b.style.width='0';void b.offsetWidth;b.style.transition=`width ${FILM_MS[S[cur].id]}ms linear`;b.style.width='100%';}
+function filmTick(){clearTimeout(film);film=setTimeout(()=>{if(cur<S.length-1){go(cur+1);filmTick();}else stopFilm();},FILM_MS[S[cur].id]+(fx?700:0));}
+function startFilm(){if(mode!=='case')setMode('case',true);film=-1;updateFilmBtn();
+  if(cur!==0){go(0);}else{if(fx&&!reduce())chapterCard(0,()=>render('mode'));else render('mode');}
+  filmTick();}
+function stopFilm(){if(film===null)return;clearTimeout(film);film=null;updateFilmBtn();const b=document.getElementById('filmI');if(b){b.style.transition='none';b.style.width='0';}}
+function updateFilmBtn(){const b=document.getElementById('btnFilm');b.innerHTML=film!==null?`${ico('pause')}${U('filmStop')}`:`${ico('film')}${U('film')}`;}
+
+/* ================= EVIDENCE FILE ================= */
+function mkList(items,prefix){return `<ul class="mk">${items.map((x,j)=>{const key=`mk_${prefix}_${j}`,m=F[key]||'';return `<li tabindex="0" role="button" data-mk="${key}" class="${m==='1'?'m1':m==='2'?'m2':''}">${x}</li>`;}).join('')}</ul>`;}
+function vaultBody(){
+  if(vtab==='before'){const B=PACK.before;return `<div class="pcard"><div class="vlegend">${U('vLegend')}</div><p style="margin:0">${T(B.intro)}</p>
+   <div class="boxes"><div class="bx1"><b>${T(['قبل الكلاس، سوّ هذا','Before class, please do this'])}</b><ol style="margin:0;padding-inline-start:18px">${T(B.todo).map(x=>`<li>${x}</li>`).join('')}</ol></div><div class="bx2"><b>${T(['ملاحظة عن قراءة البحث','A note on reading research'])}</b>${T(B.note)}</div><div class="bx3"><b>${T(['كيف انجمعت الأدلة','How this evidence was gathered'])}</b>${T(B.how)}</div><div class="bx4"><b>${T(['تذكّر','Remember'])}</b>${T(B.remember)}</div></div>
+   <div class="bring"><div class="fld"><label for="vault_rep">${U('bring1')}</label><textarea id="vault_rep" data-vk="vault_rep" rows="2"></textarea></div><div class="fld"><label for="vault_sur">${U('bring2')}</label><textarea id="vault_sur" data-vk="vault_sur" rows="2"></textarea></div></div></div>`;}
+  if(vtab==='field')return `<div class="pcard"><div class="vlegend">${U('vLegend')}</div><h3 style="color:var(--ink);font-size:16px">${ico('eye')}${T(['ملاحظات من المراقبة، مو من الأسئلة','Notes from watching, not asking'])}</h3>${mkList(PACK.field.map(f=>T(f)),'field')}</div>`;
+  const k=vtab,P=PACK.people[k];
+  return `<div class="pcard"><div class="pc-top">${av(k)}<div><h3>${pn(k)}</h3><div style="color:var(--ink-2);font-size:14px">${T(P.age)}</div></div></div>
+   <div class="facts"><div><small>${U('fInc')}</small>${T(P.inc)}</div><div><small>${U('fWhere')}</small>${T(P.where)}</div><div><small>${U('fNow')}</small>${T(P.now)}</div></div>
+   <div class="scenebox">${T(P.scene)}</div>
+   <div class="vlegend">${U('vLegend')}</div>
+   <div class="two"><div><h3>${ico('chat')}${U('inWords')}</h3>${mkList(T(P.q),k+'_q')}</div><div><h3>${ico('eye')}${U('sawDo')}</h3>${mkList(T(P.d),k+'_d')}</div></div>
+   <div class="boxes"><div class="bx2"><b>${U('moment')}</b>${T(P.m)}</div><div class="bx1"><b>${U('tried')}</b>${T(P.t)}</div><div class="bx3"><b>${U('work')}</b>${T(P.w)}</div><div class="bx4"><b>${U('tension')}</b>${T(P.x)}</div></div>
+   <p class="inote"><b>${U('inote')}:</b> ${T(P.n)}</p></div>`;
+}
+function renderVault(){
+  document.getElementById('vT').textContent=U('vT');document.getElementById('vS').textContent=U('vS');document.getElementById('vClose').textContent=U('close');
+  const tabs=[['before',`${ico('book')}${U('vBefore')}`],...PORDER.map(k=>[k,`${av(k)}${pn(k)}`]),['field',`${ico('eye')}${U('vField')}`]];
+  document.getElementById('vtabs').innerHTML=tabs.map(t=>`<button type="button" data-vt="${t[0]}" aria-pressed="${t[0]===vtab}">${t[1]}</button>`).join('');
+  document.querySelectorAll('#vtabs button').forEach(b=>b.onclick=()=>{vtab=b.dataset.vt;renderVault();});
+  const body=document.getElementById('vbody');body.innerHTML=vaultBody();body.scrollTop=0;
+  body.querySelectorAll('[data-mk]').forEach(li=>{const cyc=()=>{const k=li.dataset.mk,n=((+(F[k]||0))+1)%3;F[k]=n?String(n):'';li.className=n===1?'m1':n===2?'m2':'';queueSave();};
+    li.addEventListener('click',cyc);li.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();cyc();}});});
+  body.querySelectorAll('[data-vk]').forEach(t=>{t.value=F[t.dataset.vk]||'';t.addEventListener('input',()=>{F[t.dataset.vk]=t.value;queueSave();});});
+}
+function openVault(tab){stopFilm();if(tab)vtab=tab;renderVault();const vEl=document.getElementById('vault');vEl.hidden=false;document.getElementById('vClose').focus();}
+function closeVault(){document.getElementById('vault').hidden=true;}
+
+/* ================= CHROME ================= */
+const HINTK={explain:'hint_explain',case:'hint_case',work:'hint_work'};
+function setMode(m,silent){
+  if(!silent)stopFilm();
+  mode=m;try{localStorage.setItem(LS+'-mode',m);}catch(e){}
+  document.querySelectorAll('.modes button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.mode===m?'true':'false'));
+  document.getElementById('wrap').classList.toggle('work',m==='work');
+  document.getElementById('btnExport').hidden=m!=='work';document.getElementById('btnClear').hidden=m!=='work';
+  document.getElementById('modehint').textContent=U(HINTK[m]);
+  placePill();if(!silent)render('mode');
+}
+function placePill(){const b=document.querySelector(`.modes button[data-mode="${mode}"]`),p=document.getElementById('pill'),box=b.parentElement.getBoundingClientRect(),r=b.getBoundingClientRect();
+  p.style.width=r.width+'px';p.style.height=r.height+'px';p.style.top=(r.top-box.top)+'px';p.style.left=(r.left-box.left)+'px';}
+function toast(t){const e=document.getElementById('toast');e.textContent=t;e.hidden=false;clearTimeout(toast.t);toast.t=setTimeout(()=>e.hidden=true,2600);}
+function applyLang(){
+  document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+  document.getElementById('eyebrow').textContent=U('eyebrow');
+  document.getElementById('h1').innerHTML=U('h1');
+  document.getElementById('lede').textContent=U('lede');
+  const mi={explain:'book',case:'flask',work:'pen'};
+  document.querySelectorAll('.modes button').forEach(b=>b.innerHTML=`${ico(mi[b.dataset.mode])}${U('m_'+b.dataset.mode)}`);
+  document.getElementById('modes').setAttribute('aria-label',U('modesL'));
+  updateFilmBtn();
+  document.getElementById('btnVault').innerHTML=`${ico('folder')}${U('vault')}`;
+  document.getElementById('btnFx').innerHTML=`${ico('spark')}${U('fx')}`;document.getElementById('btnFx').setAttribute('aria-pressed',fx?'true':'false');
+  document.getElementById('btnLang').innerHTML=`${ico('globe')}${U('lang')}`;
+  document.getElementById('btnPresent').innerHTML=`${ico('screen')}${U('present')}`;
+  document.getElementById('btnExport').innerHTML=`${ico('down')}${U('export')}`;
+  document.getElementById('btnClear').innerHTML=`${ico('trash')}${U('clear')}`;
+  document.getElementById('modehint').textContent=U(HINTK[mode]);
+  document.getElementById('mapWrap').setAttribute('aria-label',U('mapL'));
+  document.getElementById('list').setAttribute('aria-label',U('mapL'));
+  document.getElementById('afterT').textContent=U('afterT');
+  const r2=U('road2');document.getElementById('road2').innerHTML=r2.map(x=>`<span class="${x.startsWith('Stage')||x.startsWith('Submission')?'gate':''}">${x}</span>`).join('<i>←</i>');
+  document.getElementById('introK').textContent=U('introK');document.getElementById('introT').innerHTML=U('introT');document.getElementById('introS').textContent=U('introS');
+  document.getElementById('introGo').textContent=U('introGo');document.getElementById('introSkip').textContent=U('introSkip');
+  document.getElementById('introIcons').innerHTML=S.map((s,i)=>`<span style="--k:${i}">${ico(s.icon)}</span>`).join('');
+  document.getElementById('chLang').textContent=U('chLang');document.getElementById('chDev').textContent=U('chDev');
+  const ic2={mobile:'<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg>',desktop:'<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M1.5 20h21"/></svg>'};
+  document.querySelectorAll('#devseg button').forEach(b=>{b.innerHTML=ic2[b.dataset.view]+' '+U('v_'+b.dataset.view);b.setAttribute('aria-pressed',b.dataset.view===effView()?'true':'false');b.onclick=()=>setView(b.dataset.view);});
+  document.getElementById('detect').innerHTML=U('detected')+'<b>'+U('v_'+autoView)+'</b>';
+  document.getElementById('btnView').innerHTML=(effView()==='mobile'?ic2.desktop+U('viewBtn')+U('v_desktop'):ic2.mobile+U('viewBtn')+U('v_mobile'));document.getElementById('chMode').textContent=U('chMode');
+  document.querySelectorAll('#langseg button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.lang===lang?'true':'false'));
+  const mi2={explain:'book',case:'flask',work:'pen'};
+  document.getElementById('mcards').innerHTML=['explain','case','work'].map(m=>`<button type="button" class="mcard" data-m="${m}" aria-pressed="${m===mode}"><span class="mi">${ico(mi2[m])}</span><b>${U('m_'+m)}</b><small>${U('md_'+m)}</small></button>`).join('');
+  document.querySelectorAll('#mcards .mcard').forEach(c=>c.onclick=()=>{setMode(c.dataset.m);document.querySelectorAll('#mcards .mcard').forEach(x=>x.setAttribute('aria-pressed',x.dataset.m===mode?'true':'false'));});
+  document.querySelector('#mt b').textContent=U('clearT');document.getElementById('md').textContent=U('clearD');document.getElementById('mYes').textContent=U('yes');document.getElementById('mNo').textContent=U('no');
+  buildMap();buildList();placePill();render(null);
+  if(!document.getElementById('vault').hidden)renderVault();
+}
+
+
+function setView(v){viewPref=v;try{localStorage.setItem('fin557-view',v);}catch(e){}applyView();
+  document.querySelectorAll('#devseg button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.view===effView()?'true':'false'));
+  const ic2={mobile:'<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg>',desktop:'<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M1.5 20h21"/></svg>'};
+  document.getElementById('btnView').innerHTML=(effView()==='mobile'?ic2.desktop+U('viewBtn')+U('v_desktop'):ic2.mobile+U('viewBtn')+U('v_mobile'));
+  requestAnimationFrame(()=>{placePill();render(null);});}
+/* ================= EXPORT ================= */
+function buildExport(){
+  let md=`# ${lang==='ar'?'رحلة الفصل الثاني: ورشتي':'Chapter Two journey: my workshop'}\nFIN 557 · Understanding the Customer\n\n`;
+  const r1=v('vault_rep'),r2=v('vault_sur');if(r1||r2)md+=`## ${U('vBefore')}\n\n${r1?`**${U('bring1')}:** ${r1}\n\n`:''}${r2?`**${U('bring2')}:** ${r2}\n\n`:''}`;
+  S.forEach((s,i)=>{const w=W[s.id];md+=`## ${s.chk?'◆':num(mainNo[i])+'.'} ${T(s.name)} (${s.tool})${s.chk?' · '+U('rec'):''}\n\n`;
+    w.f.forEach(g=>{
+      if(g.t==='text'){const x=v(`${s.id}_${g.k}`);if(x)md+=`**${T(g.l)}:** ${x}\n\n`;}
+      else if(g.t==='rows'){for(let r=0;r<g.n;r++){const cells=g.cols.map(c=>{let val=v(`${s.id}_${g.k}${r}_${c[0]}`);if(val&&c[3]){const oi=c[3][0].indexOf(val);if(oi>=0)val=T([c[3][0][oi],c[3][1][oi]]);}return [T(c[1]),val];}).filter(c=>c[1]);if(cells.length)md+=`- **${T(g.label)}${g.n>1?' '+num(r+1):''}**: ${cells.map(c=>`${c[0]}: ${c[1]}`).join(' | ')}\n`;}md+='\n';}
+      else if(g.t==='whys'){for(let r=0;r<=g.n;r++){const t=v(`${s.id}_w${r}_t`),e=v(`${s.id}_w${r}_e`);if(t||e)md+=`- **${r===0?T(['النمط','Pattern']):T(['ليش ','Why '])+num(r)}**: ${t}${e?` (${U('evidence')}${e})`:''}\n`;}md+='\n';}
+      else if(g.t==='checks'){const on=g.items.filter(it=>F[`${s.id}_${g.k}_${it[0]}`]==='1').map(it=>T(it[1]));if(on.length)md+=`✓ ${on.join(' · ')}\n\n`;}
+      else if(g.t==='pov'){const t=povText();if(t)md+=`> ${t}\n\n`;}
+      else if(g.t==='hmw'){const t=hmwText();if(t)md+=`> ${t}\n\n`;}
+    });});
+  return md;
+}
+async function doExport(){
+  const md=buildExport();
+  try{const dl=window.claude&&window.claude.use?await window.claude.use('downloads'):null;
+    if(dl){try{await dl.save({filename:'FIN557-Ch2-Journey.md',data:md});toast(U('exported'));return;}catch(e){if(e&&e.code==='declined')return;}}}catch(e){}
+  try{await navigator.clipboard.writeText(md);toast(U('copied'));}catch(e){toast(U('noCopy'));}
+}
+
+/* ================= BOOT ================= */
+document.querySelectorAll('.modes button').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.mode)));
+document.getElementById('btnFilm').onclick=()=>{film!==null?stopFilm():startFilm();};
+document.getElementById('btnVault').onclick=()=>openVault();
+document.getElementById('vClose').onclick=closeVault;
+document.getElementById('vault').addEventListener('click',e=>{if(e.target.id==='vault')closeVault();});
+document.getElementById('btnFx').onclick=()=>{fx=!fx;try{localStorage.setItem(LS+'-fx',fx?'1':'0');}catch(e){}document.getElementById('btnFx').setAttribute('aria-pressed',fx?'true':'false');toast(fx?'✨':'—');};
+document.getElementById('btnLang').onclick=()=>{lang=lang==='ar'?'en':'ar';try{localStorage.setItem('fin557-lang',lang);}catch(e){}applyLang();document.getElementById('sheet').classList.add('in-mode');};
+document.getElementById('btnExport').onclick=doExport;
+document.getElementById('btnClear').onclick=()=>{document.getElementById('modal').hidden=false;document.getElementById('mNo').focus();};
+document.getElementById('mNo').onclick=()=>document.getElementById('modal').hidden=true;
+document.getElementById('mYes').onclick=()=>{F={};queueSave();document.getElementById('modal').hidden=true;render('mode');toast(U('cleared'));};
+document.getElementById('btnPresent').onclick=async()=>{const w=document.getElementById('wrap');try{if(document.fullscreenElement)await document.exitFullscreen();else await w.requestFullscreen();}catch(e){toast(U('noFs'));}};
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'&&!document.getElementById('vault').hidden){closeVault();return;}
+  if(e.target.closest('input,textarea,select')||!document.getElementById('vault').hidden)return;
+  const fwd=lang==='ar'?'ArrowLeft':'ArrowRight',back=lang==='ar'?'ArrowRight':'ArrowLeft';
+  if(e.key===fwd){stopFilm();go(cur+1);}if(e.key===back){stopFilm();go(cur-1);}
+  if(e.key===' '&&!document.getElementById('intro').classList.contains('out')){e.preventDefault();closeIntro();}});
+window.addEventListener('resize',()=>{placePill();const nv=detectView();if(nv!==autoView){autoView=nv;if(viewPref==='auto'){applyView();render(null);}const dt=document.getElementById('detect');if(dt)dt.innerHTML=U('detected')+'<b>'+U('v_'+autoView)+'</b>';}});
+document.getElementById('btnView').onclick=()=>setView(effView()==='mobile'?'desktop':'mobile');
+
+const h0=(location.hash||'').slice(1);if(IDX[h0]!=null)cur=IDX[h0];
+document.querySelectorAll('.modes button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.mode===mode?'true':'false'));
+document.getElementById('wrap').classList.toggle('work',mode==='work');
+document.getElementById('btnExport').hidden=mode!=='work';document.getElementById('btnClear').hidden=mode!=='work';
+try{applyLang();}catch(err){console.error(err);try{document.getElementById('intro').hidden=true;document.getElementById('sheet').innerHTML='<p style="padding:20px">تعذّر تشغيل الصفحة في هذا العارض. افتح الملف في Safari أو Chrome.<br>This viewer could not run the page. Open it in Safari or Chrome.</p>';}catch(e){}}
+requestAnimationFrame(placePill);
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(placePill);
+function closeIntro(){
+  const it=document.getElementById('intro');if(it.classList.contains('out'))return;
+  it.classList.add('out');setTimeout(()=>{it.hidden=true;},900);
+  const mw=document.getElementById('mapWrap');mw.classList.remove('pre');void mw.offsetWidth;mw.classList.add('draw');
+}
+document.getElementById('introGo').onclick=closeIntro;
+document.querySelectorAll('#langseg button').forEach(b=>b.onclick=()=>{if(b.dataset.lang===lang)return;lang=b.dataset.lang;try{localStorage.setItem('fin557-lang',lang);}catch(e){}applyLang();});
+document.getElementById('introSkip').onclick=closeIntro;
+if(reduce()||IDX[h0]!=null){closeIntro();}else{setTimeout(()=>{try{document.getElementById('introGo').focus({preventScroll:true});}catch(e){}},2400);}
+initStore();
+
+</script>
+</body></html>
