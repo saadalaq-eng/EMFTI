@@ -7,6 +7,7 @@ import Modal from '../../components/ui/Modal'
 import TaskForm from '../../components/tasks/TaskForm'
 import TaskTypeBadge from '../../components/tasks/TaskTypeBadge'
 import EmptyState from '../../components/ui/EmptyState'
+import Efin551Update from '../../components/tasks/Efin551Update'
 
 export default function Tasks() {
   const { tasks, loading, addTask, updateTask, deleteTask } = useTasks()
@@ -54,6 +55,8 @@ export default function Tasks() {
           Add at least one course before creating tasks.
         </div>
       )}
+
+      {!loading && <Efin551Update tasks={tasks} courses={courses} />}
 
       {loading ? (
         <div className="flex justify-center py-16">

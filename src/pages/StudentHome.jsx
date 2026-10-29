@@ -4,6 +4,7 @@ import Header from '../components/layout/Header'
 import TaskList from '../components/tasks/TaskList'
 import CalendarView from '../components/tasks/CalendarView'
 import TaskDetailModal from '../components/tasks/TaskDetailModal'
+import CalendarSubscribe from '../components/tasks/CalendarSubscribe'
 import { useTasks } from '../hooks/useTasks'
 import { useCourses } from '../hooks/useCourses'
 import { TASK_TYPES } from '../utils/taskTypes'
@@ -28,29 +29,32 @@ export default function StudentHome() {
     <div className="min-h-screen bg-gray-50 flex flex-col">
       {/* Header */}
       <Header>
-        <div className="flex items-center gap-1 bg-gray-100 rounded-xl p-1">
-          <button
-            onClick={() => setView('list')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
-              view === 'list'
-                ? 'bg-white shadow-sm text-gray-900'
-                : 'text-gray-500 hover:text-gray-700'
-            }`}
-          >
-            <List size={14} />
-            <span className="hidden sm:inline">List</span>
-          </button>
-          <button
-            onClick={() => setView('calendar')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
-              view === 'calendar'
-                ? 'bg-white shadow-sm text-gray-900'
-                : 'text-gray-500 hover:text-gray-700'
-            }`}
-          >
-            <CalendarDays size={14} />
-            <span className="hidden sm:inline">Calendar</span>
-          </button>
+        <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1 bg-gray-100 rounded-xl p-1">
+            <button
+              onClick={() => setView('list')}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
+                view === 'list'
+                  ? 'bg-white shadow-sm text-gray-900'
+                  : 'text-gray-500 hover:text-gray-700'
+              }`}
+            >
+              <List size={14} />
+              <span className="hidden sm:inline">List</span>
+            </button>
+            <button
+              onClick={() => setView('calendar')}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
+                view === 'calendar'
+                  ? 'bg-white shadow-sm text-gray-900'
+                  : 'text-gray-500 hover:text-gray-700'
+              }`}
+            >
+              <CalendarDays size={14} />
+              <span className="hidden sm:inline">Calendar</span>
+            </button>
+          </div>
+          <CalendarSubscribe />
         </div>
       </Header>
 
