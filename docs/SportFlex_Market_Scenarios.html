@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SportFlex Market Scenarios</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Layout: inputs rail on the left, results on the right; stacks on phones. Two-theme palette with a teal accent on slate neutrals. */
+  --bg:#f3f5f4;
+  --surface:#ffffff;
+  --surface-2:#e8edeb;
+  --ink:#152321;
+  --ink-2:#4a5a57;
+  --line:#cfd8d5;
+  --accent:#0d7a6a;
+  --accent-ink:#ffffff;
+  --accent-soft:#d9efea;
+  --warn:#b45309;
+  --warn-soft:#fdebd3;
+  --font-display:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --radius:10px;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1716;--surface:#172220;--surface-2:#1f2d2a;--ink:#e6eeec;--ink-2:#9fb3ae;--line:#2d3d39;
+    --accent:#3dbfa8;--accent-ink:#06211c;--accent-soft:#163b35;--warn:#f0a04b;--warn-soft:#3b2a12;color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f1716;--surface:#172220;--surface-2:#1f2d2a;--ink:#e6eeec;--ink-2:#9fb3ae;--line:#2d3d39;
+  --accent:#3dbfa8;--accent-ink:#06211c;--accent-soft:#163b35;--warn:#f0a04b;--warn-soft:#3b2a12;color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:15px;line-height:1.45}
+h1,h2,h3{font-family:var(--font-display);text-wrap:balance;margin:0}
+h1{font-size:1.6rem;font-weight:800;letter-spacing:-.01em}
+h2{font-size:1.05rem;font-weight:700}
+h3{font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-2)}
+p{margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding:24px 16px 48px}
+header.top{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:flex-end;justify-content:space-between;margin-bottom:20px}
+header.top p{color:var(--ink-2);max-width:62ch}
+.presets{display:flex;gap:8px;flex-wrap:wrap}
+button{font:inherit;cursor:pointer;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:8px 12px;font-weight:600}
+button:hover{border-color:var(--accent)}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+button.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+button.small{padding:5px 9px;font-size:.82rem;font-weight:500}
+.grid{display:grid;grid-template-columns:380px 1fr;gap:20px;align-items:start}
+@media (max-width:900px){.grid{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+.rail{display:flex;flex-direction:column;gap:14px;position:sticky;top:16px}
+@media (max-width:900px){.rail{position:static}}
+.field{display:grid;grid-template-columns:1fr auto;gap:4px 12px;align-items:center;padding:10px 0;border-top:1px solid var(--line)}
+.field:first-of-type{border-top:0;padding-top:4px}
+.field label{font-weight:600;font-size:.92rem}
+.field .hint{grid-column:1 / -1;color:var(--ink-2);font-size:.8rem}
+.field input[type=range]{grid-column:1 / -1;width:100%;accent-color:var(--accent);margin:2px 0 0}
+.field .num{display:flex;align-items:center;gap:4px;font-family:var(--font-mono);font-size:.92rem}
+.field input[type=number]{width:118px;font:inherit;font-family:var(--font-mono);padding:5px 7px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink);text-align:right;font-variant-numeric:tabular-nums}
+.field input.wide{width:140px}
+.field select{font:inherit;padding:5px 7px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink);max-width:100%}
+.unit{color:var(--ink-2);font-size:.85rem}
+.results{display:flex;flex-direction:column;gap:20px}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media (max-width:640px){.tiles{grid-template-columns:1fr}}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;border-top:4px solid var(--accent)}
+.tile .k{font-family:var(--font-display);font-weight:700;font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-2)}
+.tile .v{font-family:var(--font-display);font-weight:800;font-size:1.7rem;line-height:1.15;margin-top:4px;font-variant-numeric:tabular-nums}
+.tile .v small{font-size:.95rem;font-weight:600;color:var(--ink-2);margin-left:4px}
+.tile .f{font-family:var(--font-mono);font-size:.74rem;color:var(--ink-2);margin-top:6px;word-break:break-word}
+.tile.som{border-top-color:var(--warn)}
+.funnel{display:flex;flex-direction:column;gap:10px}
+.bar-row{display:grid;grid-template-columns:150px 1fr 150px;gap:10px;align-items:center;font-size:.88rem}
+@media (max-width:640px){.bar-row{grid-template-columns:1fr;gap:4px}}
+.bar-track{height:26px;background:var(--surface-2);border-radius:6px;overflow:hidden}
+.bar{height:100%;background:var(--accent);border-radius:6px;transition:width .35s ease}
+@media (prefers-reduced-motion:reduce){.bar{transition:none}}
+.bar.som{background:var(--warn)}
+.bar-val{font-family:var(--font-mono);font-variant-numeric:tabular-nums;text-align:right}
+.bar-name{font-weight:600}
+.bar-name span{display:block;font-weight:400;color:var(--ink-2);font-size:.78rem}
+.note{color:var(--ink-2);font-size:.82rem}
+.callout{background:var(--warn-soft);border:1px solid var(--warn);color:var(--ink);border-radius:8px;padding:8px 12px;font-size:.85rem;display:none}
+.callout.show{display:block}
+table{width:100%;border-collapse:collapse;font-size:.86rem}
+th,td{padding:7px 8px;border-bottom:1px solid var(--line);text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+th:first-child,td:first-child{text-align:left;white-space:normal}
+th{font-family:var(--font-display);font-weight:700;font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-2)}
+.tablewrap{overflow-x:auto}
+.row-actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:12px}
+.chip{display:inline-block;padding:2px 8px;border-radius:999px;background:var(--accent-soft);color:var(--ink);font-size:.76rem;font-weight:600}
+.stack{display:flex;flex-direction:column;gap:12px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:640px){.two{grid-template-columns:1fr}}
+.kv{display:grid;grid-template-columns:1fr auto;gap:6px 12px;font-size:.88rem}
+.kv dt{color:var(--ink-2)}
+.kv dd{margin:0;font-family:var(--font-mono);font-variant-numeric:tabular-nums;text-align:right}
+footer{margin-top:28px;color:var(--ink-2);font-size:.8rem;max-width:80ch}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 14px;border-radius:8px;font-size:.85rem;opacity:0;pointer-events:none;transition:opacity .2s}
+.toast.show{opacity:1}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1>SportFlex Market Scenarios</h1>
+      <p>Segment A, parents paying for children's coaching. Change the inputs and the TAM, SAM and SOM recalculate with their formulas shown. Base values are the Market Study v2 base case for the Kingdom.</p>
+    </div>
+    <div class="presets" role="group" aria-label="Scenario presets">
+      <button type="button" data-preset="low">Low case</button>
+      <button type="button" class="primary" data-preset="base">Base case</button>
+      <button type="button" data-preset="high">High case</button>
+    </div>
+  </header>
+
+  <div class="grid">
+    <aside class="rail">
+      <section class="card" aria-labelledby="h-inputs">
+        <h2 id="h-inputs">Market inputs</h2>
+
+        <div class="field">
+          <label for="region">Geography</label>
+          <select id="region">
+            <option value="6102726">Saudi Arabia (Kingdom)</option>
+            <option value="3827950">Riyadh + Makkah + Eastern</option>
+            <option value="1456668">Riyadh region</option>
+            <option value="1464512">Makkah region</option>
+            <option value="906770">Eastern Province</option>
+            <option value="1131358">Riyadh city (Gate 1 scope)</option>
+            <option value="custom">Custom figure</option>
+          </select>
+          <p class="hint">Sets the child population below from the 2022 census. Pick Custom to type your own.</p>
+        </div>
+
+        <div class="field">
+          <label for="pop">Children aged 6–17</label>
+          <div class="num"><input type="number" id="pop" class="wide" min="1000" step="1" value="6102726"></div>
+          <p class="hint">GASTAT Saudi Census 2022, ages 6–11 and 12–17.</p>
+        </div>
+
+        <div class="field">
+          <label for="part">Targeted share of children</label>
+          <div class="num"><input type="number" id="part" min="0.5" max="40" step="0.5" value="8"><span class="unit">%</span></div>
+          <input type="range" id="part_r" min="0.5" max="40" step="0.5" value="8" aria-label="Targeted share of children, slider">
+          <p class="hint">Share whose parents pay for out-of-school coaching (participation rate P). Study range 5–12%.</p>
+        </div>
+
+        <div class="field">
+          <label for="spend">Annual spend per coached child</label>
+          <div class="num"><span class="unit">SAR</span><input type="number" id="spend" min="500" max="20000" step="100" value="4000"></div>
+          <input type="range" id="spend_r" min="500" max="12000" step="100" value="4000" aria-label="Annual spend per coached child, slider">
+          <p class="hint">Published Riyadh prices of SAR 300–800 a month over about nine months. Study range 2,700–6,000.</p>
+        </div>
+
+        <div class="field">
+          <label for="serv">Targeted providers</label>
+          <div class="num"><input type="number" id="serv" min="1" max="100" step="1" value="70"><span class="unit">%</span></div>
+          <input type="range" id="serv_r" min="1" max="100" step="1" value="70" aria-label="Targeted providers, slider">
+          <p class="hint">Share of coaching that happens at providers able to contract with a platform. Study range 60–80%.</p>
+        </div>
+
+        <div class="field">
+          <label for="cut">SportFlex cut on settled value</label>
+          <div class="num"><input type="number" id="cut" min="0" max="50" step="0.5" value="10"><span class="unit">%</span></div>
+          <input type="range" id="cut_r" min="0" max="30" step="0.5" value="10" aria-label="SportFlex cut, slider">
+          <p class="hint">Commission charged to the provider on value settled through the wallet. Submission 3 base 10%.</p>
+        </div>
+
+        <div class="field">
+          <label for="fee">Parent service fee</label>
+          <div class="num"><input type="number" id="fee" min="0" max="20" step="0.5" value="3"><span class="unit">%</span></div>
+          <input type="range" id="fee_r" min="0" max="10" step="0.5" value="3" aria-label="Parent service fee, slider">
+          <p class="hint">Optional second cut paid by the parent. Set to 0 to model commission only.</p>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="h-som">
+        <h2 id="h-som">SOM build (year 3)</h2>
+        <p class="note" style="margin:6px 0 4px">SOM is built from the supply side: the children actually routed through contracted providers, and how much of their annual spend settles through the wallet.</p>
+
+        <div class="field">
+          <label for="expl">Exploring families (beachhead)</label>
+          <div class="num"><input type="number" id="expl" min="1" max="100" step="1" value="50"><span class="unit">%</span></div>
+          <input type="range" id="expl_r" min="1" max="100" step="1" value="50" aria-label="Exploring share, slider">
+          <p class="hint">Share of serviceable children not yet settled on a sport or coach. Study range 35–65%.</p>
+        </div>
+
+        <div class="field">
+          <label for="prov">Providers contracted</label>
+          <div class="num"><input type="number" id="prov" min="1" max="5000" step="1" value="102"></div>
+          <input type="range" id="prov_r" min="1" max="600" step="1" value="102" aria-label="Providers contracted, slider">
+          <p class="hint">Base: 60 Riyadh, 30 Jeddah, 12 Dammam–Khobar.</p>
+        </div>
+
+        <div class="field">
+          <label for="cpp">Active children per provider</label>
+          <div class="num"><input type="number" id="cpp" min="1" max="500" step="0.01" value="36.76"></div>
+          <input type="range" id="cpp_r" min="5" max="120" step="0.25" value="36.76" aria-label="Active children per provider, slider">
+          <p class="hint">Base averages 3,750 children over 102 providers. Lower planning case: 20.</p>
+        </div>
+
+        <div class="field">
+          <label for="settle">Share of annual spend settled</label>
+          <div class="num"><input type="number" id="settle" min="1" max="100" step="1" value="59"><span class="unit">%</span></div>
+          <input type="range" id="settle_r" min="1" max="100" step="1" value="59" aria-label="Share of annual spend settled, slider">
+          <p class="hint">Continuing children settle 100% of S, new children 50%; the base-case mix averages 59%.</p>
+        </div>
+
+        <div class="row-actions">
+          <button type="button" id="reset" class="small">Reset to base</button>
+        </div>
+      </section>
+    </aside>
+
+    <main class="results">
+      <div class="tiles">
+        <div class="tile">
+          <div class="k">TAM</div>
+          <div class="v" id="tam_v">—</div>
+          <div class="f" id="tam_f"></div>
+        </div>
+        <div class="tile">
+          <div class="k">SAM</div>
+          <div class="v" id="sam_v">—</div>
+          <div class="f" id="sam_f"></div>
+        </div>
+        <div class="tile som">
+          <div class="k">SOM, year 3</div>
+          <div class="v" id="som_v">—</div>
+          <div class="f" id="som_f"></div>
+        </div>
+      </div>
+
+      <div class="callout" id="warn"></div>
+
+      <section class="card">
+        <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline">
+          <h2>Market layers</h2>
+          <span class="note">Bar lengths on a logarithmic scale; the layers differ by more than 100×.</span>
+        </div>
+        <div class="funnel" style="margin-top:14px">
+          <div class="bar-row"><div class="bar-name">TAM<span>all paid coaching, children 6–17</span></div><div class="bar-track"><div class="bar" id="b_tam"></div></div><div class="bar-val" id="t_tam"></div></div>
+          <div class="bar-row"><div class="bar-name">SAM<span>at targeted providers</span></div><div class="bar-track"><div class="bar" id="b_sam"></div></div><div class="bar-val" id="t_sam"></div></div>
+          <div class="bar-row"><div class="bar-name">Beachhead<span>exploring families in the SAM</span></div><div class="bar-track"><div class="bar" id="b_bh"></div></div><div class="bar-val" id="t_bh"></div></div>
+          <div class="bar-row"><div class="bar-name">SOM<span>settled through the wallet</span></div><div class="bar-track"><div class="bar som" id="b_som"></div></div><div class="bar-val" id="t_som"></div></div>
+        </div>
+      </section>
+
+      <div class="two">
+        <section class="card">
+          <h3>Children behind each layer</h3>
+          <dl class="kv" style="margin:10px 0 0">
+            <dt>Coached children (TAM)</dt><dd id="k_coached"></dd>
+            <dt>At targeted providers (SAM)</dt><dd id="k_serv"></dd>
+            <dt>Exploring pool (beachhead)</dt><dd id="k_expl"></dd>
+            <dt>Active on SportFlex, year 3 (SOM)</dt><dd id="k_active"></dd>
+            <dt>SOM share of SAM</dt><dd id="k_somsam"></dd>
+            <dt>Active children as share of exploring pool</dt><dd id="k_actexpl"></dd>
+          </dl>
+        </section>
+        <section class="card">
+          <h3>What SportFlex keeps</h3>
+          <dl class="kv" style="margin:10px 0 0">
+            <dt>Total cut (commission + fee)</dt><dd id="r_cut"></dd>
+            <dt>Revenue from the SOM, year 3</dt><dd id="r_som"></dd>
+            <dt>of which commission</dt><dd id="r_comm"></dd>
+            <dt>of which service fee</dt><dd id="r_fee"></dd>
+            <dt>Revenue per active child</dt><dd id="r_child"></dd>
+            <dt>Revenue ceiling if the whole SAM settled</dt><dd id="r_samceil"></dd>
+          </dl>
+          <p class="note" style="margin-top:10px">Market layers are parents' spending; only the cut is SportFlex revenue. Subscriptions (Segment B) are not in this page.</p>
+        </section>
+      </div>
+
+      <section class="card">
+        <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline">
+          <h2>Scenario comparison</h2>
+          <div class="row-actions" style="margin:0">
+            <input type="text" id="scen_name" placeholder="Scenario name" aria-label="Scenario name" style="font:inherit;padding:6px 8px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink);width:170px">
+            <button type="button" id="save" class="primary small">Save current</button>
+            <button type="button" id="copy" class="small">Copy table</button>
+            <button type="button" id="clear" class="small">Clear</button>
+          </div>
+        </div>
+        <div class="tablewrap" style="margin-top:12px">
+          <table id="scen">
+            <thead><tr>
+              <th>Scenario</th><th>Children</th><th>Share</th><th>Spend SAR</th><th>Providers %</th><th>Cut %</th><th>TAM SAR m</th><th>SAM SAR m</th><th>Beachhead SAR m</th><th>SOM SAR m</th><th>Revenue SAR m</th>
+            </tr></thead>
+            <tbody id="scen_body"></tbody>
+          </table>
+        </div>
+        <p class="note" style="margin-top:8px">The three study cases are listed to start. Saved scenarios stay in this browser only.</p>
+      </section>
+
+      <footer>
+        Formulas follow Market Study v2, Section 3 and 4: TAM = children × share × spend; SAM = TAM × targeted providers; beachhead = SAM × exploring share; SOM = providers × active children per provider × spend × share settled. Child counts from GASTAT Saudi Census 2022. Values are annual, 2026 prices, SAR.
+      </footer>
+    </main>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  const $ = id => document.getElementById(id);
+  const ids = ['pop','part','spend','serv','cut','fee','expl','prov','cpp','settle'];
+  const paired = ['part','spend','serv','cut','fee','expl','prov','cpp','settle'];
+
+  const presets = {
+    base: {pop:6102726, part:8,  spend:4000, serv:70, cut:10, fee:3, expl:50, prov:102, cpp:36.76, settle:59},
+    low:  {pop:6102726, part:5,  spend:2700, serv:60, cut:10, fee:3, expl:35, prov:102, cpp:20,   settle:59},
+    high: {pop:6102726, part:12, spend:6000, serv:80, cut:10, fee:3, expl:65, prov:160, cpp:50,   settle:59}
+  };
+
+  function read(){
+    const v = {};
+    ids.forEach(k => { v[k] = parseFloat($(k).value); if (!isFinite(v[k])) v[k] = 0; });
+    return v;
+  }
+  function compute(v){
+    const coached = v.pop * v.part/100;
+    const tam = coached * v.spend;
+    const servKids = coached * v.serv/100;
+    const sam = servKids * v.spend;
+    const explKids = servKids * v.expl/100;
+    const bh = explKids * v.spend;
+    const active = v.prov * v.cpp;
+    const som = active * v.spend * v.settle/100;
+    const cutTotal = (v.cut + v.fee)/100;
+    const rev = som * cutTotal;
+    return {coached,tam,servKids,sam,explKids,bh,active,som,cutTotal,rev,
+            comm: som*v.cut/100, fee: som*v.fee/100,
+            revChild: active>0 ? rev/active : 0,
+            samCeil: sam*cutTotal};
+  }
+  const nf0 = new Intl.NumberFormat('en-US',{maximumFractionDigits:0});
+  const nf1 = new Intl.NumberFormat('en-US',{maximumFractionDigits:1,minimumFractionDigits:1});
+  const nf2 = new Intl.NumberFormat('en-US',{maximumFractionDigits:2,minimumFractionDigits:2});
+  function sar(x){ // compact SAR
+    if (x >= 1e9) return nf2.format(x/1e9) + '<small>bn</small>';
+    if (x >= 1e6) return (x >= 1e8 ? nf0.format(x/1e6) : nf2.format(x/1e6)) + '<small>m</small>';
+    if (x >= 1e3) return nf0.format(x/1e3) + '<small>k</small>';
+    return nf0.format(x);
+  }
+  function m(x){ return x >= 1e9 ? nf0.format(x/1e6) : (x >= 1e7 ? nf1.format(x/1e6) : nf2.format(x/1e6)); }
+  function pct(x,d){ return (d===undefined?nf1:new Intl.NumberFormat('en-US',{maximumFractionDigits:d})).format(x*100) + '%'; }
+
+  function render(){
+    const v = read(), r = compute(v);
+    $('tam_v').innerHTML = 'SAR ' + sar(r.tam);
+    $('tam_f').textContent = nf0.format(v.pop) + ' × ' + v.part + '% × SAR ' + nf0.format(v.spend);
+    $('sam_v').innerHTML = 'SAR ' + sar(r.sam);
+    $('sam_f').textContent = 'TAM × ' + v.serv + '% targeted providers';
+    $('som_v').innerHTML = 'SAR ' + sar(r.som);
+    $('som_f').textContent = nf0.format(v.prov) + ' × ' + v.cpp + ' children × SAR ' + nf0.format(v.spend) + ' × ' + v.settle + '%';
+
+    // funnel on log scale
+    const vals = [r.tam, r.sam, r.bh, r.som];
+    const lo = Math.log10(Math.max(1, Math.min(...vals.filter(x=>x>0))) / 10);
+    const hi = Math.log10(Math.max(...vals, 10));
+    const w = x => x<=0 ? 0 : Math.max(2, Math.min(100, (Math.log10(x)-lo)/(hi-lo)*100));
+    $('b_tam').style.width = w(r.tam)+'%'; $('t_tam').textContent = 'SAR ' + m(r.tam) + 'm';
+    $('b_sam').style.width = w(r.sam)+'%'; $('t_sam').textContent = 'SAR ' + m(r.sam) + 'm';
+    $('b_bh').style.width  = w(r.bh)+'%';  $('t_bh').textContent  = 'SAR ' + m(r.bh) + 'm';
+    $('b_som').style.width = w(r.som)+'%'; $('t_som').textContent = 'SAR ' + m(r.som) + 'm';
+
+    $('k_coached').textContent = nf0.format(r.coached);
+    $('k_serv').textContent = nf0.format(r.servKids);
+    $('k_expl').textContent = nf0.format(r.explKids);
+    $('k_active').textContent = nf0.format(r.active);
+    $('k_somsam').textContent = r.sam>0 ? pct(r.som/r.sam,2) : '—';
+    $('k_actexpl').textContent = r.explKids>0 ? pct(r.active/r.explKids,1) : '—';
+
+    $('r_cut').textContent = pct(r.cutTotal,1);
+    $('r_som').textContent = 'SAR ' + nf0.format(r.rev);
+    $('r_comm').textContent = 'SAR ' + nf0.format(r.comm);
+    $('r_fee').textContent = 'SAR ' + nf0.format(r.fee);
+    $('r_child').textContent = 'SAR ' + nf0.format(r.revChild);
+    $('r_samceil').textContent = 'SAR ' + m(r.samCeil) + 'm';
+
+    const warn = $('warn'); const msgs = [];
+    if (r.active > r.servKids) msgs.push('Active children (' + nf0.format(r.active) + ') exceed the children at targeted providers (' + nf0.format(r.servKids) + '). The SOM is larger than the SAM: lower providers, children per provider, or raise the market inputs.');
+    else if (r.explKids>0 && r.active/r.explKids > 0.25) msgs.push('Active children are ' + pct(r.active/r.explKids,0) + ' of the exploring pool. The study treats anything above a few percent in year 3 as ambitious for a referral-led entrant.');
+    warn.textContent = msgs.join(' '); warn.classList.toggle('show', msgs.length>0);
+  }
+
+  function setVals(p){
+    Object.keys(p).forEach(k => { $(k).value = p[k]; const r = $(k+'_r'); if (r) r.value = p[k]; });
+    const sel = $('region'); const match = [...sel.options].find(o => o.value === String(p.pop));
+    sel.value = match ? match.value : 'custom';
+    render();
+  }
+
+  // wiring
+  paired.forEach(k => {
+    $(k).addEventListener('input', () => { const r=$(k+'_r'); if (r) r.value = $(k).value; render(); });
+    $(k+'_r').addEventListener('input', () => { $(k).value = $(k+'_r').value; render(); });
+  });
+  $('pop').addEventListener('input', () => { $('region').value = 'custom'; render(); });
+  $('region').addEventListener('change', () => { if ($('region').value !== 'custom') { $('pop').value = $('region').value; } render(); });
+  document.querySelectorAll('[data-preset]').forEach(b => b.addEventListener('click', () => setVals(presets[b.dataset.preset])));
+  $('reset').addEventListener('click', () => setVals(presets.base));
+
+  // scenarios
+  let scen = [];
+  function rowFor(name, v){
+    const r = compute(v);
+    return {name, v, r};
+  }
+  function drawScen(){
+    const tb = $('scen_body'); tb.innerHTML = '';
+    scen.forEach((s,i) => {
+      const tr = document.createElement('tr');
+      const cells = [s.name, nf0.format(s.v.pop), s.v.part+'%', nf0.format(s.v.spend), s.v.serv+'%', (s.v.cut+s.v.fee)+'%', m(s.r.tam), m(s.r.sam), m(s.r.bh), m(s.r.som), nf2.format(s.r.rev/1e6)];
+      cells.forEach((c,j) => { const td = document.createElement('td'); td.textContent = c; tr.appendChild(td); });
+      const td = document.createElement('td'); td.style.textAlign='right';
+      const load = document.createElement('button'); load.className='small'; load.type='button'; load.textContent='Load'; load.addEventListener('click', () => setVals(s.v));
+      const del = document.createElement('button'); del.className='small'; del.type='button'; del.textContent='Remove'; del.style.marginLeft='6px'; del.addEventListener('click', () => { scen.splice(i,1); persist(); drawScen(); });
+      td.appendChild(load); td.appendChild(del); tr.appendChild(td);
+      tb.appendChild(tr);
+    });
+    const th = document.querySelector('#scen thead tr');
+    if (!th.querySelector('.act')) { const t = document.createElement('th'); t.className='act'; t.textContent=''; th.appendChild(t); }
+  }
+  function persist(){ try { localStorage.setItem('sportflex-scen', JSON.stringify(scen.map(s=>({name:s.name, v:s.v})))); } catch(e){} }
+  function toast(msg){ const t=$('toast'); t.textContent=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),1600); }
+
+  $('save').addEventListener('click', () => {
+    const name = ($('scen_name').value || ('Scenario ' + (scen.length+1))).trim();
+    scen.push(rowFor(name, read())); $('scen_name').value=''; persist(); drawScen(); toast('Saved "' + name + '"');
+  });
+  $('clear').addEventListener('click', () => { scen = defaults(); persist(); drawScen(); });
+  $('copy').addEventListener('click', () => {
+    const head = ['Scenario','Children','Share %','Spend SAR','Providers %','Cut %','TAM SAR m','SAM SAR m','Beachhead SAR m','SOM SAR m','Revenue SAR m'];
+    const lines = [head.join('\t')].concat(scen.map(s => [s.name, s.v.pop, s.v.part, s.v.spend, s.v.serv, s.v.cut+s.v.fee, m(s.r.tam), m(s.r.sam), m(s.r.bh), m(s.r.som), nf2.format(s.r.rev/1e6)].join('\t')));
+    const text = lines.join('\n');
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(()=>toast('Table copied'), ()=>toast('Copy blocked here. Select the table and copy manually.'));
+    } else toast('Copy blocked here. Select the table and copy manually.');
+  });
+  function defaults(){ return [rowFor('Low case', presets.low), rowFor('Base case', presets.base), rowFor('High case', presets.high)]; }
+
+  // init
+  let stored = null;
+  try { stored = JSON.parse(localStorage.getItem('sportflex-scen') || 'null'); } catch(e){}
+  scen = (Array.isArray(stored) && stored.length) ? stored.map(s => rowFor(s.name, s.v)) : defaults();
+  setVals(presets.base);
+  drawScen();
+})();
+</script>
+</body>
+</html>
